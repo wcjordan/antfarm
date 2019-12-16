@@ -1,33 +1,58 @@
 import copy
 import random
+import sys
 
-EMPTY_SQ = ''
-USER_PLAYER = 'X'
-AI_PLAYER = 'O'
+EMPTY_SQ = 0
+USER_PLAYER = 1
+AI_PLAYER = -1
+DISPLAY_MAPPING = ('0', ' ', 'X')
 
 class TicTacToe:
-    ''' TODO Handle cats game outcome when working on runner
-    Available spaces will be empty
+    '''TODO observation_space & reward_range for open AI gym
     '''
 
     def __init__(self, board_size):
-        self.board_size = board_size
-        self.board = [[EMPTY_SQ]*self.board_size for row in range(board_size)]
-        self.available_spaces = self._init_available_spaces()
-        self.win_lines = self._init_win_lines()
-        self.outcome = EMPTY_SQ
+        self._seed = random.randrange(sys.maxsize)
+        random.seed(self._seed)
 
-    def list_actions(self):
+        self.board_size = board_size
+        self.win_lines = self._init_win_lines()
+        self.reset()
+
+    def reset(self):
+        self.board = [[EMPTY_SQ]*self.board_size for row in range(self.board_size)]
+        self.all_spaces = self._init_available_spaces()
+        self.available_spaces = copy.deepcopy(self.all_spaces)
+        self.outcome = EMPTY_SQ
+        return copy.deepcopy(self.board)
+
+    def close(self):
+        pass
+
+    def seed(self, seed=None):
+        if seed is not None:
+            self._seed = seed
+            random.seed(seed)
+        return self._seed
+
+    @property
+    def action_space(self):
         ''' Returns a list of available actions
         '''
-        if self._get_outcome() != EMPTY_SQ:
-            return []
-        return self._get_available_spaces()
+        return self.all_spaces
+        # if self._get_outcome() != EMPTY_SQ:
+        #     return []
+        # return self._get_available_spaces()
 
-    def take_action(self, action):
+    def step(self, action):
         ''' Updates state w/ action
         Returns a reward and observation
         '''
+        available_spaces = self._get_available_spaces()
+        if action not in available_spaces:
+            return copy.deepcopy(self.board), -0.3, self._is_done(), {};
+
+
         self._apply_action(action, USER_PLAYER)
         outcome = self._get_outcome()
         if outcome == EMPTY_SQ:
@@ -40,7 +65,23 @@ class TicTacToe:
         elif (outcome == AI_PLAYER):
             reward = -1
 
-        return reward, copy.deepcopy(self.board);
+        return copy.deepcopy(self.board), reward, self._is_done(), {};
+
+    def render(self, mode='human'):
+        ''' TODO handle modes 'human' & 'rgb_array'
+        '''
+        for row in self.board:
+            print('', end=' | ')
+            for sq in row:
+                print(DISPLAY_MAPPING[sq + 1], end=' | ')
+            print('')
+        print('\n')
+
+
+    def _is_done(self):
+        if self._get_outcome() != EMPTY_SQ:
+            return True
+        return len(self._get_available_spaces()) == 0
 
     def _get_outcome(self):
         return self.outcome

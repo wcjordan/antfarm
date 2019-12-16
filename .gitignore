@@ -49,3 +49,6 @@ coverage.xml
 
 # JS ignores
 node_modules/
+
+# bash history mounted in Docker container
+bash/.bash_history
