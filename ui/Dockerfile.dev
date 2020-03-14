@@ -1,0 +1,15 @@
+# JS container for running dev server
+# TODO (jordan) Look into DRYing this & Dockerfile out w/ Docker Buildkit
+FROM node:alpine
+WORKDIR /js_app
+
+# Install React dependencies
+COPY js/yarn.lock .
+COPY js/package.json .
+# COPY js/tsconfig.json .
+RUN yarn install --pure-lockfile
+
+# Copy prettierrc for formatting
+COPY js/.prettierrc .
+
+CMD ["yarn", "start"]
