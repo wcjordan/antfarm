@@ -1,15 +1,21 @@
+DOCKER_FLAGS := -d
+
 # Build containers
 build:
 	docker build -t antfarm-ui -f Dockerfile.dev .
 
 # Start containers for development
-dev_up: down
-	docker run --shm-size=10g -p 80:80 -p 3000:3000 \
+dev-up: down
+	docker run --shm-size=10g -p 80:80 -p 3000:3000 -p9009:9009 \
 	  -v $(CURDIR)/js/public:/js_app/public \
 	  -v $(CURDIR)/js/src:/js_app/src \
 	  -v $(CURDIR)/bash/.bashrc:/root/.bashrc \
 	  -v $(CURDIR)/bash:/root/bash \
-	  --name antfarm-ui-run -d antfarm-ui
+	  --name antfarm-ui-run $(DOCKER_FLAGS) antfarm-ui $(DOCKER_CMD)
+
+test: DOCKER_CMD:=npm test
+test: DOCKER_FLAGS:=-ti
+test: dev-up
 
 # Stop & teardown containers
 down:
@@ -20,8 +26,11 @@ down:
 format:
 	cd js; npx lint-staged
 
+dev-storybook: DOCKER_CMD:=npm run storybook
+dev-storybook: dev-up
+
 # Open a terminal in a container
 shell:
 	 docker exec -it antfarm-ui-run /bin/sh
 
-.PHONY: build dev_up down format shell
+.PHONY: build dev-up down test format dev-storybook shell

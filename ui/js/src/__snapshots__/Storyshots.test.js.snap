@@ -1,0 +1,4147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Tictactoe Board Board 3 X 3 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Board 4 X 4 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "16.25vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Board 5 X 5 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "13vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Board 7 X 7 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "9.285714285714286vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Board 10 X 10 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "6.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Dynamic Board 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "21.666666666666668vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

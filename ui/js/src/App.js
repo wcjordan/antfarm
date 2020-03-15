@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-      <Board />
+      <Board size={3} />
     </div>
   )
 }

@@ -11,7 +11,7 @@ RUN yarn install --pure-lockfile
 # Install React app
 COPY js/.prettierrc .
 COPY js/public ./public
-# COPY js/.storybook ./.storybook
+COPY js/.storybook ./.storybook
 COPY js/src ./src
 
 # Build React app

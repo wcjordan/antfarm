@@ -9,7 +9,8 @@ COPY js/package.json .
 # COPY js/tsconfig.json .
 RUN yarn install --pure-lockfile
 
-# Copy prettierrc for formatting
+# Copy prettier & storybook configs
 COPY js/.prettierrc .
+COPY js/.storybook ./.storybook
 
 CMD ["yarn", "start"]
