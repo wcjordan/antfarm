@@ -21,7 +21,7 @@ format:
 	cd js; npx lint-staged
 
 # Open a terminal in a container
-enter:
+shell:
 	 docker exec -it antfarm-ui-run /bin/sh
 
-.PHONY: build dev_up down format enter
+.PHONY: build dev_up down format shell
