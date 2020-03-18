@@ -5,12 +5,12 @@ WORKDIR /js_app
 # Install React dependencies
 COPY js/yarn.lock .
 COPY js/package.json .
-# COPY js/tsconfig.json .
 RUN yarn install --pure-lockfile
 
 # Install React app
 COPY js/.prettierrc .
 COPY js/public ./public
+COPY js/tsconfig.json .
 COPY js/.storybook ./.storybook
 COPY js/src ./src
 

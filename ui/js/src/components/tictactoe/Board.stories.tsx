@@ -1,5 +1,5 @@
 import React from 'react'
-import Board from './Board.js'
+import Board from './Board'
 import { withKnobs, number } from '@storybook/addon-knobs'
 
 export default {

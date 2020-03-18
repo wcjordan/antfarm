@@ -2,7 +2,7 @@ DOCKER_FLAGS := -d
 
 # Build containers
 build:
-	docker build -t antfarm-ui -f Dockerfile.dev .
+	DOCKER_BUILDKIT=1 docker build -t antfarm-ui -f Dockerfile.dev .
 
 # Start containers for development
 dev-up: down
@@ -11,9 +11,9 @@ dev-up: down
 	  -v $(CURDIR)/js/src:/js_app/src \
 	  -v $(CURDIR)/bash/.bashrc:/root/.bashrc \
 	  -v $(CURDIR)/bash:/root/bash \
-	  --name antfarm-ui-run $(DOCKER_FLAGS) antfarm-ui $(DOCKER_CMD)
+	  --name antfarm-ui-run $(DOCKER_FLAGS) --rm antfarm-ui $(DOCKER_CMD)
 
-test: DOCKER_CMD:=npm test
+test: DOCKER_CMD:=yarn jest
 test: DOCKER_FLAGS:=-ti
 test: dev-up
 

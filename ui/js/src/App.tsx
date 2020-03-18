@@ -1,4 +1,4 @@
-import Board from './components/tictactoe/Board.js'
+import Board from './components/tictactoe/Board'
 import React from 'react'
 import './App.css'
 

@@ -6,11 +6,12 @@ WORKDIR /js_app
 # Install React dependencies
 COPY js/yarn.lock .
 COPY js/package.json .
-# COPY js/tsconfig.json .
 RUN yarn install --pure-lockfile
 
 # Copy prettier & storybook configs
 COPY js/.prettierrc .
+COPY js/jest.config.js .
+COPY js/tsconfig.json .
 COPY js/.storybook ./.storybook
 
 CMD ["yarn", "start"]
