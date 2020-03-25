@@ -1,0 +1,14 @@
+Django==1.11.17
+djangorestframework==3.6.4
+gunicorn==19.9.0
+psycopg2==2.8.4
+raven==6.9.0
+
+# These are used for development or linting
+flake8==3.6.0
+flake8-per-file-ignores==0.6
+pylint==1.9.1
+pylint-django==0.11.1
+pytest==4.0.0
+watchdog==0.8.3
+yapf==0.24.0

@@ -1,0 +1,10 @@
+# Ignored code references
+#
+# F401  module imported but unused
+
+[flake8]
+max-line-length = 80
+exclude = */migrations/*
+
+per-file-ignores =
+  antfarm/tests/service/conftest.py: F401

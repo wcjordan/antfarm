@@ -1,0 +1,51 @@
+# Base compose file used by docker-compose.yml & production.yml
+version: "2"
+services:
+  # Django server, shares codebase with worker & task_monitor
+  server:
+    restart: always
+    build: ./server
+    # Bridge network mode used so docker doesn't create a bunch of interfaces which
+    # conflict w/ corporate subnet.  Used on all services.
+    network_mode: bridge
+    expose:
+      - "8000"
+    volumes:
+      # Volume for generated files
+      # Shared w/ ui container so nginx can serve files
+      - media:/www/media
+      # Volume for Django static assets
+      # Shared w/ ui container so nginx can serve files
+      - static:/www/server
+    env_file: .env
+    command: ["/usr/src/app/launch_server.sh"]
+
+  # Container running Nginx and serving React app
+  ui:
+    restart: always
+    build: ./ui
+    network_mode: bridge
+    ports:
+      -  "${NGINX_PORT}:80"
+    volumes:
+      - media:/www/media
+      - static:/www/server
+
+  # Postgres DB container
+  db:
+    image: postgres:11-alpine
+    restart: always
+    network_mode: bridge
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    env_file: .env
+    # Set log_min_duration_statement so any commands over 500ms are logged
+    command: ["postgres",
+      "-c", "log_min_duration_statement=500",
+      "-c", "shared_buffers=${PG_SHARED_BUFFERS}",
+      "-c", "effective_cache_size=${PG_EFFECTIVE_CACHE_SIZE}"]
+
+volumes:
+  media:
+  pgdata:
+  static:

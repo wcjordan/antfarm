@@ -1,0 +1,31 @@
+# Compose file used for production
+# Relies on base.yml, but specifies links and ports
+version: "2"
+services:
+  server:
+    extends:
+      file: base.yml
+      service: server
+    links:
+      - db
+
+  ui:
+    extends:
+      file: base.yml
+      service: ui
+    volumes_from:
+      - server
+    links:
+      - server
+
+  db:
+    extends:
+      file: base.yml
+      service: db
+    ports:
+      - "5432"
+
+volumes:
+  media:
+  pgdata:
+  static:

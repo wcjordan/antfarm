@@ -24,6 +24,7 @@ FROM nginx:alpine
 RUN rm -f /etc/nginx/conf.d/*
 COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
 COPY conf.d/app.conf /etc/nginx/conf-includes/app.conf
+COPY conf.d/server.conf /etc/nginx/conf-includes/server.conf
 
 # Copy over built JS files from React app
 COPY --from=js_app /js_app/build/* /www/client/
