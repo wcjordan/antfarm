@@ -1,3 +1,5 @@
+#!make
+
 # Build containers
 .PHONY: build
 build:
@@ -15,13 +17,13 @@ test:
 # 	docker-compose run --rm server pytest --durations=0 antfarm/tests/train
 
 # Start containers for development
-.PHONY: dev_up
-dev_up:
+.PHONY: dev-up
+dev-up:
 	docker-compose up
 
 # Start containers for production
-.PHONY: prod_up
-prod_up:
+.PHONY: prod-up
+prod-up:
 	docker-compose -f production.yml up -d
 
 # Stop & teardown containers
@@ -36,15 +38,15 @@ format:
 	docker-compose run --rm server yapf -ri .
 
 # Make migrations for server
-.PHONY: create_migrations
-create_migrations:
+.PHONY: create-migrations
+create-migrations:
 	docker-compose run --rm server python manage.py makemigrations --verbosity 3
 
 # Make migrations for server
-.PHONY: restore_db
-restore_db:
+.PHONY: restore-db
+restore-db:
 	docker-compose run --rm server psql -h db -p 5432 -U postgres -c '"DROP DATABASE antfarm;"'
 
-.PHONY: update_starter_data
-update_starter_data:
+.PHONY: update-starter-data
+update-starter-data:
 	docker-compose run --rm server pg_dump -h db -U postgres -f db/starter_db.sql antfarm

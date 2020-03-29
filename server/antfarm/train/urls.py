@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
-from antfarm.train.views import episode_views
+from antfarm.train import views
 
 urlpatterns = [
-    url(r'^episodes$', episode_views.episodes, name='episodes'),
+    url(r'^episodes$', views.episodes, name='episodes'),
 ]
