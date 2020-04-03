@@ -48,6 +48,8 @@ services:
     extends:
       file: base.yml
       service: db
+    volumes:
+      - ./db/starter_db:/docker-entrypoint-initdb.d
     ports:
       # Expose DB when running in development mode
       - "5432:5432"

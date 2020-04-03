@@ -26,10 +26,15 @@ dev-up:
 prod-up:
 	docker-compose -f production.yml up -d
 
-# Stop & teardown containers
+# Stop containers
+.PHONY: stop
+stop:
+	docker-compose stop
+
+# Teardown containers
 .PHONY: down
 down:
-	docker-compose down
+	docker-compose down -v
 
 # Yapf python formatting
 .PHONY: format
@@ -42,11 +47,7 @@ format:
 create-migrations:
 	docker-compose run --rm server python manage.py makemigrations --verbosity 3
 
-# Make migrations for server
-.PHONY: restore-db
-restore-db:
-	docker-compose run --rm server psql -h db -p 5432 -U postgres -c '"DROP DATABASE antfarm;"'
-
 .PHONY: update-starter-data
 update-starter-data:
-	docker-compose run --rm server pg_dump -h db -U postgres -f db/starter_db.sql antfarm
+	echo "Rerun if failed w/ could not connect to server: Connection refused"
+	docker-compose run --rm -v `pwd`/db/starter_db:/starter_db server pg_dump -h db -U postgres -f /starter_db/starter_db.sql antfarm

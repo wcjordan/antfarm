@@ -1,6 +1,4 @@
-import json
-
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import JsonResponse  # HttpResponseBadRequest
 
 from antfarm.train.models import EpisodeModel
 

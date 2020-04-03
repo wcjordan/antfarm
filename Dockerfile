@@ -29,7 +29,7 @@ RUN pip install --upgrade --no-cache-dir gym pytest
 RUN pip install --upgrade --no-cache-dir gym[atari]
 RUN pip install --upgrade --no-cache-dir numpy matplotlib
 
-# Install db_access
+# Install gym_builder from wheel
 COPY --from=gym_builder /usr/build /usr/build/
 RUN ls /usr/build/dist/
 RUN pip install /usr/build/dist/*.whl
