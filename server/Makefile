@@ -1,32 +1,40 @@
-DOCKER_FLAGS := -it
+#!make
 
-# Build containers
-build:
-	DOCKER_BUILDKIT=1 docker build -t antfarm-server -f Dockerfile .
+PARENT_DIR = $(dir $(PWD))
 
-# Start containers for development
-dev-up: down
-	docker run --shm-size=10g -p 8000:8000 \
-		-v media:/www/media \
-		-v static:/www/server \
-		-v $(CURDIR):/usr/src/app \
-		--name antfarm-server-run $(DOCKER_FLAGS) --rm antfarm-server $(DOCKER_CMD)
+# Test w/ PyTest & lint Django app
+.PHONY: test
+test:
+	cd ../; docker-compose run --rm server flake8 .
+	# TODO (jordan) remove need to hardcode apps
+	cd ../; docker-compose run --rm server pylint -j 0 --load-plugins pylint_django create_db.py antfarm
 
-# test: DOCKER_CMD:=yarn jest
-# test: DOCKER_FLAGS:=-ti
-# test: dev-up
+	# Unit & integration tests for antfarm
+	# TODO (jordan) add unit tests
+	# docker-compose run --rm server pytest --durations=0 antfarm/tests/train
 
-# Stop & teardown containers
-down:
-	-docker stop antfarm-server-run
-	-docker rm antfarm-server-run
+# Yapf formatting
+.PHONY: format
+format:
+	cd ../; docker-compose run --rm server yapf -ri .
 
-# # ESLint & Prettier JS formatting
-# format:
-# 	cd js; npx lint-staged
+# Make migrations for server
+.PHONY: create-migrations
+create-migrations:
+	cd ../; docker-compose run --rm server python manage.py makemigrations --verbosity 3
 
-# Open a terminal in a container
+# Add an admin to Django
+.PHONY: update-starter-data
+create-superuser:
+	cd ../; docker-compose run --rm server python manage.py createsuperuser
+
+# Update starter data for server
+.PHONY: update-starter-data
+update-starter-data:
+	echo "Rerun if failed w/ could not connect to server: Connection refused"
+	cd ../; docker-compose run --rm -v $(PARENT_DIR)db/starter_db:/starter_db server pg_dump -h db -U postgres -f /starter_db/starter_db.sql antfarm
+
+# Open a shell inside container
+.PHONY: shell
 shell:
-	 docker exec -it antfarm-server-run /bin/sh
-
-.PHONY: build dev-up down test format shell
+	cd ..; docker-compose exec server /bin/bash

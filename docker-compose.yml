@@ -13,6 +13,10 @@ services:
     volumes:
       # Mount source code so changes can be auto reloaded
       - ./server:/usr/src/app
+      # Preserve bash history
+      - ./server/bash/.bashrc:/root/.bashrc
+      - ./server/bash:/root/bash
+
     # Pass reload flag so service restarts on code changes
     command: ["/usr/src/app/launch_server.sh", "--reload"]
 
@@ -29,6 +33,9 @@ services:
       # Mount source code so changes can be auto reloaded
       - ./ui/js/public:/js_app/public
       - ./ui/js/src:/js_app/src
+      # Preserve bash history
+      - ./ui/bash/.bashrc:/root/.bashrc
+      - ./ui/bash:/root/bash
     command: ["yarn", "start"]
 
   ui:

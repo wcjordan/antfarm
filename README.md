@@ -11,12 +11,6 @@ As root, create /etc/docker/daemon.json with the content
   "bip": "10.1.10.1/24"
 }
 
-Copy Schrodinger suite to schrodinger_suite/suite/
-rsync -a /scr/suite/2018-3 schrodinger_suite/suite/
-
-Create superuser
-`docker-compose run server python manage.py createsuperuser`
-
 Running docker & dev servers
 ----------------------------
 

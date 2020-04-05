@@ -525,7 +525,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$180000$TxPSWc8LlVXm$QqGGNqDXFJ0lVo1bhtNfujVq6kxW9rAHDmBBS+5dZLo=	\N	t	flipperkid			flipperkid@gmail.com	t	t	2020-04-04 01:53:44.38941+00
+1	pbkdf2_sha256$180000$jurBgfHO3HUw$oMfYquv6E3Kz0IuCtHrckDvmkQRBX9f/hyhFQWN9Yek=	\N	t	demo			demo@demo.com	t	t	2020-04-05 05:13:17.124196+00
 \.
 
 
@@ -573,24 +573,24 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2020-04-04 01:48:19.721326+00
-2	auth	0001_initial	2020-04-04 01:48:19.811179+00
-3	admin	0001_initial	2020-04-04 01:48:19.933749+00
-4	admin	0002_logentry_remove_auto_add	2020-04-04 01:48:19.980805+00
-5	admin	0003_logentry_add_action_flag_choices	2020-04-04 01:48:20.012101+00
-6	contenttypes	0002_remove_content_type_name	2020-04-04 01:48:20.066805+00
-7	auth	0002_alter_permission_name_max_length	2020-04-04 01:48:20.084846+00
-8	auth	0003_alter_user_email_max_length	2020-04-04 01:48:20.117189+00
-9	auth	0004_alter_user_username_opts	2020-04-04 01:48:20.149758+00
-10	auth	0005_alter_user_last_login_null	2020-04-04 01:48:20.187317+00
-11	auth	0006_require_contenttypes_0002	2020-04-04 01:48:20.196169+00
-12	auth	0007_alter_validators_add_error_messages	2020-04-04 01:48:20.235371+00
-13	auth	0008_alter_user_username_max_length	2020-04-04 01:48:20.280803+00
-14	auth	0009_alter_user_last_name_max_length	2020-04-04 01:48:20.302851+00
-15	auth	0010_alter_group_name_max_length	2020-04-04 01:48:20.341252+00
-16	auth	0011_update_proxy_permissions	2020-04-04 01:48:20.373687+00
-17	sessions	0001_initial	2020-04-04 01:48:20.405562+00
-18	train	0001_initial	2020-04-04 01:48:20.446633+00
+1	contenttypes	0001_initial	2020-04-05 05:11:04.671824+00
+2	auth	0001_initial	2020-04-05 05:11:04.756774+00
+3	admin	0001_initial	2020-04-05 05:11:04.85224+00
+4	admin	0002_logentry_remove_auto_add	2020-04-05 05:11:04.901313+00
+5	admin	0003_logentry_add_action_flag_choices	2020-04-05 05:11:04.929064+00
+6	contenttypes	0002_remove_content_type_name	2020-04-05 05:11:04.993975+00
+7	auth	0002_alter_permission_name_max_length	2020-04-05 05:11:05.011363+00
+8	auth	0003_alter_user_email_max_length	2020-04-05 05:11:05.040105+00
+9	auth	0004_alter_user_username_opts	2020-04-05 05:11:05.065033+00
+10	auth	0005_alter_user_last_login_null	2020-04-05 05:11:05.101214+00
+11	auth	0006_require_contenttypes_0002	2020-04-05 05:11:05.108829+00
+12	auth	0007_alter_validators_add_error_messages	2020-04-05 05:11:05.127369+00
+13	auth	0008_alter_user_username_max_length	2020-04-05 05:11:05.162312+00
+14	auth	0009_alter_user_last_name_max_length	2020-04-05 05:11:05.206287+00
+15	auth	0010_alter_group_name_max_length	2020-04-05 05:11:05.235538+00
+16	auth	0011_update_proxy_permissions	2020-04-05 05:11:05.278493+00
+17	sessions	0001_initial	2020-04-05 05:11:05.324753+00
+18	train	0001_initial	2020-04-05 05:11:05.408047+00
 \.
 
 

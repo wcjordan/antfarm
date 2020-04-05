@@ -1,7 +1,10 @@
 # JS container for running dev server
 # TODO (jordan) Look into DRYing this & Dockerfile out w/ Docker Buildkit
-FROM node:alpine
+FROM node:13-alpine
 WORKDIR /js_app
+
+# Install system packages for dev tooling
+RUN apk add --no-cache bash
 
 # Install React dependencies
 COPY js/yarn.lock .

@@ -51,4 +51,4 @@ coverage.xml
 node_modules/
 
 # bash history mounted in Docker container
-bash/.bash_history
+.bash_history
