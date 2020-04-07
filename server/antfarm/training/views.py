@@ -1,6 +1,6 @@
 from django.http import JsonResponse  # HttpResponseBadRequest
 
-from antfarm.training.models import EpisodeModel
+from antfarm.training.models import TrainingEpisodeModel
 
 
 def episodes(request):
@@ -21,7 +21,7 @@ def episodes(request):
     return JsonResponse({
         'results': [{
             'id': example.id,
-            'name': example.name,
+            'name': example.training_run.name,
             'iteration': example.iteration,
-        } for example in EpisodeModel.objects.all()]
+        } for example in TrainingEpisodeModel.objects.all()]
     })

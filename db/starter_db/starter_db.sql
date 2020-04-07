@@ -364,23 +364,24 @@ CREATE TABLE public.django_session (
 ALTER TABLE public.django_session OWNER TO postgres;
 
 --
--- Name: train_episodemodel; Type: TABLE; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.train_episodemodel (
+CREATE TABLE public.training_trainingepisodemodel (
     id integer NOT NULL,
-    name text NOT NULL,
-    iteration integer NOT NULL
+    iteration integer NOT NULL,
+    total_reward double precision NOT NULL,
+    training_run_id integer NOT NULL
 );
 
 
-ALTER TABLE public.train_episodemodel OWNER TO postgres;
+ALTER TABLE public.training_trainingepisodemodel OWNER TO postgres;
 
 --
--- Name: train_episodemodel_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.train_episodemodel_id_seq
+CREATE SEQUENCE public.training_trainingepisodemodel_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -389,13 +390,85 @@ CREATE SEQUENCE public.train_episodemodel_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.train_episodemodel_id_seq OWNER TO postgres;
+ALTER TABLE public.training_trainingepisodemodel_id_seq OWNER TO postgres;
 
 --
--- Name: train_episodemodel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.train_episodemodel_id_seq OWNED BY public.train_episodemodel.id;
+ALTER SEQUENCE public.training_trainingepisodemodel_id_seq OWNED BY public.training_trainingepisodemodel.id;
+
+
+--
+-- Name: training_trainingrunmodel; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.training_trainingrunmodel (
+    id integer NOT NULL,
+    name text NOT NULL
+);
+
+
+ALTER TABLE public.training_trainingrunmodel OWNER TO postgres;
+
+--
+-- Name: training_trainingrunmodel_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.training_trainingrunmodel_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.training_trainingrunmodel_id_seq OWNER TO postgres;
+
+--
+-- Name: training_trainingrunmodel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.training_trainingrunmodel_id_seq OWNED BY public.training_trainingrunmodel.id;
+
+
+--
+-- Name: training_trainingstepmodel; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.training_trainingstepmodel (
+    id integer NOT NULL,
+    iteration integer NOT NULL,
+    state text NOT NULL,
+    reward double precision NOT NULL,
+    is_done boolean NOT NULL,
+    episode_id integer NOT NULL
+);
+
+
+ALTER TABLE public.training_trainingstepmodel OWNER TO postgres;
+
+--
+-- Name: training_trainingstepmodel_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.training_trainingstepmodel_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.training_trainingstepmodel_id_seq OWNER TO postgres;
+
+--
+-- Name: training_trainingstepmodel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.training_trainingstepmodel_id_seq OWNED BY public.training_trainingstepmodel.id;
 
 
 --
@@ -462,10 +535,24 @@ ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- Name: train_episodemodel id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.train_episodemodel ALTER COLUMN id SET DEFAULT nextval('public.train_episodemodel_id_seq'::regclass);
+ALTER TABLE ONLY public.training_trainingepisodemodel ALTER COLUMN id SET DEFAULT nextval('public.training_trainingepisodemodel_id_seq'::regclass);
+
+
+--
+-- Name: training_trainingrunmodel id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingrunmodel ALTER COLUMN id SET DEFAULT nextval('public.training_trainingrunmodel_id_seq'::regclass);
+
+
+--
+-- Name: training_trainingstepmodel id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingstepmodel ALTER COLUMN id SET DEFAULT nextval('public.training_trainingstepmodel_id_seq'::regclass);
 
 
 --
@@ -489,34 +576,42 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 --
 
 COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
-1	Can add episode model	1	add_episodemodel
-2	Can change episode model	1	change_episodemodel
-3	Can delete episode model	1	delete_episodemodel
-4	Can view episode model	1	view_episodemodel
-5	Can add log entry	2	add_logentry
-6	Can change log entry	2	change_logentry
-7	Can delete log entry	2	delete_logentry
-8	Can view log entry	2	view_logentry
-9	Can add permission	3	add_permission
-10	Can change permission	3	change_permission
-11	Can delete permission	3	delete_permission
-12	Can view permission	3	view_permission
-13	Can add group	4	add_group
-14	Can change group	4	change_group
-15	Can delete group	4	delete_group
-16	Can view group	4	view_group
-17	Can add user	5	add_user
-18	Can change user	5	change_user
-19	Can delete user	5	delete_user
-20	Can view user	5	view_user
-21	Can add content type	6	add_contenttype
-22	Can change content type	6	change_contenttype
-23	Can delete content type	6	delete_contenttype
-24	Can view content type	6	view_contenttype
-25	Can add session	7	add_session
-26	Can change session	7	change_session
-27	Can delete session	7	delete_session
-28	Can view session	7	view_session
+1	Can add training episode model	1	add_trainingepisodemodel
+2	Can change training episode model	1	change_trainingepisodemodel
+3	Can delete training episode model	1	delete_trainingepisodemodel
+4	Can view training episode model	1	view_trainingepisodemodel
+5	Can add training run model	2	add_trainingrunmodel
+6	Can change training run model	2	change_trainingrunmodel
+7	Can delete training run model	2	delete_trainingrunmodel
+8	Can view training run model	2	view_trainingrunmodel
+9	Can add training step model	3	add_trainingstepmodel
+10	Can change training step model	3	change_trainingstepmodel
+11	Can delete training step model	3	delete_trainingstepmodel
+12	Can view training step model	3	view_trainingstepmodel
+13	Can add log entry	4	add_logentry
+14	Can change log entry	4	change_logentry
+15	Can delete log entry	4	delete_logentry
+16	Can view log entry	4	view_logentry
+17	Can add permission	5	add_permission
+18	Can change permission	5	change_permission
+19	Can delete permission	5	delete_permission
+20	Can view permission	5	view_permission
+21	Can add group	6	add_group
+22	Can change group	6	change_group
+23	Can delete group	6	delete_group
+24	Can view group	6	view_group
+25	Can add user	7	add_user
+26	Can change user	7	change_user
+27	Can delete user	7	delete_user
+28	Can view user	7	view_user
+29	Can add content type	8	add_contenttype
+30	Can change content type	8	change_contenttype
+31	Can delete content type	8	delete_contenttype
+32	Can view content type	8	view_contenttype
+33	Can add session	9	add_session
+34	Can change session	9	change_session
+35	Can delete session	9	delete_session
+36	Can view session	9	view_session
 \.
 
 
@@ -525,7 +620,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$180000$jurBgfHO3HUw$oMfYquv6E3Kz0IuCtHrckDvmkQRBX9f/hyhFQWN9Yek=	\N	t	demo			demo@demo.com	t	t	2020-04-05 05:13:17.124196+00
+1	pbkdf2_sha256$180000$hUlp7lPBhwIz$VSikZ0DbIvZaAdvvRnV9apKVLO1r0A6+aeiZUkLd+JI=	\N	t	demo				t	t	2020-04-07 03:13:32.502076+00
 \.
 
 
@@ -558,13 +653,15 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 --
 
 COPY public.django_content_type (id, app_label, model) FROM stdin;
-1	train	episodemodel
-2	admin	logentry
-3	auth	permission
-4	auth	group
-5	auth	user
-6	contenttypes	contenttype
-7	sessions	session
+1	training	trainingepisodemodel
+2	training	trainingrunmodel
+3	training	trainingstepmodel
+4	admin	logentry
+5	auth	permission
+6	auth	group
+7	auth	user
+8	contenttypes	contenttype
+9	sessions	session
 \.
 
 
@@ -573,24 +670,25 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2020-04-05 05:11:04.671824+00
-2	auth	0001_initial	2020-04-05 05:11:04.756774+00
-3	admin	0001_initial	2020-04-05 05:11:04.85224+00
-4	admin	0002_logentry_remove_auto_add	2020-04-05 05:11:04.901313+00
-5	admin	0003_logentry_add_action_flag_choices	2020-04-05 05:11:04.929064+00
-6	contenttypes	0002_remove_content_type_name	2020-04-05 05:11:04.993975+00
-7	auth	0002_alter_permission_name_max_length	2020-04-05 05:11:05.011363+00
-8	auth	0003_alter_user_email_max_length	2020-04-05 05:11:05.040105+00
-9	auth	0004_alter_user_username_opts	2020-04-05 05:11:05.065033+00
-10	auth	0005_alter_user_last_login_null	2020-04-05 05:11:05.101214+00
-11	auth	0006_require_contenttypes_0002	2020-04-05 05:11:05.108829+00
-12	auth	0007_alter_validators_add_error_messages	2020-04-05 05:11:05.127369+00
-13	auth	0008_alter_user_username_max_length	2020-04-05 05:11:05.162312+00
-14	auth	0009_alter_user_last_name_max_length	2020-04-05 05:11:05.206287+00
-15	auth	0010_alter_group_name_max_length	2020-04-05 05:11:05.235538+00
-16	auth	0011_update_proxy_permissions	2020-04-05 05:11:05.278493+00
-17	sessions	0001_initial	2020-04-05 05:11:05.324753+00
-18	train	0001_initial	2020-04-05 05:11:05.408047+00
+1	contenttypes	0001_initial	2020-04-07 03:12:52.358191+00
+2	auth	0001_initial	2020-04-07 03:12:52.477403+00
+3	admin	0001_initial	2020-04-07 03:12:52.593699+00
+4	admin	0002_logentry_remove_auto_add	2020-04-07 03:12:52.635534+00
+5	admin	0003_logentry_add_action_flag_choices	2020-04-07 03:12:52.673631+00
+6	contenttypes	0002_remove_content_type_name	2020-04-07 03:12:52.790353+00
+7	auth	0002_alter_permission_name_max_length	2020-04-07 03:12:52.815532+00
+8	auth	0003_alter_user_email_max_length	2020-04-07 03:12:52.864655+00
+9	auth	0004_alter_user_username_opts	2020-04-07 03:12:52.908868+00
+10	auth	0005_alter_user_last_login_null	2020-04-07 03:12:52.951674+00
+11	auth	0006_require_contenttypes_0002	2020-04-07 03:12:52.96446+00
+12	auth	0007_alter_validators_add_error_messages	2020-04-07 03:12:52.998681+00
+13	auth	0008_alter_user_username_max_length	2020-04-07 03:12:53.050394+00
+14	auth	0009_alter_user_last_name_max_length	2020-04-07 03:12:53.093998+00
+15	auth	0010_alter_group_name_max_length	2020-04-07 03:12:53.13442+00
+16	auth	0011_update_proxy_permissions	2020-04-07 03:12:53.174877+00
+17	sessions	0001_initial	2020-04-07 03:12:53.202375+00
+18	training	0001_initial	2020-04-07 03:12:53.238579+00
+19	training	0002_training_runs	2020-04-07 03:12:53.349741+00
 \.
 
 
@@ -603,10 +701,26 @@ COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 
 
 --
--- Data for Name: train_episodemodel; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: training_trainingepisodemodel; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.train_episodemodel (id, name, iteration) FROM stdin;
+COPY public.training_trainingepisodemodel (id, iteration, total_reward, training_run_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: training_trainingrunmodel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.training_trainingrunmodel (id, name) FROM stdin;
+\.
+
+
+--
+-- Data for Name: training_trainingstepmodel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.training_trainingstepmodel (id, iteration, state, reward, is_done, episode_id) FROM stdin;
 \.
 
 
@@ -628,7 +742,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 28, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 36, true);
 
 
 --
@@ -663,21 +777,35 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 7, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 9, true);
 
 
 --
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 18, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 19, true);
 
 
 --
--- Name: train_episodemodel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.train_episodemodel_id_seq', 1, false);
+SELECT pg_catalog.setval('public.training_trainingepisodemodel_id_seq', 1, false);
+
+
+--
+-- Name: training_trainingrunmodel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.training_trainingrunmodel_id_seq', 1, false);
+
+
+--
+-- Name: training_trainingstepmodel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.training_trainingstepmodel_id_seq', 1, false);
 
 
 --
@@ -817,19 +945,51 @@ ALTER TABLE ONLY public.django_session
 
 
 --
--- Name: train_episodemodel train_episodemodel_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel training_trainingepisode_training_run_id_iteratio_3d47b137_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.train_episodemodel
-    ADD CONSTRAINT train_episodemodel_name_key UNIQUE (name);
+ALTER TABLE ONLY public.training_trainingepisodemodel
+    ADD CONSTRAINT training_trainingepisode_training_run_id_iteratio_3d47b137_uniq UNIQUE (training_run_id, iteration);
 
 
 --
--- Name: train_episodemodel train_episodemodel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel training_trainingepisodemodel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.train_episodemodel
-    ADD CONSTRAINT train_episodemodel_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.training_trainingepisodemodel
+    ADD CONSTRAINT training_trainingepisodemodel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: training_trainingrunmodel training_trainingrunmodel_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingrunmodel
+    ADD CONSTRAINT training_trainingrunmodel_name_key UNIQUE (name);
+
+
+--
+-- Name: training_trainingrunmodel training_trainingrunmodel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingrunmodel
+    ADD CONSTRAINT training_trainingrunmodel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: training_trainingstepmodel training_trainingstepmodel_episode_id_iteration_de4b03e3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingstepmodel
+    ADD CONSTRAINT training_trainingstepmodel_episode_id_iteration_de4b03e3_uniq UNIQUE (episode_id, iteration);
+
+
+--
+-- Name: training_trainingstepmodel training_trainingstepmodel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingstepmodel
+    ADD CONSTRAINT training_trainingstepmodel_pkey PRIMARY KEY (id);
 
 
 --
@@ -924,10 +1084,24 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session U
 
 
 --
--- Name: train_episodemodel_name_ff3891bd_like; Type: INDEX; Schema: public; Owner: postgres
+-- Name: training_trainingepisodemodel_training_run_id_ab02cf99; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX train_episodemodel_name_ff3891bd_like ON public.train_episodemodel USING btree (name text_pattern_ops);
+CREATE INDEX training_trainingepisodemodel_training_run_id_ab02cf99 ON public.training_trainingepisodemodel USING btree (training_run_id);
+
+
+--
+-- Name: training_trainingrunmodel_name_5926587c_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX training_trainingrunmodel_name_5926587c_like ON public.training_trainingrunmodel USING btree (name text_pattern_ops);
+
+
+--
+-- Name: training_trainingstepmodel_episode_id_dff14749; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX training_trainingstepmodel_episode_id_dff14749 ON public.training_trainingstepmodel USING btree (episode_id);
 
 
 --
@@ -1000,6 +1174,22 @@ ALTER TABLE ONLY public.django_admin_log
 
 ALTER TABLE ONLY public.django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: training_trainingepisodemodel training_trainingepi_training_run_id_ab02cf99_fk_training_; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingepisodemodel
+    ADD CONSTRAINT training_trainingepi_training_run_id_ab02cf99_fk_training_ FOREIGN KEY (training_run_id) REFERENCES public.training_trainingrunmodel(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: training_trainingstepmodel training_trainingste_episode_id_dff14749_fk_training_; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.training_trainingstepmodel
+    ADD CONSTRAINT training_trainingste_episode_id_dff14749_fk_training_ FOREIGN KEY (episode_id) REFERENCES public.training_trainingepisodemodel(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

@@ -24,7 +24,7 @@ create-migrations:
 	cd ../; docker-compose run --rm server python manage.py makemigrations --verbosity 3
 
 # Add an admin to Django
-.PHONY: update-starter-data
+.PHONY: create-superuser
 create-superuser:
 	cd ../; docker-compose run --rm server python manage.py createsuperuser
 
