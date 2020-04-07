@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class TrainConfig(AppConfig):
+class TrainingConfig(AppConfig):
     """Reinforcment learning training runs
     """
-    name = 'antfarm.train'
+    name = 'antfarm.training'

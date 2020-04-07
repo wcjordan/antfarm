@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from antfarm.train import models
+from antfarm.training import models
 
 admin.site.register(models.EpisodeModel)

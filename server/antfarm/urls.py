@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^api/admin/', admin.site.urls),
-    url(r'^api/train/', include('antfarm.train.urls')),
+    url(r'^api/training/', include('antfarm.training.urls')),
 ]

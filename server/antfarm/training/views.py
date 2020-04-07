@@ -1,6 +1,6 @@
 from django.http import JsonResponse  # HttpResponseBadRequest
 
-from antfarm.train.models import EpisodeModel
+from antfarm.training.models import EpisodeModel
 
 
 def episodes(request):

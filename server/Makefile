@@ -11,7 +11,7 @@ test:
 
 	# Unit & integration tests for antfarm
 	# TODO (jordan) add unit tests
-	# docker-compose run --rm server pytest --durations=0 antfarm/tests/train
+	# docker-compose run --rm server pytest --durations=0 antfarm/tests/training
 
 # Yapf formatting
 .PHONY: format
