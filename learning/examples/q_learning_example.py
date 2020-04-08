@@ -2,7 +2,7 @@ import time
 
 import numpy as np
 import gym
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 
 # Define Q-learning function
@@ -38,9 +38,10 @@ def QLearning(env, learning, discount, epsilon, min_eps, episodes):
     
         while done != True:   
             # Render environment for last 20 episodes and every 1000 episondes
-            if i >= (episodes - 20) or i % 1000 == 0:
-                time.sleep(.002)
-                env.render()
+            # Requires xvfb
+            # if i >= (episodes - 20) or i % 1000 == 0:
+            #     time.sleep(.002)
+            #     env.render()
                 
             # Determine next action - epsilon greedy strategy
             if np.random.random() < 1 - epsilon:
@@ -98,13 +99,13 @@ if __name__ == '__main__':
     env.reset()
 
     # Run Q-learning algorithm
-    rewards = QLearning(env, 0.2, 0.9, 0.8, 0, 5000)
+    rewards = QLearning(env, 0.2, 0.9, 0.8, 0, 1000)
     env.close()
 
     # Plot Rewards
-    plt.plot(100*(np.arange(len(rewards)) + 1), rewards)
-    plt.xlabel('Episodes')
-    plt.ylabel('Average Reward')
-    plt.title('Average Reward vs Episodes')
-    plt.savefig('rewards.jpg')     
-    plot.close()
+    # plt.plot(100*(np.arange(len(rewards)) + 1), rewards)
+    # plt.xlabel('Episodes')
+    # plt.ylabel('Average Reward')
+    # plt.title('Average Reward vs Episodes')
+    # plt.savefig('rewards.jpg')     
+    # plot.close()
