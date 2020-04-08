@@ -11,6 +11,9 @@ services:
     volumes:
       # Mount source code so changes can be auto reloaded
       - ./learning:/usr/src
+      # Preserve bash history
+      - ./learning/bash/.bashrc:/root/.bashrc
+      - ./learning/bash:/root/bash
 
   server:
     extends:
