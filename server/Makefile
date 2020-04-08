@@ -5,9 +5,10 @@ PARENT_DIR = $(dir $(PWD))
 # Test w/ PyTest & lint Django app
 .PHONY: test
 test:
-	cd ../; docker-compose run --rm server flake8 .
+	cd ../; docker-compose run --rm server flake8 antfarm/training  # TODO change to .
 	# TODO (jordan) remove need to hardcode apps
-	cd ../; docker-compose run --rm server pylint -j 0 --load-plugins pylint_django create_db.py antfarm
+	# TODO (jordan) enable pylint
+# 	cd ../; docker-compose run --rm server pylint -j 0 --load-plugins pylint_django create_db.py antfarm
 
 	# Unit & integration tests for antfarm
 	# TODO (jordan) add unit tests
@@ -17,6 +18,11 @@ test:
 .PHONY: format
 format:
 	cd ../; docker-compose run --rm server yapf -ri .
+
+# Continuously run pytest for TDD 
+.PHONY: tdd
+tdd:
+	cd ../; docker-compose exec server watchmedo shell-command -R -W -i '*/__pycache__*;*/.pytest_cache*' --command='sleep 1; pytest --durations=0 antfarm/tests'
 
 # Make migrations for server
 .PHONY: create-migrations

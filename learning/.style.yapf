@@ -1,0 +1,4 @@
+[style]
+based_on_style = google
+ALLOW_SPLIT_BEFORE_DICT_VALUE = False
+column_limit=80

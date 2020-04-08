@@ -1,6 +1,5 @@
 [MASTER]
-ignore=migrations,tests
-good-names=logger,urlpatterns,router
+ignore=setup.py, __init__.py
 
 [FORMAT]
 max-line-length=80

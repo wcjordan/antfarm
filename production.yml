@@ -2,12 +2,18 @@
 # Relies on base.yml, but specifies links and ports
 version: "2"
 services:
+  learning:
+    extends:
+      file: base.yml
+      service: learning
+
   server:
     extends:
       file: base.yml
       service: server
     links:
       - db
+      - learning
 
   ui:
     extends:

@@ -7,6 +7,7 @@ USER_PLAYER = 1
 AI_PLAYER = -1
 DISPLAY_MAPPING = ('0', ' ', 'X')
 
+
 class TicTacToe:
     '''TODO observation_space & reward_range for open AI gym
     '''
@@ -20,7 +21,9 @@ class TicTacToe:
         self.reset()
 
     def reset(self):
-        self.board = [[EMPTY_SQ]*self.board_size for row in range(self.board_size)]
+        self.board = [
+            [EMPTY_SQ] * self.board_size for row in range(self.board_size)
+        ]
         self.all_spaces = self._init_available_spaces()
         self.available_spaces = copy.deepcopy(self.all_spaces)
         self.outcome = EMPTY_SQ
@@ -50,8 +53,7 @@ class TicTacToe:
         '''
         available_spaces = self._get_available_spaces()
         if action not in available_spaces:
-            return copy.deepcopy(self.board), -0.3, self._is_done(), {};
-
+            return copy.deepcopy(self.board), -0.3, self._is_done(), {}
 
         self._apply_action(action, USER_PLAYER)
         outcome = self._get_outcome()
@@ -60,12 +62,12 @@ class TicTacToe:
 
         outcome = self._get_outcome()
         reward = 0
-        if (outcome == USER_PLAYER):
+        if outcome == USER_PLAYER:
             reward = 1
-        elif (outcome == AI_PLAYER):
+        elif outcome == AI_PLAYER:
             reward = -1
 
-        return copy.deepcopy(self.board), reward, self._is_done(), {};
+        return copy.deepcopy(self.board), reward, self._is_done(), {}
 
     def render(self, mode='human'):
         ''' TODO handle modes 'human' & 'rgb_array'
@@ -76,7 +78,6 @@ class TicTacToe:
                 print(DISPLAY_MAPPING[sq + 1], end=' | ')
             print('')
         print('\n')
-
 
     def _is_done(self):
         if self._get_outcome() != EMPTY_SQ:
@@ -90,14 +91,22 @@ class TicTacToe:
         return self.available_spaces
 
     def _init_win_lines(self):
-        winning_cols = [[(row, col) for row in range(self.board_size)] for col in range(self.board_size)]
-        winning_rows = [[(row, col) for col in range(self.board_size)] for row in range(self.board_size)]
+        winning_cols = [[(row, col)
+                         for row in range(self.board_size)]
+                        for col in range(self.board_size)]
+        winning_rows = [[(row, col)
+                         for col in range(self.board_size)]
+                        for row in range(self.board_size)]
         forward_diagonal = [(pos, pos) for pos in range(self.board_size)]
-        back_diagonal = [(self.board_size - pos - 1, pos) for pos in range(self.board_size)]
+        back_diagonal = [
+            (self.board_size - pos - 1, pos) for pos in range(self.board_size)
+        ]
         return winning_cols + winning_rows + [forward_diagonal, back_diagonal]
 
     def _init_available_spaces(self):
-        return [(row, col) for row in range(self.board_size) for col in range(self.board_size)]
+        return [(row, col)
+                for row in range(self.board_size)
+                for col in range(self.board_size)]
 
     def _get_pos(self, pos):
         return self.board[pos[0]][pos[1]]
@@ -114,7 +123,11 @@ class TicTacToe:
         available_spaces.remove(action)
         self._set_pos(action, player)
 
-        won = any([all([self._get_pos(pos) == player for pos in line]) for line in self.win_lines])
+        won = any([
+            all([self._get_pos(pos) == player
+                 for pos in line])
+            for line in self.win_lines
+        ])
         if won:
             self.outcome = player
 
@@ -140,10 +153,11 @@ class TicTacToe:
             if EMPTY_SQ == self._get_pos(pos):
                 return pos
 
-        raise ValueError('Expected line {} to include at least one empty square'.format(line))
+        raise ValueError(
+            'Expected line {} to include at least one empty square'.format(
+                line))
 
     def _get_winning_or_saving_move(self):
-        available_spaces = self._get_available_spaces()
 
         def _score_line(char):
             if char == USER_PLAYER:
@@ -153,7 +167,10 @@ class TicTacToe:
             return 0
 
         saving_pos = None
-        scores = [{ 'idx': idx, 'score': sum([_score_line(self._get_pos(pos)) for pos in line]) } for idx, line in enumerate(self.win_lines)]
+        scores = [{
+            'idx': idx,
+            'score': sum([_score_line(self._get_pos(pos)) for pos in line])
+        } for idx, line in enumerate(self.win_lines)]
         for score in scores:
             score_val = score['score']
             line = self.win_lines[score['idx']]

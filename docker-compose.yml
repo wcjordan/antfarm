@@ -2,12 +2,23 @@
 # Relies on base.yml, but specifies links, ports, and overrides
 version: "2"
 services:
+  learning:
+    extends:
+      file: base.yml
+      service: learning
+    environment:
+      - DEBUG=true
+    volumes:
+      # Mount source code so changes can be auto reloaded
+      - ./learning:/usr/src
+
   server:
     extends:
       file: base.yml
       service: server
     links:
       - db
+      - learning
     environment:
       - DEBUG=true
     volumes:
@@ -60,16 +71,6 @@ services:
     ports:
       # Expose DB when running in development mode
       - "5432:5432"
-
-  pytest:
-    restart: always
-    build: ./server
-    network_mode: bridge
-    links:
-      - ui
-    volumes:
-      - ./server:/usr/src/app
-    command: ["watchmedo", "shell-command", "-R", "-w", "-i '*/__pycache__*;*/.pytest_cache*'", "--command='sleep 1; pytest --durations=0 antfarm/tests'"]
 
 volumes:
   media:

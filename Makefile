@@ -10,6 +10,7 @@ build:
 test:
 	$(MAKE) -C ui test
 	$(MAKE) -C server test
+	$(MAKE) -C learning test
 
 # Start containers for development
 .PHONY: dev-up
@@ -36,3 +37,4 @@ down:
 format:
 	$(MAKE) -C ui format
 	$(MAKE) -C server format
+	$(MAKE) -C learning format

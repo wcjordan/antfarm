@@ -1,12 +1,20 @@
 # Base compose file used by docker-compose.yml & production.yml
 version: "2"
 services:
+  learning:
+    restart: always
+    build: ./learning
+    # Bridge network mode used so docker doesn't create a bunch of interfaces which
+    # conflict w/ corporate subnet.  Used on all services.
+    network_mode: bridge
+    expose:
+      - "8000"
+    command: ["gunicorn", "server.main:app", "-w", "4", "-b", ":8000", "--timeout", "60"]
+
   # Django server, shares codebase with worker & task_monitor
   server:
     restart: always
     build: ./server
-    # Bridge network mode used so docker doesn't create a bunch of interfaces which
-    # conflict w/ corporate subnet.  Used on all services.
     network_mode: bridge
     expose:
       - "8000"

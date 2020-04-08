@@ -13,21 +13,25 @@ WORKDIR /usr/src
 ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND noninteractive
 # For Open AI Baselines - cmake libopenmpi-dev python3-dev zlib1g-dev
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    vim git \
-    ffmpeg xvfb x11vnc \
-    cmake libopenmpi-dev python3-dev zlib1g-dev \
-    python-opengl \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update \
+#     && apt-get install -y --no-install-recommends \
+#     cmake libopenmpi-dev python3-dev zlib1g-dev \
+#     python-opengl \
+#     && rm -rf /var/lib/apt/lists/*
+    # vim git \  # Dev tools
+    # ffmpeg xvfb x11vnc \  # VNC
 
-RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-RUN dpkg-reconfigure --frontend noninteractive tzdata
+# RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+# RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-RUN pip install --upgrade --no-cache-dir pip
-RUN pip install --upgrade --no-cache-dir gym pytest
-RUN pip install --upgrade --no-cache-dir gym[atari]
-RUN pip install --upgrade --no-cache-dir numpy matplotlib
+# RUN pip install --upgrade --no-cache-dir pip
+# RUN pip install --upgrade --no-cache-dir gym pytest
+# RUN pip install --upgrade --no-cache-dir gym[atari]
+# RUN pip install --upgrade --no-cache-dir numpy matplotlib
+
+# Install requirements
+COPY requirements.txt /usr
+RUN pip install --no-cache-dir -r /usr/requirements.txt
 
 # Install gym_builder from wheel
 COPY --from=gym_builder /usr/build /usr/build/
@@ -39,10 +43,5 @@ RUN pip install /usr/build/dist/*.whl
 # RUN git checkout tf2
 
 # Install by copying files to container
-COPY entrypoint.sh /usr/src/
+COPY server /usr/src/server/
 COPY examples /usr/src/examples/
-
-ENV DISPLAY :20
-EXPOSE 5920
-
-ENTRYPOINT ["/usr/src/entrypoint.sh"]

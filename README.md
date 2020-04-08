@@ -11,25 +11,6 @@ As root, create /etc/docker/daemon.json with the content
   "bip": "10.1.10.1/24"
 }
 
-Running docker & dev servers
-----------------------------
-
-// Build docker services
-docker-compose build
-
-// Start docker services
-docker-compose up
-docker-compose up -d  // detached mode
-docker-compose -f production.yml up  // Start for production
-
-// Start JS dev server
-yarn start
-
-// Stop docker services
-docker-compose stop  // pause container when running in detached mode
-docker-compose down  // tear down containers
-
-
 Misc Tools
 ----------
 
