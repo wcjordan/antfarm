@@ -27,9 +27,3 @@ docker-compose run --rm server python manage.py shell
 
 // Cleanup unused Docker resources
 docker system prune
-
-// Running older experiments
-// TODO integrate w/ server & UI
-docker build -t antfarm .
-// TODO support running w `-u $(id -u):$(id -g)` without breaking bash history
-docker run --shm-size=10g -p 5920:5920 -v "$(pwd)"/bash/.bashrc:/root/.bashrc -v "$(pwd)"/bash:/root/bash -it antfarm /bin/bash

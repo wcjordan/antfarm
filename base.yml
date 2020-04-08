@@ -9,7 +9,7 @@ services:
     network_mode: bridge
     expose:
       - "8000"
-    command: ["gunicorn", "server.main:app", "-w", "4", "-b", ":8000", "--timeout", "60"]
+    command: ["gunicorn", "webservice.main:app", "-w", "4", "-b", ":8000", "--timeout", "60"]
 
   # Django server, shares codebase with worker & task_monitor
   server:
