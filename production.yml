@@ -11,17 +11,12 @@ services:
     extends:
       file: base.yml
       service: server
-    links:
-      - db
-      - learning
 
   ui:
     extends:
       file: base.yml
       service: ui
     volumes_from:
-      - server
-    links:
       - server
 
   db:
@@ -35,3 +30,6 @@ volumes:
   media:
   pgdata:
   static:
+
+networks:
+  main:

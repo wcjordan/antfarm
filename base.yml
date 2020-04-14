@@ -4,9 +4,10 @@ services:
   learning:
     restart: always
     build: ./learning
-    # Bridge network mode used so docker doesn't create a bunch of interfaces which
-    # conflict w/ corporate subnet.  Used on all services.
-    network_mode: bridge
+    networks:
+      main:
+        aliases:
+          - learning
     expose:
       - "8000"
     command: ["gunicorn", "webservice.main:app", "-w", "4", "-b", ":8000", "--timeout", "60"]
@@ -15,7 +16,10 @@ services:
   server:
     restart: always
     build: ./server
-    network_mode: bridge
+    networks:
+      main:
+        aliases:
+          - server
     expose:
       - "8000"
     volumes:
@@ -32,7 +36,10 @@ services:
   ui:
     restart: always
     build: ./ui
-    network_mode: bridge
+    networks:
+      main:
+        aliases:
+          - ui
     ports:
       -  "${NGINX_PORT}:80"
     volumes:
@@ -43,7 +50,10 @@ services:
   db:
     image: postgres:12-alpine
     restart: always
-    network_mode: bridge
+    networks:
+      main:
+        aliases:
+          - db
     volumes:
       - pgdata:/var/lib/postgresql/data/
     env_file: .env
@@ -57,3 +67,6 @@ volumes:
   media:
   pgdata:
   static:
+
+networks:
+  main:

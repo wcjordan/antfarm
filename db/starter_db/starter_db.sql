@@ -440,9 +440,11 @@ ALTER SEQUENCE public.training_trainingrunmodel_id_seq OWNED BY public.training_
 CREATE TABLE public.training_trainingstepmodel (
     id integer NOT NULL,
     iteration integer NOT NULL,
+    action text,
     state text NOT NULL,
     reward double precision NOT NULL,
     is_done boolean NOT NULL,
+    info text,
     episode_id integer NOT NULL
 );
 
@@ -620,7 +622,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$180000$hUlp7lPBhwIz$VSikZ0DbIvZaAdvvRnV9apKVLO1r0A6+aeiZUkLd+JI=	\N	t	demo				t	t	2020-04-07 03:13:32.502076+00
+1	pbkdf2_sha256$180000$qmWRaNVh7r2i$a01iSBrcVkXBnxDbK3VG2nH2vsB+iUnhhTN6BFhvq9M=	\N	t	demo				t	t	2020-04-14 03:40:48.927634+00
 \.
 
 
@@ -670,25 +672,25 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2020-04-07 03:12:52.358191+00
-2	auth	0001_initial	2020-04-07 03:12:52.477403+00
-3	admin	0001_initial	2020-04-07 03:12:52.593699+00
-4	admin	0002_logentry_remove_auto_add	2020-04-07 03:12:52.635534+00
-5	admin	0003_logentry_add_action_flag_choices	2020-04-07 03:12:52.673631+00
-6	contenttypes	0002_remove_content_type_name	2020-04-07 03:12:52.790353+00
-7	auth	0002_alter_permission_name_max_length	2020-04-07 03:12:52.815532+00
-8	auth	0003_alter_user_email_max_length	2020-04-07 03:12:52.864655+00
-9	auth	0004_alter_user_username_opts	2020-04-07 03:12:52.908868+00
-10	auth	0005_alter_user_last_login_null	2020-04-07 03:12:52.951674+00
-11	auth	0006_require_contenttypes_0002	2020-04-07 03:12:52.96446+00
-12	auth	0007_alter_validators_add_error_messages	2020-04-07 03:12:52.998681+00
-13	auth	0008_alter_user_username_max_length	2020-04-07 03:12:53.050394+00
-14	auth	0009_alter_user_last_name_max_length	2020-04-07 03:12:53.093998+00
-15	auth	0010_alter_group_name_max_length	2020-04-07 03:12:53.13442+00
-16	auth	0011_update_proxy_permissions	2020-04-07 03:12:53.174877+00
-17	sessions	0001_initial	2020-04-07 03:12:53.202375+00
-18	training	0001_initial	2020-04-07 03:12:53.238579+00
-19	training	0002_training_runs	2020-04-07 03:12:53.349741+00
+1	contenttypes	0001_initial	2020-04-14 03:40:36.870001+00
+2	auth	0001_initial	2020-04-14 03:40:36.982401+00
+3	admin	0001_initial	2020-04-14 03:40:37.123628+00
+4	admin	0002_logentry_remove_auto_add	2020-04-14 03:40:37.167428+00
+5	admin	0003_logentry_add_action_flag_choices	2020-04-14 03:40:37.190107+00
+6	contenttypes	0002_remove_content_type_name	2020-04-14 03:40:37.246965+00
+7	auth	0002_alter_permission_name_max_length	2020-04-14 03:40:37.269431+00
+8	auth	0003_alter_user_email_max_length	2020-04-14 03:40:37.293603+00
+9	auth	0004_alter_user_username_opts	2020-04-14 03:40:37.320537+00
+10	auth	0005_alter_user_last_login_null	2020-04-14 03:40:37.350084+00
+11	auth	0006_require_contenttypes_0002	2020-04-14 03:40:37.357177+00
+12	auth	0007_alter_validators_add_error_messages	2020-04-14 03:40:37.382413+00
+13	auth	0008_alter_user_username_max_length	2020-04-14 03:40:37.425638+00
+14	auth	0009_alter_user_last_name_max_length	2020-04-14 03:40:37.453132+00
+15	auth	0010_alter_group_name_max_length	2020-04-14 03:40:37.485391+00
+16	auth	0011_update_proxy_permissions	2020-04-14 03:40:37.521329+00
+17	sessions	0001_initial	2020-04-14 03:40:37.547387+00
+18	training	0001_initial	2020-04-14 03:40:37.5828+00
+19	training	0002_training_runs	2020-04-14 03:40:37.677965+00
 \.
 
 
@@ -720,7 +722,7 @@ COPY public.training_trainingrunmodel (id, name) FROM stdin;
 -- Data for Name: training_trainingstepmodel; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.training_trainingstepmodel (id, iteration, state, reward, is_done, episode_id) FROM stdin;
+COPY public.training_trainingstepmodel (id, iteration, action, state, reward, is_done, info, episode_id) FROM stdin;
 \.
 
 

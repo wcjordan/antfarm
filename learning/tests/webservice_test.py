@@ -8,6 +8,7 @@ def test_start_training_run():
         'X-HTTP-Method-Override': 'POST',
     }
     headers.update(DEFAULT_HEADERS)
+
     req = requests.post(
         '{}start_training_run'.format(BASE_URL),
         headers=headers)

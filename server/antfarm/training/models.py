@@ -31,9 +31,11 @@ class TrainingStepModel(models.Model):
     """An single step of a training episode
     """
     iteration = models.IntegerField()
+    action = models.TextField(null=True)
     state = models.TextField()
     reward = models.FloatField()
     is_done = models.BooleanField()
+    info = models.TextField(null=True)
 
     episode = models.ForeignKey(TrainingEpisodeModel,
                                 on_delete=models.CASCADE,

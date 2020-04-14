@@ -22,5 +22,6 @@ RUN ls /usr/build/dist/
 RUN pip install /usr/build/dist/*.whl
 
 # Install by copying files to container
-COPY server /usr/src/server/
+COPY webservice /usr/src/webservice/
+COPY runners /usr/src/runners/
 COPY examples /usr/src/examples/
