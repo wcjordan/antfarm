@@ -4,6 +4,7 @@ import numpy as np
 
 DEFAULT_HEADERS = {'content-type': 'application/json'}
 
+
 class RestConnector:
     '''Connector which submits data to a RESTful server
     '''
@@ -26,7 +27,7 @@ class RestConnector:
         #     'current_episode': self.current_episode,
         # })
         print(msg)
-        
+
     def begin_training_run(self, id):
         ''' Record the start of a new episode and the initial state
         '''
@@ -39,7 +40,7 @@ class RestConnector:
     def end_training_run(self, id):
         ''' Record the start of a new episode and the initial state
         '''
-        result = self._make_request(self.run_uri, 'PUT', {
+        self._make_request(self.run_uri, 'PUT', {
             'id': id,
             'status': 'complete',
         })
@@ -73,15 +74,16 @@ class RestConnector:
         if isinstance(action, np.ndarray):
             action = action.tolist()
 
-        self._make_request(self.step_uri, 'POST', {
-            'iteration': step_iteration,
-            'action': action,
-            'state': state,
-            'reward': reward,
-            'is_done': is_done,
-            'info': info,
-            'episode_id': self.current_episode,
-        })
+        self._make_request(
+            self.step_uri, 'POST', {
+                'iteration': step_iteration,
+                'action': action,
+                'state': state,
+                'reward': reward,
+                'is_done': is_done,
+                'info': info,
+                'episode_id': self.current_episode,
+            })
 
     def _make_request(self, partial_uri, method, data, id=None):
         headers = {
@@ -93,11 +95,8 @@ class RestConnector:
         if id is not None:
             uri = '{}/{}'.format(uri, id)
 
-        req = requests.post(
-            uri,
-            headers=headers,
-            json=data)
+        req = requests.post(uri, headers=headers, json=data)
 
-        assert req.status_code == 200, 'Expected status 200, received {}.'.format(req.status_code)
+        assert req.status_code == 200, (
+            'Expected status 200, received {}.'.format(req.status_code))
         return req.json()
-

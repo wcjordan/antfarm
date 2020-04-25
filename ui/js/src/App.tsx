@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-// import Board from './components/tictactoe/Board'
-import ControlPanel from './components/training/ControlPanel'
-import DataStream from './components/training/DataStream'
-import './App.css'
+import Layout from './Layout'
 
 class App extends Component<Props, State> {
   constructor(props: Props) {
@@ -16,16 +13,7 @@ class App extends Component<Props, State> {
   }
 
   render() {
-    // <Board size={3} />
-    return (
-      <div className="App">
-        <ControlPanel
-          disabled={false}
-          startTrainingHandler={this.startTraining}
-        />
-        <DataStream />
-      </div>
-    )
+    return <Layout startTraining={this.startTraining} />
   }
 
   fetchEpisodes = () => {

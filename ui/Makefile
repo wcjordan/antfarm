@@ -4,6 +4,8 @@ include ../.env
 # Test w/ Jest
 .PHONY: test
 test:
+	# Lint & typecheck by building
+	cd ../; docker-compose run --rm jsdev yarn run build
 	# Unit & integration tests for antfarm
 	# TODO (jordan) add unit tests
 	cd ../; docker-compose run --rm jsdev yarn jest

@@ -1,3 +1,6 @@
+"""
+Django admin config for reinforcement learning training
+"""
 from django.contrib import admin
 
 from antfarm.training import models

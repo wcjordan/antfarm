@@ -1,13 +1,19 @@
+"""
+Views for serving reinforcement learning details
+"""
 import json
 import requests
 
-from django.core import serializers
 from django.http import HttpResponseBadRequest, JsonResponse
 
-from antfarm.training.models import TrainingEpisodeModel, TrainingStepModel, TrainingRunModel
+from antfarm.training.models import (TrainingEpisodeModel, TrainingStepModel,
+                                     TrainingRunModel)
 
 
 def episodes(request):
+    """
+    View for creating an episode of a training run
+    """
     validation = _ensure_valid_request_type(request, ['POST'])
     if validation is not None:
         return validation
@@ -25,15 +31,18 @@ def episodes(request):
     })
 
 
-def episode(request, id):
+def episode(request, episode_id):
+    """
+    View for updating an episode of a training run
+    """
     validation = _ensure_valid_request_type(request, ['PUT'])
     if validation is not None:
         return validation
 
     body = json.loads(request.body.decode('utf-8'))
 
-    existing_object = TrainingEpisodeModel.objects.get(id=id)
-    existing_object.total_reward=body['total_reward']
+    existing_object = TrainingEpisodeModel.objects.get(id=episode_id)
+    existing_object.total_reward = body['total_reward']
     existing_object.save()
 
     return JsonResponse({
@@ -45,19 +54,22 @@ def episode(request, id):
 
 
 def steps(request):
+    """
+    View for creating a step of an episode
+    """
     validation = _ensure_valid_request_type(request, ['POST'])
     if validation is not None:
         return validation
 
     body = json.loads(request.body.decode('utf-8'))
-    episode = TrainingEpisodeModel.objects.get(id=body['episode_id'])
+    existing_episode = TrainingEpisodeModel.objects.get(id=body['episode_id'])
     new_object = TrainingStepModel.objects.create(iteration=body['iteration'],
                                                   action=body['action'],
                                                   state=body['state'],
                                                   reward=body['reward'],
                                                   is_done=body['is_done'],
                                                   info=body['info'],
-                                                  episode=episode)
+                                                  episode=existing_episode)
 
     return JsonResponse({
         'id': new_object.id,
@@ -72,6 +84,9 @@ def steps(request):
 
 
 def training_runs(request):
+    """
+    View for creating or updating a training run
+    """
     validation = _ensure_valid_request_type(request, ['POST', 'PUT'])
     if validation is not None:
         return validation
@@ -96,19 +111,19 @@ def training_runs(request):
     })
 
 
-def _make_learning_service_request(id):
+def _make_learning_service_request(training_run_id):
     data = {
-        'id': id,
+        'id': training_run_id,
     }
     headers = {
         'content-type': 'application/json',
     }
-    req = requests.post(
-        'http://learning:8000/start_training_run',
-        headers=headers,
-        json=data)
+    req = requests.post('http://learning:8000/start_training_run',
+                        headers=headers,
+                        json=data)
 
-    assert req.status_code == 204, 'Expected status 204, received {}.'.format(req.status_code)
+    assert req.status_code == 204, 'Expected status 204, received {}.'.format(
+        req.status_code)
 
 
 def _ensure_valid_request_type(request, request_types):
@@ -124,7 +139,7 @@ def _ensure_valid_request_type(request, request_types):
             "Please set the X-HTTP-Method-Override header to specify the "
             "desired CRUD operation.")
 
-    if not crud_op in request_types:
+    if crud_op not in request_types:
         return HttpResponseBadRequest(
             "The X-HTTP-Method-Override header must be "
             "one of the following: {}".format(request_types))

@@ -1,3 +1,6 @@
+"""
+App for training reinforcement learning agents
+"""
 from django.apps import AppConfig
 
 

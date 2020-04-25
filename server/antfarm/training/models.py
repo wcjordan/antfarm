@@ -1,3 +1,6 @@
+"""
+Django ORM models for reinforcement learning training
+"""
 from django.db import models
 
 

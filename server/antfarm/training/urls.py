@@ -1,3 +1,6 @@
+"""
+Url routing for reinforcement learning models
+"""
 from django.conf.urls import url
 
 from antfarm.training import views

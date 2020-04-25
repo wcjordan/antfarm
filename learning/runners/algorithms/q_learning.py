@@ -7,7 +7,8 @@ BOARD_SIZE = 3
 
 
 # Define Q-learning function
-def QLearning(env, output_connector, learning, discount, epsilon, min_eps, episodes):
+def QLearning(env, output_connector, learning, discount, epsilon, min_eps,
+              episodes):
     # Discretize the space (see q_learning_example for better example)
     # Number of states is observation state size: 3 states * number of cells
     # TODO derive this from env.observation_space
@@ -37,11 +38,12 @@ def QLearning(env, output_connector, learning, discount, epsilon, min_eps, episo
 
         output_connector.begin_episode(episode_iteration, state)
         step_iteration = 0
-        while is_done != True:
+        while not is_done:
             step_iteration += 1
 
             # Render environment for last 20 episodes and every 1000 episondes
-            # if (episode_iteration >= (episodes - 20) or episode_iteration % 1000 == 0) and reward != 0.3:
+            # if (episode_iteration >= (episodes - 20) or
+            #         episode_iteration % 1000 == 0) and reward != 0.3:
             #     time.sleep(.002)
             #     env.render()
 
@@ -57,7 +59,8 @@ def QLearning(env, output_connector, learning, discount, epsilon, min_eps, episo
 
             # Get next state and reward
             state2, reward, is_done, info = env.step(action)
-            output_connector.take_step(step_iteration, action, state2, reward, is_done, info)
+            output_connector.take_step(step_iteration, action, state2, reward,
+                                       is_done, info)
 
             # Discretize state2
             state2_adj = (state2 - env.observation_space.low)
@@ -66,7 +69,7 @@ def QLearning(env, output_connector, learning, discount, epsilon, min_eps, episo
             transition_list.append(flat_action)
             transition_index = tuple(transition_list)
 
-            #Allow for terminal states
+            # Allow for terminal states
             if is_done:
                 Q[transition_index] = reward
 

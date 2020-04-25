@@ -12,7 +12,10 @@ app = Flask(__name__)
 
 @app.route('/start_training_run', methods=['POST'])
 def start_training_run():
-    subprocess.Popen(["python", "runners/tictactoe.py", str(request.json['id'])], shell=False)
+    subprocess.Popen(
+        ["python", "runners/tictactoe.py",
+         str(request.json['id'])],
+        shell=False)
     return '', http.HTTPStatus.NO_CONTENT
 
 

@@ -1,10 +1,20 @@
+"""
+Simple example which plays tictactoe taking random actions
+Doesn't use any learning agent, but does use OpenAI gym
+"""
 import time
 
 import numpy as np
 import gym
 
 
-def RandomRunner(env, episodes):
+def run(episodes):
+    """
+    Play randomly!
+    """
+    env = gym.make('gym_tictactoe:tictactoe-v0')
+    env.reset()
+
     # Initialize variables to track rewards
     reward_list = []
     ave_reward_list = []
@@ -14,9 +24,9 @@ def RandomRunner(env, episodes):
         # Initialize parameters
         done = False
         tot_reward, reward = 0, 0
-        state = env.reset()
+        env.reset()
 
-        while done != True:
+        while not done:
             # Render environment for last 20 episodes and every 1000 episondes
             if i >= (episodes - 20) or i % 1000 == 0:
                 time.sleep(.002)
@@ -26,7 +36,7 @@ def RandomRunner(env, episodes):
             action = env.action_space.sample()
 
             # Get next state and reward
-            state2, reward, done, info = env.step(action)
+            _, reward, done, _ = env.step(action)
 
             # Update variables
             tot_reward += reward
@@ -45,13 +55,6 @@ def RandomRunner(env, episodes):
 
     env.close()
 
-    return ave_reward_list
-
 
 if __name__ == '__main__':
-
-    env = gym.make('gym_tictactoe:tictactoe-v0')
-    env.reset()
-
-    rewards = RandomRunner(env, 5000)
-    env.close()
+    run(5000)

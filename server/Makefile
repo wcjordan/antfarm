@@ -7,8 +7,7 @@ PARENT_DIR = $(dir $(PWD))
 test:
 	cd ../; docker-compose run --rm server flake8 antfarm/training  # TODO change to .
 	# TODO (jordan) remove need to hardcode apps
-	# TODO (jordan) enable pylint
-# 	cd ../; docker-compose run --rm server pylint -j 0 --load-plugins pylint_django create_db.py antfarm
+	cd ../; docker-compose run --rm server pylint -j 0 --load-plugins pylint_django antfarm
 
 	# Unit & integration tests for antfarm
 	# TODO (jordan) add unit tests

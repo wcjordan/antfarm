@@ -22,6 +22,29 @@ exports[`Storyshots Data Stream Default View 1`] = `
 </div>
 `;
 
+exports[`Storyshots Layout Default Layout 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="control-panel"
+  >
+    <div
+      className="placeholder"
+    />
+    <div
+      className="button start-button"
+      onClick={[Function]}
+    >
+      Start Training
+    </div>
+  </div>
+  <div>
+    Test data stream
+  </div>
+</div>
+`;
+
 exports[`Storyshots Tictactoe Board Board 3 X 3 1`] = `
 <div
   className="tictactoe-game"

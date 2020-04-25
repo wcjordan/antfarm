@@ -1,4 +1,3 @@
-import uuid
 import sys
 
 import gym
@@ -14,8 +13,10 @@ if __name__ == '__main__':
 
     # Create a connector to record training data
     id = sys.argv[1]
-    output_connector = RestConnector(BASE_URI, 'training_runs', 'episodes', 'steps')
-    output_connector.begin_training_run(id)  # 'TicTacToe - QLearning - {}'.format(str(uuid.uuid4()))
+    output_connector = RestConnector(BASE_URI, 'training_runs', 'episodes',
+                                     'steps')
+    output_connector.begin_training_run(
+        id)  # 'TicTacToe - QLearning - {}'.format(str(uuid.uuid4()))
 
     # Run Q-learning algorithm
     QLearning(env, output_connector, 0.2, 0.9, 0.8, 0, 500)

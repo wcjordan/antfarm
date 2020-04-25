@@ -3,10 +3,9 @@
 # Test w/ PyTest & linting
 .PHONY: test
 test:
-	cd ../; docker-compose run --rm learning flake8 environments  # TODO change to .
-	# TODO (jordan) remove need to hardcode apps
-	# TODO (jordan) enable pylint
-# 	cd ../; docker-compose run --rm learning pylint -j 0 environments # TODO add examples
+	# TODO (jordan) remove need to hardcode modules
+	cd ../; docker-compose run --rm learning flake8 environments runners examples
+	cd ../; docker-compose run --rm learning pylint -j 0 --extension-pkg-whitelist=numpy environments runners
 
 	# TODO (jordan) add unit tests
 	# docker-compose run --rm learning pytest --durations=0 environments examples
