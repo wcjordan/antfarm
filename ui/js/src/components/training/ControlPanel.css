@@ -1,0 +1,24 @@
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 200px;
+  background-color: #293241;
+  justify-content: center;
+}
+
+.placeholder {
+  flex: 1;
+}
+
+.start-button {
+}
+
+.button {
+  text-align: center;
+  background-color: #3d5a80;
+  color: #fff;
+  padding: 5px;
+  margin: 6px;
+  cursor: pointer;
+}

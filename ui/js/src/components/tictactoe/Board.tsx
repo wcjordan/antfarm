@@ -1,15 +1,17 @@
 import React from 'react'
-import './board.css'
+import './Board.css'
 import _ from 'lodash'
 
-interface BoardProps { size: number }
-interface RowProps { size: number; board: Array<string> }
-interface SquareProps { size: number; value: string }
+type BoardProps = { size: number }
+type RowProps = { size: number; board: Array<string> }
+type SquareProps = { size: number; value: string }
 
 function Board(props: BoardProps) {
   const { size } = props
   const board = randomBoard(size)
-  const rows = _.times(size, (idx) => <Row key={idx} size={size} board={board[idx]} />)
+  const rows = _.times(size, idx => (
+    <Row key={idx} size={size} board={board[idx]} />
+  ))
 
   return (
     <div className="tictactoe-game">
@@ -20,7 +22,9 @@ function Board(props: BoardProps) {
 
 function Row(props: RowProps) {
   const { board, size } = props
-  const squares = _.times(size, (idx) => <Square key={idx} size={size} value={board[idx]} />)
+  const squares = _.times(size, idx => (
+    <Square key={idx} size={size} value={board[idx]} />
+  ))
   return <div className="tictactoe-row">{squares}</div>
 }
 
@@ -39,7 +43,7 @@ function Square(props: SquareProps) {
 }
 
 function randomBoard(size: number) {
-  return _.times(size, (x) => _.times(size, (y) => randomChar(x, y)))
+  return _.times(size, x => _.times(size, y => randomChar(x, y)))
 }
 
 function randomChar(x: number, y: number) {

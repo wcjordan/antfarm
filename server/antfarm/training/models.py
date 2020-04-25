@@ -5,9 +5,10 @@ class TrainingRunModel(models.Model):
     """A training run
     """
     name = models.TextField(unique=True)
+    status = models.TextField(default="new")
 
     def __str__(self):
-        return self.name
+        return '{} ({})'.format(self.name, self.status)
 
 
 class TrainingEpisodeModel(models.Model):

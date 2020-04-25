@@ -1,4 +1,15 @@
 .App {
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
+
+/* Color palette
+https://coolors.co/3d5a80-98c1d9-e0fbfc-ee6c4d-293241
+#e0fbfc - light
+#98c1d9 - medium
+#3d5a80 - dark
+#293241 - near black
+#ee6c4d - stand out
+*/

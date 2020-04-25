@@ -1,5 +1,7 @@
 import json
+import requests
 
+from django.core import serializers
 from django.http import HttpResponseBadRequest, JsonResponse
 
 from antfarm.training.models import TrainingEpisodeModel, TrainingStepModel, TrainingRunModel
@@ -70,17 +72,43 @@ def steps(request):
 
 
 def training_runs(request):
-    validation = _ensure_valid_request_type(request, ['POST'])
+    validation = _ensure_valid_request_type(request, ['POST', 'PUT'])
     if validation is not None:
         return validation
 
     body = json.loads(request.body.decode('utf-8'))
-    new_object = TrainingRunModel.objects.create(name=body['name'])
+
+    crud_op = request.META.get('HTTP_X_HTTP_METHOD_OVERRIDE')
+    print(crud_op)
+    if crud_op == 'POST':
+        instance = TrainingRunModel.objects.create(name=body['name'])
+        _make_learning_service_request(instance.id)
+    else:
+        instance = TrainingRunModel.objects.get(id=body['id'])
+        instance.name = body.get('name', instance.name)
+        instance.status = body.get('status', instance.status)
+        instance.save()
 
     return JsonResponse({
-        'id': new_object.id,
-        'name': new_object.name,
+        'id': instance.id,
+        'name': instance.name,
+        'status': instance.status,
     })
+
+
+def _make_learning_service_request(id):
+    data = {
+        'id': id,
+    }
+    headers = {
+        'content-type': 'application/json',
+    }
+    req = requests.post(
+        'http://learning:8000/start_training_run',
+        headers=headers,
+        json=data)
+
+    assert req.status_code == 204, 'Expected status 204, received {}.'.format(req.status_code)
 
 
 def _ensure_valid_request_type(request, request_types):

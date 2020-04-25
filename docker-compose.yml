@@ -39,7 +39,10 @@ services:
     build:
       context: ./ui
       dockerfile: Dockerfile.dev
-    network_mode: bridge
+    networks:
+      main:
+        aliases:
+          - jsdev
     expose:
       - "3000"
     volumes:

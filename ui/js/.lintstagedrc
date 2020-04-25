@@ -1,4 +1,4 @@
 {
-  "**/*.js?(x)": ["eslint", "prettier --write"],
+  "**/*.{ts,tsx,js,jsx}": ["eslint", "prettier --write"],
   "**/*.{json,css,scss}": "prettier --write",
 }

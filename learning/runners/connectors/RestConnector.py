@@ -27,13 +27,23 @@ class RestConnector:
         # })
         print(msg)
         
-    def begin_training_run(self, name):
+    def begin_training_run(self, id):
         ''' Record the start of a new episode and the initial state
         '''
-        result = self._make_request(self.run_uri, 'POST', {
-            'name': name,
+        result = self._make_request(self.run_uri, 'PUT', {
+            'id': id,
+            'status': 'running',
         })
         self.current_run = result['id']
+
+    def end_training_run(self, id):
+        ''' Record the start of a new episode and the initial state
+        '''
+        result = self._make_request(self.run_uri, 'PUT', {
+            'id': id,
+            'status': 'complete',
+        })
+        self.current_run = None
 
     def begin_episode(self, iteration, initial_state):
         ''' Record the start of a new episode and the initial state
