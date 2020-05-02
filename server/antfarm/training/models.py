@@ -1,7 +1,10 @@
 """
 Django ORM models for reinforcement learning training
 """
+import requests
+
 from django.db import models
+from django.dispatch import receiver
 
 
 class TrainingRunModel(models.Model):
@@ -50,3 +53,26 @@ class TrainingStepModel(models.Model):
 
     class Meta:
         unique_together = ('episode', 'iteration')
+
+
+def _make_learning_service_request(training_run_id):
+    data = {
+        'id': training_run_id,
+    }
+    headers = {
+        'content-type': 'application/json',
+    }
+    req = requests.post('http://learning:8000/start_training_run',
+                        headers=headers,
+                        json=data)
+
+    assert req.status_code == 204, 'Expected status 204, received {}.'.format(
+        req.status_code)
+
+
+@receiver(models.signals.post_save, sender=TrainingRunModel)
+def _execute_after_save(_, instance, created):
+    if created:
+        print('Created new training run: {} ({})'.format(
+            instance.name, instance.id))
+        _make_learning_service_request(instance.id)

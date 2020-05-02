@@ -1,3 +1,4 @@
+import json
 import requests
 
 import numpy as np
@@ -31,28 +32,28 @@ class RestConnector:
     def begin_training_run(self, id):
         ''' Record the start of a new episode and the initial state
         '''
-        result = self._make_request(self.run_uri, 'PUT', {
-            'id': id,
+        self._make_request(self.run_uri, 'PATCH', {
             'status': 'running',
-        })
-        self.current_run = result['id']
+        }, id)
+        self.current_run = id
 
     def end_training_run(self, id):
         ''' Record the start of a new episode and the initial state
         '''
-        self._make_request(self.run_uri, 'PUT', {
-            'id': id,
+        self._make_request(self.run_uri, 'PATCH', {
             'status': 'complete',
-        })
+        }, id)
         self.current_run = None
 
     def begin_episode(self, iteration, initial_state):
         ''' Record the start of a new episode and the initial state
         '''
-        result = self._make_request(self.episode_uri, 'POST', {
-            'iteration': iteration,
-            'training_run_id': self.current_run,
-        })
+        result = self._make_request(
+            self.episode_uri, 'POST', {
+                'iteration': iteration,
+                'training_run': self.current_run,
+                'total_reward': 0,
+            })
         self.current_episode = result['id']
         self.take_step(0, None, initial_state, 0, False, None)
 
@@ -60,7 +61,7 @@ class RestConnector:
         ''' Record the end of the current episode
         and the total reward of the episode
         '''
-        self._make_request(self.episode_uri, 'PUT', {
+        self._make_request(self.episode_uri, 'PATCH', {
             'total_reward': total_reward,
         }, self.current_episode)
         self.current_episode = None
@@ -77,26 +78,23 @@ class RestConnector:
         self._make_request(
             self.step_uri, 'POST', {
                 'iteration': step_iteration,
-                'action': action,
-                'state': state,
+                'action': json.dumps(action),
+                'state': json.dumps(state),
                 'reward': reward,
                 'is_done': is_done,
-                'info': info,
-                'episode_id': self.current_episode,
+                'info': json.dumps(info),
+                'episode': self.current_episode,
             })
 
     def _make_request(self, partial_uri, method, data, id=None):
-        headers = {
-            'X-HTTP-Method-Override': method,
-        }
-        headers.update(DEFAULT_HEADERS)
-
-        uri = '{}{}'.format(self.base_uri, partial_uri)
+        uri = '{}{}/'.format(self.base_uri, partial_uri)
         if id is not None:
-            uri = '{}/{}'.format(uri, id)
+            uri = '{}{}/'.format(uri, id)
 
-        req = requests.post(uri, headers=headers, json=data)
+        req = requests.request(method, uri, headers=DEFAULT_HEADERS, json=data)
 
-        assert req.status_code == 200, (
-            'Expected status 200, received {}.'.format(req.status_code))
+        if req.status_code not in (200, 201):
+            print(req.content)
+        assert req.status_code in (200, 201), (
+            'Expected status 2XX, received {}.'.format(req.status_code))
         return req.json()

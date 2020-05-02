@@ -1,13 +1,16 @@
 """
 Url routing for reinforcement learning models
 """
-from django.conf.urls import url
+from django.urls import include, path
+from rest_framework import routers
 
 from antfarm.training import views
 
+router = routers.DefaultRouter()
+router.register('episodes', views.TrainingEpisodeViewSet)
+router.register('steps', views.TrainingStepViewSet)
+router.register('training_runs', views.TrainingRunViewSet)
+
 urlpatterns = [
-    url(r'^episodes$', views.episodes, name='episodes'),
-    url(r'^episodes/(?P<id>\d+)$', views.episode, name='episode'),
-    url(r'^steps$', views.steps, name='steps'),
-    url(r'^training_runs$', views.training_runs, name='training_runs'),
+    path('', include(router.urls)),
 ]

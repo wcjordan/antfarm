@@ -15,10 +15,9 @@ if __name__ == '__main__':
     id = sys.argv[1]
     output_connector = RestConnector(BASE_URI, 'training_runs', 'episodes',
                                      'steps')
-    output_connector.begin_training_run(
-        id)  # 'TicTacToe - QLearning - {}'.format(str(uuid.uuid4()))
+    output_connector.begin_training_run(id)
 
     # Run Q-learning algorithm
-    QLearning(env, output_connector, 0.2, 0.9, 0.8, 0, 500)
+    QLearning(env, output_connector, 0.2, 0.9, 0.8, 0, 50)
     env.close()
     output_connector.end_training_run(id)

@@ -17,7 +17,7 @@ class App extends Component<Props, State> {
   }
 
   fetchEpisodes = () => {
-    fetch('api/training/episodes', this.getRequestOpts('GET'))
+    fetch('api/training/episodes/', this.getRequestOpts('GET'))
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -32,7 +32,7 @@ class App extends Component<Props, State> {
       name: 'test run ' + new Date().toLocaleString(),
     })
 
-    fetch('api/training/training_runs', options)
+    fetch('api/training/training_runs/', options)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -48,9 +48,8 @@ class App extends Component<Props, State> {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        'X-HTTP-Method-Override': method,
       },
-      method: 'POST',
+      method: method,
     }
   }
 }
