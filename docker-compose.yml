@@ -24,6 +24,7 @@ services:
       - db
     environment:
       - DEBUG=true
+      - TEST_MODE=${TEST_MODE}
     volumes:
       # Mount source code so changes can be auto reloaded
       - ./server:/usr/src/app

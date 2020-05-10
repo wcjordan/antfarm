@@ -1,6 +1,7 @@
 """
 Django ORM models for reinforcement learning training
 """
+import os
 import requests
 
 from django.db import models
@@ -8,7 +9,8 @@ from django.dispatch import receiver
 
 
 class TrainingRunModel(models.Model):
-    """A training run
+    """
+    A training run
     """
     name = models.TextField(unique=True)
     status = models.TextField(default="new")
@@ -18,7 +20,8 @@ class TrainingRunModel(models.Model):
 
 
 class TrainingEpisodeModel(models.Model):
-    """An episode of a training run
+    """
+    An episode of a training run
     """
     iteration = models.IntegerField()
     total_reward = models.FloatField()
@@ -35,7 +38,8 @@ class TrainingEpisodeModel(models.Model):
 
 
 class TrainingStepModel(models.Model):
-    """An single step of a training episode
+    """
+    An single step of a training episode
     """
     iteration = models.IntegerField()
     action = models.TextField(null=True)
@@ -71,8 +75,11 @@ def _make_learning_service_request(training_run_id):
 
 
 @receiver(models.signals.post_save, sender=TrainingRunModel)
-def _execute_after_save(_, instance, created):
-    if created:
+def _execute_after_save(sender, instance, created, **kwargs):  # noqa pylint: disable=W0613
+    # TODO explore changing how we disconnect or mute signal via
+    # https://stackoverflow.com/questions/18532539/want-to-disable-signals-in-django-testing  # noqa pylint: disable=C0301
+    # rather than TEST_MODE
+    if created and not os.getenv('TEST_MODE'):
         print('Created new training run: {} ({})'.format(
             instance.name, instance.id))
         _make_learning_service_request(instance.id)

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Sleep for 10 seconds to allow DB to come up
+# Sleep for 2 seconds to allow DB to come up
 # TODO (jordan) Officially wait for DB to come up
-echo "sleep 10"
-sleep 10s
+echo "sleep 2s"
+sleep 2s
 
 # Collect static files for app & run migrations
 python manage.py collectstatic --noinput

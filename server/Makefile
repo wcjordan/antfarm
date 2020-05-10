@@ -9,9 +9,13 @@ test:
 	# TODO (jordan) remove need to hardcode apps
 	cd ../; docker-compose run --rm server pylint -j 0 --load-plugins pylint_django antfarm
 
-	# Unit & integration tests for antfarm
-	# TODO (jordan) add unit tests
-	# docker-compose run --rm server pytest --durations=0 antfarm/tests/training
+	# Unit tests
+	cd ../; docker-compose run --rm server python manage.py test antfarm.training
+
+	# Integration tests
+	cd ../; TEST_MODE=1 docker-compose up -d server
+	sleep 5s
+	cd ../; docker-compose exec server pytest --durations=0 antfarm/tests/
 
 # Yapf formatting
 .PHONY: format
