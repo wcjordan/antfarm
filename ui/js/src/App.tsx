@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Episode, Step, TrainingRun } from './components/training/DataStream'
 import Layout from './Layout'
 
 class App extends Component<Props, State> {
@@ -7,21 +8,32 @@ class App extends Component<Props, State> {
 
     this.state = {
       episodes: [],
+      steps: [],
       training_run: null,
     }
-    this.fetchEpisodes()
+
+    // TODO destroy on unmount
+    window.setInterval(this.fetchData.bind(this), 5 * 1000)
   }
 
   render() {
-    return <Layout startTraining={this.startTraining} />
+    return <Layout startTraining={this.startTraining} {...this.state} />
   }
 
-  fetchEpisodes = () => {
+  fetchData = () => {
     fetch('api/training/episodes/', this.getRequestOpts('GET'))
       .then(res => res.json())
       .then(res => {
         this.setState({
           episodes: res,
+        })
+      })
+
+    fetch('api/training/steps/', this.getRequestOpts('GET'))
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          steps: res,
         })
       })
   }
@@ -57,8 +69,9 @@ class App extends Component<Props, State> {
 type Props = {}
 
 type State = {
-  episodes: object[]
-  training_run: object | null
+  episodes: Episode[]
+  steps: Step[]
+  training_run: TrainingRun | null
 }
 
 export default App

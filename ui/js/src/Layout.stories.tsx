@@ -8,5 +8,10 @@ export default {
 }
 
 export const DefaultLayout = () => (
-  <Layout startTraining={action('start_training')} />
+  <Layout
+    startTraining={action('start_training')}
+    episodes={[]}
+    steps={[]}
+    training_run={null}
+  />
 )

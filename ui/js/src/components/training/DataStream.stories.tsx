@@ -6,4 +6,6 @@ export default {
   component: DataStream,
 }
 
-export const DefaultView = () => <DataStream />
+export const DefaultView = () => (
+  <DataStream episodes={[]} steps={[]} trainingRun={null} />
+)
