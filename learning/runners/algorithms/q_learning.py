@@ -7,8 +7,18 @@ BOARD_SIZE = 3
 
 
 # Define Q-learning function
-def QLearning(env, output_connector, learning, discount, epsilon, min_eps,
-              episodes):
+def QLearning(env,
+              output_connector,
+              learning,
+              discount,
+              epsilon,
+              min_eps,
+              episodes,
+              seed=None):
+    # Set the random seed for reproducibility if desired
+    if seed is not None:
+        np.random.seed(seed)
+
     # Discretize the space (see q_learning_example for better example)
     # Number of states is observation state size: 3 states * number of cells
     # TODO derive this from env.observation_space

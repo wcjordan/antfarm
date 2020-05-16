@@ -19,7 +19,10 @@ class TicTacToeEnv(gym.Env):
                                             dtype=np.int32)
 
     def seed(self, seed=None):
-        return self.tictactoe.seed(seed)
+        seed = self.tictactoe.seed(seed)
+        self.action_space.seed(seed)
+        self.observation_space.seed(seed)
+        return seed
 
     def step(self, action):
         return self.tictactoe.step(tuple(action))

@@ -7,8 +7,9 @@ DEFAULT_HEADERS = {'content-type': 'application/json'}
 
 
 class RestConnector:
-    '''Connector which submits data to a RESTful server
-    '''
+    """
+    Connector which submits data to a RESTful server
+    """
 
     def __init__(self, base_uri, run_uri, episode_uri, step_uri):
         self.base_uri = base_uri
@@ -20,8 +21,9 @@ class RestConnector:
         self.current_episode = None
 
     def debug(self, msg):
-        ''' Record a debug message
-        '''
+        """
+        Record a debug message
+        """
         # self._make_request('debug', 'POST', {
         #     'message': msg,
         #     'current_run': self.current_run,
@@ -30,24 +32,27 @@ class RestConnector:
         print(msg)
 
     def begin_training_run(self, id):
-        ''' Record the start of a new episode and the initial state
-        '''
+        """
+        Record the start of a new episode and the initial state
+        """
         self._make_request(self.run_uri, 'PATCH', {
             'status': 'running',
         }, id)
         self.current_run = id
 
     def end_training_run(self, id):
-        ''' Record the start of a new episode and the initial state
-        '''
+        """
+        Record the start of a new episode and the initial state
+        """
         self._make_request(self.run_uri, 'PATCH', {
             'status': 'complete',
         }, id)
         self.current_run = None
 
     def begin_episode(self, iteration, initial_state):
-        ''' Record the start of a new episode and the initial state
-        '''
+        """
+        Record the start of a new episode and the initial state
+        """
         result = self._make_request(
             self.episode_uri, 'POST', {
                 'iteration': iteration,
@@ -58,20 +63,22 @@ class RestConnector:
         self.take_step(0, None, initial_state, 0, False, None)
 
     def end_episode(self, iteration, total_reward):
-        ''' Record the end of the current episode
+        """
+        Record the end of the current episode
         and the total reward of the episode
-        '''
+        """
         self._make_request(self.episode_uri, 'PATCH', {
             'total_reward': total_reward,
         }, self.current_episode)
         self.current_episode = None
 
     def take_step(self, step_iteration, action, state, reward, is_done, info):
-        ''' Take a step within the current episode
+        """
+        Take a step within the current episode
         Record the action taken, the outcome state, and the reward of the action
         Also includes a boolean if the action ends the episode
         and any debugging info
-        '''
+        """
         if isinstance(action, np.ndarray):
             action = action.tolist()
 
