@@ -6,7 +6,7 @@ test:
 	# TODO (jordan) remove need to hardcode modules
 	cd ../; docker-compose run --rm learning flake8 environments runners examples
 	# TODO (jordan) lint runners
-	cd ../; docker-compose run --rm learning pylint -j 0 --extension-pkg-whitelist=numpy environments # runners
+	cd ../; docker-compose run --rm learning pylint -j 0 --extension-pkg-whitelist=numpy environments runners
 
 	# Run snapshot tests for runners
 	cd ../; docker-compose run --rm learning pytest --durations=0 runners

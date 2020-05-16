@@ -1,3 +1,8 @@
+"""
+Connector which records calls for testing
+"""
+
+
 class MockConnector:
     """
     Connector which records calls for testing
@@ -12,17 +17,17 @@ class MockConnector:
         """
         self.log.append({'method': 'debug', 'msg': msg})
 
-    def begin_training_run(self, id):
+    def begin_training_run(self, run_id):
         """
         Record the start of a new episode and the initial state
         """
-        self.log.append({'method': 'begin_training_run', 'id': id})
+        self.log.append({'method': 'begin_training_run', 'run_id': run_id})
 
-    def end_training_run(self, id):
+    def end_training_run(self, run_id):
         """
         Record the start of a new episode and the initial state
         """
-        self.log.append({'method': 'end_training_run', 'id': id})
+        self.log.append({'method': 'end_training_run', 'run_id': run_id})
 
     def begin_episode(self, iteration, initial_state):
         """
@@ -34,18 +39,14 @@ class MockConnector:
             'initial_state': initial_state
         })
 
-    def end_episode(self, iteration, total_reward):
+    def end_episode(self, total_reward):
         """
         Record the end of the current episode
         and the total reward of the episode
         """
-        self.log.append({
-            'method': 'end_episode',
-            'iteration': iteration,
-            'total_reward': total_reward
-        })
+        self.log.append({'method': 'end_episode', 'total_reward': total_reward})
 
-    def take_step(self, step_iteration, action, state, reward, is_done, info):
+    def take_step(self, step_iteration, action, state, reward, is_done, info):  # noqa  # pylint: disable=line-too-long,too-many-arguments
         """
         Take a step within the current episode
         Record the action taken, the outcome state, and the reward of the action

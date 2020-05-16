@@ -1,5 +1,5 @@
 [MASTER]
-ignore=setup.py, __init__.py
+ignore=setup.py, __init__.py, snapshots
 
 [FORMAT]
 max-line-length=80

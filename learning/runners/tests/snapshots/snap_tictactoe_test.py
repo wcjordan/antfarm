@@ -9,7 +9,7 @@ snapshots = Snapshot()
 snapshots['test_tictactoe 1'] = 66
 
 snapshots['test_tictactoe 2'] = {
-    'id': 'test_id',
+    'run_id': 'test_id',
     'method': 'begin_training_run'
 }
 
@@ -275,7 +275,6 @@ snapshots['test_tictactoe 29'] = {
 }
 
 snapshots['test_tictactoe 30'] = {
-    'iteration': 0,
     'method': 'end_episode',
     'total_reward': -5.999999999999998
 }
@@ -316,11 +315,7 @@ snapshots['test_tictactoe 34'] = {
     'step_iteration': 3
 }
 
-snapshots['test_tictactoe 35'] = {
-    'iteration': 1,
-    'method': 'end_episode',
-    'total_reward': -1
-}
+snapshots['test_tictactoe 35'] = {'method': 'end_episode', 'total_reward': -1}
 
 snapshots['test_tictactoe 36'] = {
     'initial_state': [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
@@ -378,11 +373,7 @@ snapshots['test_tictactoe 41'] = {
     'step_iteration': 5
 }
 
-snapshots['test_tictactoe 42'] = {
-    'iteration': 2,
-    'method': 'end_episode',
-    'total_reward': -1.3
-}
+snapshots['test_tictactoe 42'] = {'method': 'end_episode', 'total_reward': -1.3}
 
 snapshots['test_tictactoe 43'] = {
     'initial_state': [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
@@ -430,11 +421,7 @@ snapshots['test_tictactoe 47'] = {
     'step_iteration': 4
 }
 
-snapshots['test_tictactoe 48'] = {
-    'iteration': 3,
-    'method': 'end_episode',
-    'total_reward': -1
-}
+snapshots['test_tictactoe 48'] = {'method': 'end_episode', 'total_reward': -1}
 
 snapshots['test_tictactoe 49'] = {
     'initial_state': [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
@@ -602,10 +589,9 @@ snapshots['test_tictactoe 65'] = {
     'step_iteration': 16
 }
 
-snapshots['test_tictactoe 66'] = {
-    'iteration': 4,
-    'method': 'end_episode',
-    'total_reward': -4.6
-}
+snapshots['test_tictactoe 66'] = {'method': 'end_episode', 'total_reward': -4.6}
 
-snapshots['test_tictactoe 67'] = {'id': 'test_id', 'method': 'end_training_run'}
+snapshots['test_tictactoe 67'] = {
+    'run_id': 'test_id',
+    'method': 'end_training_run'
+}

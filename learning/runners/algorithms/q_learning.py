@@ -1,103 +1,126 @@
+"""
+QLearning algorithm for reinforcement learning
+"""
 import math
 # import time
 
 import numpy as np
 
 BOARD_SIZE = 3
+LEARNING_RATE = 0.2
+DISCOUNT = 0.9
+INIT_EPS = 0.8
+MIN_EPS = 0
 
 
-# Define Q-learning function
-def QLearning(env,
-              output_connector,
-              learning,
-              discount,
-              epsilon,
-              min_eps,
-              episodes,
-              seed=None):
-    # Set the random seed for reproducibility if desired
-    if seed is not None:
-        np.random.seed(seed)
+class QLearning:  # pylint: disable=too-few-public-methods
+    """
+    QLearning algorithm for reinforcement learning
+    """
 
-    # Discretize the space (see q_learning_example for better example)
-    # Number of states is observation state size: 3 states * number of cells
-    # TODO derive this from env.observation_space
-    num_states = np.array([3] * BOARD_SIZE * BOARD_SIZE)
+    def __init__(self, env, output_connector, seed=None):
+        self.env = env
+        self.output_connector = output_connector
 
-    # Initialize Q table
-    q_states_list = list(num_states)
-    # Add a columns for listing actions
-    # TODO derive this from env.action_space
-    q_states_list.append(BOARD_SIZE * BOARD_SIZE)
-    output_connector.debug('q_states_dims {}'.format(q_states_list))
-    Q = np.random.uniform(low=-1, high=1, size=tuple(q_states_list))
+        # Set the random seed for reproducibility if desired
+        if seed is not None:
+            np.random.seed(seed)
 
-    # Calculate episodic reduction in epsilon
-    reduction = (epsilon - min_eps) / episodes
+        # Discretize the space (see q_learning_example for better example)
+        # Number of states is observation state size: 3 states * number of cells
+        # TODO derive this from env.observation_space
+        num_states = np.array([3] * BOARD_SIZE * BOARD_SIZE)
 
-    # Run Q learning algorithm
-    for episode_iteration in range(episodes):
+        # Initialize Q table
+        q_states_list = list(num_states)
+        # Add a columns for listing actions
+        # TODO derive this from env.action_space
+        q_states_list.append(BOARD_SIZE * BOARD_SIZE)
+        self.output_connector.debug('q_states_dims {}'.format(q_states_list))
+        self.q_table = np.random.uniform(low=-1,
+                                         high=1,
+                                         size=tuple(q_states_list))
 
-        # Initialize parameters
-        is_done = False
-        tot_reward, reward = 0, 0
-        state = env.reset()
+    def train(self, episodes):
+        """
+        Run training episodes
+        """
+        # Calculate episodic reduction in epsilon
+        reduction = (INIT_EPS - MIN_EPS) / episodes
+        epsilon = INIT_EPS
 
-        # Discretize state (see q_learning_example for better example)
-        state_adj = (state - env.observation_space.low)
+        # Run Q learning algorithm
+        for episode_iteration in range(episodes):
 
-        output_connector.begin_episode(episode_iteration, state)
-        step_iteration = 0
-        while not is_done:
-            step_iteration += 1
+            # Initialize parameters
+            is_done = False
+            tot_reward, reward = 0, 0
+            state = self.env.reset()
 
-            # Render environment for last 20 episodes and every 1000 episondes
-            # if (episode_iteration >= (episodes - 20) or
-            #         episode_iteration % 1000 == 0) and reward != 0.3:
-            #     time.sleep(.002)
-            #     env.render()
+            # Discretize state (see q_learning_example for better example)
+            state_adj = (state - self.env.observation_space.low)
 
-            # Determine next action - epsilon greedy strategy
-            if np.random.random() < 1 - epsilon:
-                state_adj_tuple = tuple(np.ndarray.flatten(state_adj))
-                flat_action = np.asscalar(np.argmax(Q[state_adj_tuple]))
-                action = (math.floor(flat_action / BOARD_SIZE),
-                          flat_action % BOARD_SIZE)
-            else:
-                action = env.action_space.sample()
-                flat_action = action[0] * BOARD_SIZE + action[1]
+            self.output_connector.begin_episode(episode_iteration, state)
+            step_iteration = 0
+            while not is_done:
+                step_iteration += 1
+                reward, state2_adj, is_done = self._learning_step(
+                    state_adj, step_iteration, epsilon)
 
-            # Get next state and reward
-            state2, reward, is_done, info = env.step(action)
-            output_connector.take_step(step_iteration, action, state2, reward,
-                                       is_done, info)
+                # Update variables
+                tot_reward += reward
+                state_adj = state2_adj
 
-            # Discretize state2
-            state2_adj = (state2 - env.observation_space.low)
-            state2_index = tuple(list(np.ndarray.flatten(state2_adj)))
-            transition_list = list(np.ndarray.flatten(state_adj))
-            transition_list.append(flat_action)
-            transition_index = tuple(transition_list)
+            # Decay epsilon
+            if epsilon > MIN_EPS:
+                epsilon -= reduction
 
-            # Allow for terminal states
-            if is_done:
-                Q[transition_index] = reward
+            # Track rewards
+            self.output_connector.end_episode(tot_reward)
 
-            # Adjust Q value for current state
-            else:
-                delta = learning * (reward + discount * np.max(Q[state2_index])
-                                    - Q[transition_index])
-                Q[transition_index] += delta
+        self.env.close()
 
-            # Update variables
-            tot_reward += reward
-            state_adj = state2_adj
+    def _learning_step(self, state_adj, step_iteration, epsilon):
+        """
+        Define a single learning step
+        """
+        # Render environment for last 20 episodes and every 1000 episondes
+        # if (episode_iteration >= (episodes - 20) or
+        #         episode_iteration % 1000 == 0) and reward != 0.3:
+        #     time.sleep(.002)
+        #     self.env.render()
 
-        # Decay epsilon
-        if epsilon > min_eps:
-            epsilon -= reduction
+        # Determine next action - epsilon greedy strategy
+        if np.random.random() < 1 - epsilon:
+            state_adj_tuple = tuple(np.ndarray.flatten(state_adj))
+            flat_action = np.argmax(self.q_table[state_adj_tuple]).item()
+            action = (math.floor(flat_action / BOARD_SIZE),
+                      flat_action % BOARD_SIZE)
+        else:
+            action = self.env.action_space.sample()
+            flat_action = action[0] * BOARD_SIZE + action[1]
 
-        # Track rewards
-        output_connector.end_episode(episode_iteration, tot_reward)
+        # Get next state and reward
+        state2, reward, is_done, info = self.env.step(action)
+        self.output_connector.take_step(step_iteration, action, state2, reward,
+                                        is_done, info)
 
-    env.close()
+        # Discretize state2
+        state2_adj = (state2 - self.env.observation_space.low)
+        state2_index = tuple(list(np.ndarray.flatten(state2_adj)))
+        transition_index = list(np.ndarray.flatten(state_adj))
+        transition_index.append(flat_action)
+        transition_index = tuple(transition_index)
+
+        # Allow for terminal states
+        if is_done:
+            self.q_table[transition_index] = reward
+
+        # Adjust Q value for current state
+        else:
+            delta = LEARNING_RATE * (
+                reward + DISCOUNT * np.max(self.q_table[state2_index]) -
+                self.q_table[transition_index])
+            self.q_table[transition_index] += delta
+
+        return reward, state2_adj, is_done
