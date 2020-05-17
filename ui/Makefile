@@ -6,8 +6,7 @@ include ../.env
 test:
 	# Lint & typecheck by building
 	cd ../; docker-compose run --rm jsdev yarn run build
-	# Unit & integration tests for antfarm
-	# TODO (jordan) add unit tests
+	# Unit & snapshot tests for UI
 	cd ../; docker-compose run --rm jsdev yarn jest
 
 # ESLint & Prettier JS formatting
@@ -23,3 +22,8 @@ dev-storybook:
 .PHONY: shell
 shell:
 	cd ..; docker-compose exec jsdev /bin/bash
+
+# Update snapshot tests
+.PHONY: update-snapshots
+update-snapshots:
+	cd ../; docker-compose run --rm jsdev yarn jest -u

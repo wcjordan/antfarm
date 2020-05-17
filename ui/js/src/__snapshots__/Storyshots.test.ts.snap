@@ -16,11 +16,7 @@ exports[`Storyshots Control Panel Default View 1`] = `
 </div>
 `;
 
-exports[`Storyshots Data Stream Default View 1`] = `
-<div>
-  Test data stream
-</div>
-`;
+exports[`Storyshots Data Stream Default View 1`] = `<div />`;
 
 exports[`Storyshots Layout Default Layout 1`] = `
 <div
@@ -39,9 +35,7 @@ exports[`Storyshots Layout Default Layout 1`] = `
       Start Training
     </div>
   </div>
-  <div>
-    Test data stream
-  </div>
+  <div />
 </div>
 `;
 

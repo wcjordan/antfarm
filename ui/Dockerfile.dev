@@ -11,7 +11,7 @@ COPY js/yarn.lock .
 COPY js/package.json .
 RUN yarn install --pure-lockfile
 
-# Copy prettier & storybook configs
+# Copy configs for tooling
 COPY js/.prettierrc .
 COPY js/jest.config.js .
 COPY js/tsconfig.json .

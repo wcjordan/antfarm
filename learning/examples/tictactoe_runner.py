@@ -32,8 +32,8 @@ def run():
         print('Cats Game :/')
 
 
-# Agent
-# TODO replace w/ reinforcement learning
+# Random Agent
+# See q_learning_tictactoe for a reinforcement learning example
 def _choose_action(actions):
     return random.choice(actions)
 
