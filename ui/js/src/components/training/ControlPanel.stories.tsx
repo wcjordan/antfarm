@@ -1,6 +1,6 @@
 import React from 'react';
-import ControlPanel from './ControlPanel';
 import { action } from '@storybook/addon-actions';
+import ControlPanel from './ControlPanel';
 
 export default {
   title: 'Control Panel',

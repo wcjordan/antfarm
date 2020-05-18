@@ -1,11 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import './App.css';
 // import Board from './components/tictactoe/Board'
 import ControlPanel from './components/training/ControlPanel';
 import DataStream from './components/training/DataStream';
-import { startTraining } from './redux/reducers';
 import { Episode, Step, TrainingRun } from './redux/types';
-import { connect } from 'react-redux';
-import './App.css';
+import { startTraining } from './redux/reducers';
 
 export function App(props: Props) {
   const { startTraining, ...dataProps } = this.props;

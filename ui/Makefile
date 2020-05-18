@@ -27,3 +27,8 @@ shell:
 .PHONY: update-snapshots
 update-snapshots:
 	cd ../; docker-compose run --rm jsdev yarn jest -u
+
+# Fix import ordering
+.PHONY: fix-imports
+fix-imports:
+	cd js; npx eslint --fix "**/*.{ts,tsx,js,jsx}"

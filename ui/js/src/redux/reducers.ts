@@ -1,5 +1,5 @@
-import { Episode, Step, TrainingRun } from './types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { Episode, Step, TrainingRun } from './types';
 
 type TrainingState = {
   episodes: Episode[];
