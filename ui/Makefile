@@ -14,8 +14,8 @@ test:
 format:
 	cd js; npx lint-staged
 
-.PHONY: dev-storybook
-dev-storybook:
+.PHONY: storybook
+storybook:
 	cd ../; docker-compose run --rm -p $(NGINX_PORT):9009 jsdev npm run storybook
 
 # Open a shell inside container

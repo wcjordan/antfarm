@@ -1,77 +1,37 @@
-import React, { Component } from 'react'
-import { Episode, Step, TrainingRun } from './components/training/DataStream'
-import Layout from './Layout'
+import React from 'react';
+// import Board from './components/tictactoe/Board'
+import ControlPanel from './components/training/ControlPanel';
+import DataStream from './components/training/DataStream';
+import { startTraining } from './redux/reducers';
+import { Episode, Step, TrainingRun } from './redux/types';
+import { connect } from 'react-redux';
+import './App.css';
 
-class App extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
+export function App(props: Props) {
+  const { startTraining, ...dataProps } = this.props;
 
-    this.state = {
-      episodes: [],
-      steps: [],
-      training_run: null,
-    }
-
-    // TODO destroy on unmount
-    window.setInterval(this.fetchData.bind(this), 5 * 1000)
-  }
-
-  render() {
-    return <Layout startTraining={this.startTraining} {...this.state} />
-  }
-
-  fetchData = () => {
-    fetch('api/training/episodes/', this.getRequestOpts('GET'))
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          episodes: res,
-        })
-      })
-
-    fetch('api/training/steps/', this.getRequestOpts('GET'))
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          steps: res,
-        })
-      })
-  }
-
-  startTraining = () => {
-    const options = this.getRequestOpts('POST')
-    options['body'] = JSON.stringify({
-      name: 'test run ' + new Date().toLocaleString(),
-    })
-
-    fetch('api/training/training_runs/', options)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          training_run: res,
-        })
-      })
-    console.log('Training started')
-  }
-
-  getRequestOpts(method: string): RequestInit {
-    return {
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      method: method,
-    }
-  }
+  // <Board size={3} />
+  return (
+    <div className="App">
+      <ControlPanel disabled={false} startTraining={startTraining} />
+      <DataStream {...dataProps} />
+    </div>
+  );
 }
 
-type Props = {}
+type Props = {
+  episodes: Episode[];
+  startTraining: Function;
+  steps: Step[];
+  trainingRun: TrainingRun | null;
+};
 
-type State = {
-  episodes: Episode[]
-  steps: Step[]
-  training_run: TrainingRun | null
-}
-
-export default App
+const mapStateToProps = (state: Props) => {
+  return {
+    episodes: state.episodes,
+    steps: state.steps,
+    trainingRun: state.trainingRun,
+  };
+};
+const mapDispatchToProps = { startTraining };
+export default connect(mapStateToProps, mapDispatchToProps)(App);

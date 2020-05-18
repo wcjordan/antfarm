@@ -1,10 +1,10 @@
-import React, { Component, SyntheticEvent } from 'react'
-import './ControlPanel.css'
+import React, { Component, SyntheticEvent } from 'react';
+import './ControlPanel.css';
 
-class ControlPanel extends Component<Props, State> {
+class ControlPanel extends Component<Props> {
   static defaultProps = {
     disabled: false,
-  }
+  };
 
   render() {
     return (
@@ -14,22 +14,20 @@ class ControlPanel extends Component<Props, State> {
           Start Training
         </div>
       </div>
-    )
+    );
   }
 
   startTraining = (event: SyntheticEvent<HTMLElement>) => {
     if (!this.props.disabled) {
-      event.preventDefault()
-      this.props.startTrainingHandler()
+      event.preventDefault();
+      this.props.startTraining();
     }
-  }
+  };
 }
 
 type Props = {
-  disabled: boolean
-  startTrainingHandler: Function
-}
+  disabled: boolean;
+  startTraining: Function;
+};
 
-type State = {}
-
-export default ControlPanel
+export default ControlPanel;

@@ -1,24 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Control Panel Default View 1`] = `
-<div
-  className="control-panel"
->
-  <div
-    className="placeholder"
-  />
-  <div
-    className="button start-button"
-    onClick={[Function]}
-  >
-    Start Training
-  </div>
-</div>
-`;
-
-exports[`Storyshots Data Stream Default View 1`] = `<div />`;
-
-exports[`Storyshots Layout Default Layout 1`] = `
+exports[`Storyshots App Default Layout 1`] = `
 <div
   className="App"
 >
@@ -38,6 +20,24 @@ exports[`Storyshots Layout Default Layout 1`] = `
   <div />
 </div>
 `;
+
+exports[`Storyshots Control Panel Default View 1`] = `
+<div
+  className="control-panel"
+>
+  <div
+    className="placeholder"
+  />
+  <div
+    className="button start-button"
+    onClick={[Function]}
+  >
+    Start Training
+  </div>
+</div>
+`;
+
+exports[`Storyshots Data Stream Default View 1`] = `<div />`;
 
 exports[`Storyshots Tictactoe Board Board 3 X 3 1`] = `
 <div
