@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #222, #555);
+  background: linear-gradient(to bottom, #293241, #3d5a80);
   height: 100%;
   width: 100%;
 }
@@ -13,7 +13,7 @@
   width: 80vw;
   height: 80vh;
   padding: 5px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #e0fbfc;
 }
 
 .tictactoe-row {
@@ -25,12 +25,16 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #e0fbfc;
   text-align: center;
-  color: #e4e4e4;
+  color: #e0fbfc;
   font-weight: 250;
 }
 
 .tictactoe-square .spacer {
   flex: 1;
+}
+
+.tictactoe-square .active-move {
+  color: #ee6c4d;
 }

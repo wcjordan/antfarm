@@ -2,15 +2,44 @@ import _ from 'lodash';
 import React from 'react';
 import './Board.css';
 
-type BoardProps = { size: number };
-type RowProps = { size: number; board: Array<string> };
-type SquareProps = { size: number; value: string };
+interface MoveProps {
+  opponentMove: string | null;
+  playerMove: string | null;
+  playerMoveStep: boolean;
+}
+interface BoardProps {
+  size: number;
+  boardState: string | null;
+  moveInfo?: MoveProps;
+}
+interface RowProps {
+  index: number;
+  size: number;
+  board: number[];
+  moveInfo?: MoveProps;
+}
+interface SquareProps {
+  size: number;
+  value: string;
+  activeMove: boolean;
+}
 
 function Board(props: BoardProps) {
-  const { size } = props;
-  const board = randomBoard(size);
+  const { size, boardState, moveInfo } = props;
+
+  let board = _.times(3, () => _.times(3, () => 0));
+  if (boardState) {
+    board = JSON.parse(boardState);
+  }
+
   const rows = _.times(size, idx => (
-    <Row key={idx} size={size} board={board[idx]} />
+    <Row
+      key={idx}
+      index={idx}
+      size={size}
+      board={board[idx]}
+      moveInfo={moveInfo}
+    />
   ));
 
   return (
@@ -21,38 +50,55 @@ function Board(props: BoardProps) {
 }
 
 function Row(props: RowProps) {
-  const { board, size } = props;
-  const squares = _.times(size, idx => (
-    <Square key={idx} size={size} value={board[idx]} />
-  ));
+  const { board, size, moveInfo, index: rowIdx } = props;
+  const squares = _.times(size, colIdx => {
+    let value = board[colIdx];
+    let activeMove = false;
+    const coord = `[${rowIdx}, ${colIdx}]`;
+    if (moveInfo && coord === moveInfo.playerMove && moveInfo.playerMoveStep) {
+      activeMove = true;
+    }
+    if (moveInfo && coord === moveInfo.opponentMove) {
+      if (moveInfo.playerMoveStep) {
+        value = 0;
+      } else {
+        activeMove = true;
+      }
+    }
+
+    return (
+      <Square
+        key={colIdx}
+        size={size}
+        value={renderChar(value)}
+        activeMove={activeMove}
+      />
+    );
+  });
   return <div className="tictactoe-row">{squares}</div>;
 }
 
 function Square(props: SquareProps) {
-  const { value } = props;
   const fontStyle = {
     fontSize: 65 / props.size + 'vmin',
   };
+  const classes = props.activeMove ? 'active-move' : undefined;
   return (
     <div className="tictactoe-square">
       <span className="spacer" />
-      <span style={fontStyle}>{value}</span>
+      <span className={classes} style={fontStyle}>
+        {props.value}
+      </span>
       <span className="spacer" />
     </div>
   );
 }
 
-function randomBoard(size: number) {
-  return _.times(size, x => _.times(size, y => randomChar(x, y)));
-}
-
-function randomChar(x: number, y: number) {
-  const rand = Math.sin(3 * x + y);
-  if (rand < 0.4) {
-    return 'X';
-  }
-  if (rand > 0.6) {
+function renderChar(value: number) {
+  if (value === -1) {
     return 'O';
+  } else if (value === 1) {
+    return 'X';
   }
   return '';
 }

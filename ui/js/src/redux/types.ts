@@ -1,11 +1,11 @@
-export type Episode = {
+export interface Episode {
   id: number;
   iteration: number;
   total_reward: number;
   training_run: number;
-};
+}
 
-export type Step = {
+export interface Step {
   action: string | null;
   episode: number;
   id: number;
@@ -14,8 +14,30 @@ export type Step = {
   iteration: number;
   reward: number;
   state: string;
-};
+}
 
-export type TrainingRun = {
+export interface TrainingRun {
   id: number;
-};
+}
+
+export interface TrainingState {
+  trainingRun: TrainingRun | null;
+}
+
+export interface PlaybackState {
+  episode: number | null;
+  step: number | null;
+  playerMoveStep: boolean;
+}
+
+export interface ApiState<T> {
+  entries: T[];
+  loading: boolean;
+}
+
+export interface ReduxState {
+  episodesApi: ApiState<Episode>;
+  stepsApi: ApiState<Step>;
+  training: TrainingState;
+  playback: PlaybackState;
+}

@@ -9,6 +9,9 @@ export default {
 
 const defaultProps = {
   episodes: [],
+  opponentMove: null,
+  playbackStep: null,
+  playerMoveStep: false,
   startTraining: action('start_training'),
   steps: [],
   trainingRun: null,
