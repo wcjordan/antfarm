@@ -1,24 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
 import { PlaybackState, ReduxState } from '../types';
-import { selectEpisodes, selectSteps } from '../selectors';
+import { selectEpisodes, selectPlaybackLog } from '../selectors';
 
 type ThunkResult<R> = ThunkAction<R, ReduxState, undefined, any>;
 
 const initialState: PlaybackState = {
   episode: null,
-  step: null,
-  playerMoveStep: false,
+  logIdx: null,
 };
 
 export function stepPlayback(): ThunkResult<void> {
   return (dispatch, getState) => {
     const state = getState();
-    const stepCount = selectSteps(state).length;
+    const logCount = selectPlaybackLog(state).length;
     const episodeCount = selectEpisodes(state).length;
     dispatch({
       type: playbackSlice.actions.stepPlayback.type,
-      payload: { stepCount, episodeCount },
+      payload: { episodeCount, logCount },
     });
   };
 }
@@ -28,19 +27,10 @@ const playbackSlice = createSlice({
   initialState,
   reducers: {
     stepPlayback(state, action) {
-      if (state.playerMoveStep) {
-        state.playerMoveStep = false;
-        return;
-      }
-      state.playerMoveStep = true;
+      const { episodeCount, logCount } = action.payload;
 
-      const { stepCount, episodeCount } = action.payload;
-      const { nextStep, nextEpisode } = takeStep(
-        state,
-        stepCount,
-        episodeCount,
-      );
-      state.step = nextStep;
+      const { nextIdx, nextEpisode } = takeStep(state, episodeCount, logCount);
+      state.logIdx = nextIdx;
       state.episode = nextEpisode;
     },
   },
@@ -48,25 +38,25 @@ const playbackSlice = createSlice({
 
 function takeStep(
   state: PlaybackState,
-  stepCount: number,
   episodeCount: number,
+  logCount: number,
 ) {
   if (state.episode === null) {
-    return { nextStep: 0, nextEpisode: 0 };
+    return { nextIdx: 0, nextEpisode: 0 };
   }
 
-  let nextStep = (state.step as number) + 1;
-  if (nextStep < stepCount) {
-    return { nextStep, nextEpisode: state.episode };
+  let nextIdx = (state.logIdx as number) + 1;
+  if (nextIdx < logCount) {
+    return { nextIdx, nextEpisode: state.episode };
   }
 
   let nextEpisode = (state.episode as number) + 1;
-  nextStep = 0;
+  nextIdx = 0;
   if (nextEpisode < episodeCount) {
-    return { nextStep, nextEpisode };
+    return { nextIdx, nextEpisode };
   }
 
-  return { nextStep: null, nextEpisode: null };
+  return { nextIdx: null, nextEpisode: null };
 }
 
 export default playbackSlice.reducer;

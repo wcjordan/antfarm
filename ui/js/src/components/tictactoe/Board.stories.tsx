@@ -9,46 +9,72 @@ export default {
   decorators: [withKnobs],
 };
 
+const moveInfo = {
+  move: null,
+  illegalMoves: [],
+};
+
 export const DynamicBoard = () => (
-  <Board size={number('Size', 3)} boardState={randomBoard(number('Size', 3))} />
+  <Board
+    size={number('Size', 3)}
+    board={randomBoard(number('Size', 3))}
+    moveInfo={moveInfo}
+  />
 );
 
-export const Board3x3 = () => <Board size={3} boardState={randomBoard(3)} />;
+export const Board3x3 = () => (
+  <Board size={3} board={randomBoard(3)} moveInfo={moveInfo} />
+);
 
-export const Board4x4 = () => <Board size={4} boardState={randomBoard(4)} />;
+export const Board4x4 = () => (
+  <Board size={4} board={randomBoard(4)} moveInfo={moveInfo} />
+);
 
-export const Board5x5 = () => <Board size={5} boardState={randomBoard(5)} />;
+export const Board5x5 = () => (
+  <Board size={5} board={randomBoard(5)} moveInfo={moveInfo} />
+);
 
-export const Board7x7 = () => <Board size={7} boardState={randomBoard(7)} />;
+export const Board7x7 = () => (
+  <Board size={7} board={randomBoard(7)} moveInfo={moveInfo} />
+);
 
 export const Board10x10 = () => (
-  <Board size={10} boardState={randomBoard(10)} />
+  <Board size={10} board={randomBoard(10)} moveInfo={moveInfo} />
 );
 
-const boardState = JSON.stringify([
+const boardState = [
   [1, 1],
   [-1, 0],
-]);
+];
 const playerMoveInfo = {
-  opponentMove: '[1, 0]',
-  playerMove: '[0, 1]',
-  playerMoveStep: true,
+  move: [0, 1],
+  illegalMoves: [],
 };
 export const PlayerMove = () => (
-  <Board size={2} boardState={boardState} moveInfo={playerMoveInfo} />
+  <Board size={2} board={boardState} moveInfo={playerMoveInfo} />
 );
 
-const opponentMoveInfo = Object.assign({}, playerMoveInfo, {
-  playerMoveStep: false,
-});
+const opponentMoveInfo = {
+  move: [1, 0],
+  illegalMoves: [],
+};
 export const OpponentMove = () => (
-  <Board size={2} boardState={boardState} moveInfo={opponentMoveInfo} />
+  <Board size={2} board={boardState} moveInfo={opponentMoveInfo} />
+);
+
+const illegalMoveInfo = {
+  move: [1, 0],
+  illegalMoves: [
+    [0, 1],
+    [1, 0],
+  ],
+};
+export const IllegalMove = () => (
+  <Board size={2} board={boardState} moveInfo={illegalMoveInfo} />
 );
 
 function randomBoard(size: number) {
-  return JSON.stringify(
-    _.times(size, x => _.times(size, y => randomChar(x, y))),
-  );
+  return _.times(size, x => _.times(size, y => randomChar(x, y)));
 }
 
 function randomChar(x: number, y: number) {

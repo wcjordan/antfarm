@@ -4,55 +4,30 @@ import './App.css';
 import Board from './components/tictactoe/Board';
 import ControlPanel from './components/training/ControlPanel';
 // import DataStream from './components/training/DataStream';
-import { Episode, Step, TrainingRun, ReduxState } from './redux/types';
+import { PlaybackEntry, TrainingRun, ReduxState } from './redux/types';
 import { startTraining } from './redux/reducers/trainingReducer';
-import {
-  selectEpisodes,
-  selectOpponentMove,
-  selectPlaybackStep,
-  selectSteps,
-} from './redux/selectors';
+import { selectPlaybackEntry } from './redux/selectors';
 
 export function App(props: Props) {
-  const { opponentMove, playbackStep, playerMoveStep, startTraining } = props;
-  let playerMove = null;
-  let boardState = null;
-  if (playbackStep) {
-    boardState = playbackStep.state;
-    playerMove = playbackStep.action;
-  }
-
-  const moveInfo = {
-    playerMove,
-    opponentMove,
-    playerMoveStep,
-  };
-
+  const { playbackEntry, startTraining } = props;
+  const { board, moveInfo } = playbackEntry;
   return (
     <div className="App">
       <ControlPanel disabled={false} startTraining={startTraining} />
-      <Board size={3} boardState={boardState} moveInfo={moveInfo} />
+      <Board size={3} board={board} moveInfo={moveInfo} />
     </div>
   );
 }
 
 type Props = {
-  episodes: Episode[];
-  opponentMove: string | null;
-  playbackStep: Step | null;
-  playerMoveStep: boolean;
+  playbackEntry: PlaybackEntry;
   startTraining: Function;
-  steps: Step[];
   trainingRun: TrainingRun | null;
 };
 
 const mapStateToProps = (state: ReduxState) => {
   return {
-    episodes: selectEpisodes(state),
-    opponentMove: selectOpponentMove(state),
-    playbackStep: selectPlaybackStep(state),
-    playerMoveStep: state.playback.playerMoveStep,
-    steps: selectSteps(state),
+    playbackEntry: selectPlaybackEntry(state),
     trainingRun: state.training.trainingRun,
   };
 };

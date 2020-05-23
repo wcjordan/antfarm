@@ -207,6 +207,9 @@ exports[`Storyshots App Default Layout 1`] = `
         </div>
       </div>
     </div>
+    <div
+      className="tictactoe-visor"
+    />
   </div>
 </div>
 `;
@@ -420,6 +423,9 @@ exports[`Storyshots Tictactoe Board Board 3 X 3 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;
 
@@ -751,6 +757,9 @@ exports[`Storyshots Tictactoe Board Board 4 X 4 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;
 
@@ -1257,6 +1266,9 @@ exports[`Storyshots Tictactoe Board Board 5 X 5 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;
 
@@ -2227,6 +2239,9 @@ exports[`Storyshots Tictactoe Board Board 7 X 7 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;
 
@@ -4178,6 +4193,9 @@ exports[`Storyshots Tictactoe Board Board 10 X 10 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;
 
@@ -4372,6 +4390,119 @@ exports[`Storyshots Tictactoe Board Dynamic Board 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Illegal Move 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          X
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          className="illegal-move"
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          O
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tictactoe-visor"
+  >
+    <div
+      className="tictactoe-warning"
+    >
+      Space alread occupied - row: 0, col: 1.
+    </div>
+    <div
+      className="tictactoe-warning"
+    >
+      Space alread occupied - row: 1, col: 0.
+    </div>
+  </div>
 </div>
 `;
 
@@ -4468,6 +4599,9 @@ exports[`Storyshots Tictactoe Board Opponent Move 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;
 
@@ -4537,7 +4671,7 @@ exports[`Storyshots Tictactoe Board Player Move 1`] = `
             }
           }
         >
-          
+          O
         </span>
         <span
           className="spacer"
@@ -4564,5 +4698,8 @@ exports[`Storyshots Tictactoe Board Player Move 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="tictactoe-visor"
+  />
 </div>
 `;

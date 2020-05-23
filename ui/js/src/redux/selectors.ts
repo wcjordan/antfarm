@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import { createSelector } from '@reduxjs/toolkit';
-import { ReduxState } from './types';
+import { PlaybackEntry, ReduxState } from './types';
 
 const selectAllSteps = (state: ReduxState) => state.stepsApi.entries;
 const selectAllEpisodes = (state: ReduxState) => state.episodesApi.entries;
 const selectTrainingRunId = (state: ReduxState) =>
   state.training.trainingRun ? state.training.trainingRun.id : undefined;
 const selectEpisodeIter = (state: ReduxState) => state.playback.episode;
-const selectStepIter = (state: ReduxState) => state.playback.step;
+const selectPlaybackLogIdx = (state: ReduxState) => state.playback.logIdx;
 
 export const selectEpisodes = createSelector(
   [selectAllEpisodes, selectTrainingRunId],
@@ -34,39 +34,93 @@ export const selectSteps = createSelector(
   },
 );
 
-export const selectPlaybackStep = createSelector(
-  [selectSteps, selectStepIter],
-  (steps, iteration) => findEntry(steps, iteration, 'step'),
+export const selectPlaybackLog = createSelector([selectSteps], steps => {
+  return _.reduce(
+    steps,
+    (result: PlaybackEntry[], step) => {
+      const playerMove = step.action ? JSON.parse(step.action) : null;
+      const currBoard = JSON.parse(step.state);
+
+      const prevLogEntry = _.last(result);
+      const prevBoard = prevLogEntry ? prevLogEntry.board : null;
+      const opponentMove = getOpponentMove(currBoard, prevBoard);
+
+      if (!playerMove) {
+        result.push({
+          board: currBoard,
+          moveInfo: {
+            move: null,
+            illegalMoves: [],
+          },
+        });
+        return result;
+      }
+
+      if (opponentMove) {
+        const midStepBoard = _.cloneDeep(currBoard);
+        midStepBoard[opponentMove[0]][opponentMove[1]] = 0;
+        result.push({
+          board: midStepBoard,
+          moveInfo: {
+            move: playerMove,
+            illegalMoves: [],
+          },
+        });
+        result.push({
+          board: currBoard,
+          moveInfo: {
+            move: opponentMove,
+            illegalMoves: [],
+          },
+        });
+        return result;
+      }
+
+      const illegalMoves = step.is_done
+        ? []
+        : prevLogEntry
+        ? [...prevLogEntry.moveInfo.illegalMoves, playerMove]
+        : [playerMove];
+      result.push({
+        board: currBoard,
+        moveInfo: {
+          move: playerMove,
+          illegalMoves,
+        },
+      });
+      return result;
+    },
+    [],
+  );
+});
+
+export const selectPlaybackEntry = createSelector(
+  [selectPlaybackLog, selectPlaybackLogIdx],
+  (log, logIdx) =>
+    logIdx !== null && logIdx < log.length
+      ? log[logIdx]
+      : {
+          board: null,
+          moveInfo: {
+            move: null,
+            illegalMoves: [],
+          },
+        },
 );
 
-export const selectOpponentMove = createSelector(
-  [selectSteps, selectPlaybackStep, selectStepIter],
-  (steps, playbackStep, iteration) => {
-    if (iteration === null || playbackStep === null) {
-      return 'null';
-    }
-
-    const currBoard = JSON.parse(playbackStep.state);
-    const previousStep = findEntry(steps, iteration - 1, 'step');
-    let prevBoard = null;
-    if (previousStep) {
-      prevBoard = JSON.parse(previousStep.state);
-    }
-
-    for (let yIdx = 0; yIdx < currBoard.length; yIdx++) {
-      for (let xIdx = 0; xIdx < currBoard[yIdx].length; xIdx++) {
-        if (
-          currBoard[yIdx][xIdx] === -1 &&
-          (!prevBoard || prevBoard[yIdx][xIdx] !== -1)
-        ) {
-          return `[${yIdx}, ${xIdx}]`;
-        }
+function getOpponentMove(currBoard: number[][], prevBoard: number[][] | null) {
+  for (let yIdx = 0; yIdx < currBoard.length; yIdx++) {
+    for (let xIdx = 0; xIdx < currBoard[yIdx].length; xIdx++) {
+      if (
+        currBoard[yIdx][xIdx] === -1 &&
+        (!prevBoard || prevBoard[yIdx][xIdx] !== -1)
+      ) {
+        return [yIdx, xIdx];
       }
     }
-
-    return 'null';
-  },
-);
+  }
+  return null;
+}
 
 interface Entry {
   iteration: number;
@@ -84,3 +138,8 @@ function findEntry<T extends Entry>(
   }
   return _.first(matches) || null;
 }
+
+// TODO
+// Keep a queue of episodes to play
+// On play, pick episode from start of queue
+// Schedule next step on timeout based from previous step

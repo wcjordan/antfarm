@@ -16,6 +16,14 @@ export interface Step {
   state: string;
 }
 
+export interface PlaybackEntry {
+  moveInfo: {
+    move: number[] | null;
+    illegalMoves: number[][];
+  };
+  board: number[][] | null;
+}
+
 export interface TrainingRun {
   id: number;
 }
@@ -26,8 +34,7 @@ export interface TrainingState {
 
 export interface PlaybackState {
   episode: number | null;
-  step: number | null;
-  playerMoveStep: boolean;
+  logIdx: number | null;
 }
 
 export interface ApiState<T> {

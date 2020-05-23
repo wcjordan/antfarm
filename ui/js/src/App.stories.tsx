@@ -8,12 +8,14 @@ export default {
 };
 
 const defaultProps = {
-  episodes: [],
-  opponentMove: null,
-  playbackStep: null,
-  playerMoveStep: false,
+  playbackEntry: {
+    board: null,
+    moveInfo: {
+      move: null,
+      illegalMoves: [],
+    },
+  },
   startTraining: action('start_training'),
-  steps: [],
   trainingRun: null,
 };
 export const DefaultLayout = () => <App {...defaultProps} />;

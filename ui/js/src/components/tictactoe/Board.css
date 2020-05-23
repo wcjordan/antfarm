@@ -35,6 +35,25 @@
   flex: 1;
 }
 
+.tictactoe-square span {
+  transition: all 0.25s;
+}
+
 .tictactoe-square .active-move {
   color: #ee6c4d;
+}
+
+.tictactoe-square .illegal-move {
+  filter: brightness(0.2);
+}
+
+.tictactoe-visor {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.tictactoe-warning {
+  color: red;
+  font-size: 14px;
 }

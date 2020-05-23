@@ -3,35 +3,33 @@ import React from 'react';
 import './Board.css';
 
 interface MoveProps {
-  opponentMove: string | null;
-  playerMove: string | null;
-  playerMoveStep: boolean;
+  move: number[] | null;
+  illegalMoves: number[][];
 }
 interface BoardProps {
+  board: number[][] | null;
+  moveInfo: MoveProps;
   size: number;
-  boardState: string | null;
-  moveInfo?: MoveProps;
 }
 interface RowProps {
-  index: number;
-  size: number;
   board: number[];
-  moveInfo?: MoveProps;
+  index: number;
+  moveInfo: MoveProps;
+  size: number;
 }
 interface SquareProps {
+  activeMove: boolean;
+  illegalMove: boolean;
   size: number;
   value: string;
-  activeMove: boolean;
+}
+interface WarningProps {
+  message: string;
 }
 
 function Board(props: BoardProps) {
-  const { size, boardState, moveInfo } = props;
-
-  let board = _.times(3, () => _.times(3, () => 0));
-  if (boardState) {
-    board = JSON.parse(boardState);
-  }
-
+  const { size, moveInfo } = props;
+  const board = getBoard(props.board);
   const rows = _.times(size, idx => (
     <Row
       key={idx}
@@ -42,9 +40,17 @@ function Board(props: BoardProps) {
     />
   ));
 
+  const warnings = _.map(moveInfo.illegalMoves, (move, key) => (
+    <Warning
+      key={key}
+      message={`Space alread occupied - row: ${move[0]}, col: ${move[1]}.`}
+    />
+  ));
+
   return (
     <div className="tictactoe-game">
       <div className="tictactoe-board">{rows}</div>
+      <div className="tictactoe-visor">{warnings}</div>
     </div>
   );
 }
@@ -53,25 +59,19 @@ function Row(props: RowProps) {
   const { board, size, moveInfo, index: rowIdx } = props;
   const squares = _.times(size, colIdx => {
     let value = board[colIdx];
-    let activeMove = false;
-    const coord = `[${rowIdx}, ${colIdx}]`;
-    if (moveInfo && coord === moveInfo.playerMove && moveInfo.playerMoveStep) {
-      activeMove = true;
-    }
-    if (moveInfo && coord === moveInfo.opponentMove) {
-      if (moveInfo.playerMoveStep) {
-        value = 0;
-      } else {
-        activeMove = true;
-      }
-    }
-
+    const activeMove = !!(
+      moveInfo.move &&
+      moveInfo.move[0] === rowIdx &&
+      moveInfo.move[1] === colIdx
+    );
+    const illegalMove = activeMove && moveInfo.illegalMoves.length > 0;
     return (
       <Square
         key={colIdx}
         size={size}
         value={renderChar(value)}
         activeMove={activeMove}
+        illegalMove={illegalMove}
       />
     );
   });
@@ -79,10 +79,15 @@ function Row(props: RowProps) {
 }
 
 function Square(props: SquareProps) {
+  const { activeMove, illegalMove } = props;
   const fontStyle = {
     fontSize: 65 / props.size + 'vmin',
   };
-  const classes = props.activeMove ? 'active-move' : undefined;
+  const classes = illegalMove
+    ? 'illegal-move'
+    : activeMove
+    ? 'active-move'
+    : undefined;
   return (
     <div className="tictactoe-square">
       <span className="spacer" />
@@ -94,6 +99,10 @@ function Square(props: SquareProps) {
   );
 }
 
+function Warning(props: WarningProps) {
+  return <div className="tictactoe-warning">{props.message}</div>;
+}
+
 function renderChar(value: number) {
   if (value === -1) {
     return 'O';
@@ -101,6 +110,13 @@ function renderChar(value: number) {
     return 'X';
   }
   return '';
+}
+
+function getBoard(boardOrNull: number[][] | null) {
+  if (boardOrNull) {
+    return boardOrNull;
+  }
+  return _.times(3, () => _.times(3, () => 0));
 }
 
 export default Board;
