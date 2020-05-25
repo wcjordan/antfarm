@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './App.css';
 import Board from './components/tictactoe/Board';
 import ControlPanel from './components/training/ControlPanel';
-// import DataStream from './components/training/DataStream';
 import { Episode, PlaybackEntry, ReduxState } from './redux/types';
 import { startTraining } from './redux/reducers/trainingReducer';
 import {

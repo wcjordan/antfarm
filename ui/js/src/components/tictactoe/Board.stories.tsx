@@ -73,6 +73,14 @@ export const IllegalMove = () => (
   <Board size={2} board={boardState} moveInfo={illegalMoveInfo} />
 );
 
+const longMoveList = {
+  move: null,
+  illegalMoves: _.times(40, () => [0, 0]),
+};
+export const ScrollingVisor = () => (
+  <Board size={2} board={null} moveInfo={longMoveList} />
+);
+
 function randomBoard(size: number) {
   return _.times(size, x => _.times(size, y => randomChar(x, y)));
 }

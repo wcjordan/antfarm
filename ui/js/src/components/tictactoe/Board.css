@@ -49,9 +49,19 @@
 
 .tictactoe-visor {
   position: absolute;
-  top: 10px;
   right: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.visor-space {
+  height: 10px;
+}
+
+.tictactoe-warning-list {
   overflow: scroll;
+  flex: 1;
 }
 
 .tictactoe-warning {

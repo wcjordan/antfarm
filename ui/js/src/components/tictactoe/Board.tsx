@@ -50,7 +50,10 @@ function Board(props: BoardProps) {
   return (
     <div className="tictactoe-game">
       <div className="tictactoe-board">{rows}</div>
-      <div className="tictactoe-visor">{warnings}</div>
+      <div className="tictactoe-visor">
+        <div className="visor-space" />
+        <div className="tictactoe-warning-list">{warnings}</div>
+      </div>
     </div>
   );
 }

@@ -209,7 +209,215 @@ exports[`Storyshots App Default Layout 1`] = `
     </div>
     <div
       className="tictactoe-visor"
-    />
+    >
+      <div
+        className="visor-space"
+      />
+      <div
+        className="tictactoe-warning-list"
+      >
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+        <div
+          className="tictactoe-warning"
+        >
+          Space alread occupied - row: 0, col: 0.
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -220,7 +428,218 @@ exports[`Storyshots Control Panel Default View 1`] = `
 >
   <div
     className="episode-control"
-  />
+  >
+    <div
+      className="episode-entry watched"
+    >
+      <div
+        className="iteration"
+      >
+        #014
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.99
+      </div>
+    </div>
+    <div
+      className="episode-entry watched"
+    >
+      <div
+        className="iteration"
+      >
+        #013
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.42
+      </div>
+    </div>
+    <div
+      className="episode-entry active"
+    >
+      <div
+        className="iteration"
+      >
+        #012
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.54
+      </div>
+    </div>
+    <div
+      className="episode-entry watched"
+    >
+      <div
+        className="iteration"
+      >
+        #011
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -1.00
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #010
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.54
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #009
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.41
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #008
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.99
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #007
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.66
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #006
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.28
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #005
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.96
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #004
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.76
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #003
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.14
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #002
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.91
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #001
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.84
+      </div>
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #000
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.00
+      </div>
+    </div>
+  </div>
   <div
     className="button"
     onClick={[Function]}
@@ -229,8 +648,6 @@ exports[`Storyshots Control Panel Default View 1`] = `
   </div>
 </div>
 `;
-
-exports[`Storyshots Data Stream Default View 1`] = `<div />`;
 
 exports[`Storyshots Tictactoe Board Board 3 X 3 1`] = `
 <div
@@ -425,7 +842,14 @@ exports[`Storyshots Tictactoe Board Board 3 X 3 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -759,7 +1183,14 @@ exports[`Storyshots Tictactoe Board Board 4 X 4 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -1268,7 +1699,14 @@ exports[`Storyshots Tictactoe Board Board 5 X 5 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -2241,7 +2679,14 @@ exports[`Storyshots Tictactoe Board Board 7 X 7 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -4195,7 +4640,14 @@ exports[`Storyshots Tictactoe Board Board 10 X 10 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -4392,7 +4844,14 @@ exports[`Storyshots Tictactoe Board Dynamic Board 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -4493,14 +4952,21 @@ exports[`Storyshots Tictactoe Board Illegal Move 1`] = `
     className="tictactoe-visor"
   >
     <div
-      className="tictactoe-warning"
-    >
-      Space alread occupied - row: 0, col: 1.
-    </div>
+      className="visor-space"
+    />
     <div
-      className="tictactoe-warning"
+      className="tictactoe-warning-list"
     >
-      Space alread occupied - row: 1, col: 0.
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 1.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 1, col: 0.
+      </div>
     </div>
   </div>
 </div>
@@ -4601,7 +5067,14 @@ exports[`Storyshots Tictactoe Board Opponent Move 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
 </div>
 `;
 
@@ -4700,6 +5173,319 @@ exports[`Storyshots Tictactoe Board Player Move 1`] = `
   </div>
   <div
     className="tictactoe-visor"
-  />
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Tictactoe Board Scrolling Visor 1`] = `
+<div
+  className="tictactoe-game"
+>
+  <div
+    className="tictactoe-board"
+  >
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+    <div
+      className="tictactoe-row"
+    >
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+      <div
+        className="tictactoe-square"
+      >
+        <span
+          className="spacer"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "32.5vmin",
+            }
+          }
+        >
+          
+        </span>
+        <span
+          className="spacer"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tictactoe-visor"
+  >
+    <div
+      className="visor-space"
+    />
+    <div
+      className="tictactoe-warning-list"
+    >
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+      <div
+        className="tictactoe-warning"
+      >
+        Space alread occupied - row: 0, col: 0.
+      </div>
+    </div>
+  </div>
 </div>
 `;

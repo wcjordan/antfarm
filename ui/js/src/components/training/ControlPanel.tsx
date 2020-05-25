@@ -22,7 +22,7 @@ class ControlPanel extends Component<Props, State> {
           entryClass += ' watched';
         }
         return (
-          <div className={entryClass}>
+          <div key={episode.iteration} className={entryClass}>
             <div className="iteration">{`#${formatIteration(
               episode.iteration,
             )}`}</div>

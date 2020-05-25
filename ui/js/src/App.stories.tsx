@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { App } from './App';
@@ -13,7 +14,7 @@ const defaultProps = {
     board: null,
     moveInfo: {
       move: null,
-      illegalMoves: [],
+      illegalMoves: _.times(40, () => [0, 0]),
     },
   },
   startTraining: action('start_training'),
