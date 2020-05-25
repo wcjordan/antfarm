@@ -8,10 +8,10 @@ exports[`Storyshots App Default Layout 1`] = `
     className="control-panel"
   >
     <div
-      className="placeholder"
+      className="episode-control"
     />
     <div
-      className="button start-button"
+      className="button"
       onClick={[Function]}
     >
       Start Training
@@ -219,10 +219,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
   className="control-panel"
 >
   <div
-    className="placeholder"
+    className="episode-control"
   />
   <div
-    className="button start-button"
+    className="button"
     onClick={[Function]}
   >
     Start Training

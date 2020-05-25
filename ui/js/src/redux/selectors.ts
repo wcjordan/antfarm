@@ -8,12 +8,35 @@ const selectTrainingRunId = (state: ReduxState) =>
   state.training.trainingRun ? state.training.trainingRun.id : undefined;
 const selectEpisodeIter = (state: ReduxState) => state.playback.episode;
 const selectPlaybackLogIdx = (state: ReduxState) => state.playback.logIdx;
+const selectWatchedEpisodes = (state: ReduxState) =>
+  state.playback.watchedEpisodes;
+
+export const selectWatchedSet = createSelector(
+  [selectWatchedEpisodes],
+  watchedEpisodes => new Set(watchedEpisodes),
+);
+
+export const selectDoneEpisodeSet = createSelector(
+  [selectAllSteps],
+  steps =>
+    new Set(
+      _.map(
+        _.filter(steps, step => step.is_done),
+        step => step.episode,
+      ),
+    ),
+);
 
 export const selectEpisodes = createSelector(
-  [selectAllEpisodes, selectTrainingRunId],
-  (episodes, trainingRunId) =>
+  [selectAllEpisodes, selectDoneEpisodeSet, selectTrainingRunId],
+  (episodes, completeEpisodes, trainingRunId) =>
     _.sortBy(
-      _.filter(episodes, episode => episode.training_run === trainingRunId),
+      _.filter(
+        episodes,
+        episode =>
+          episode.training_run === trainingRunId &&
+          completeEpisodes.has(episode.id),
+      ),
       'iteration',
     ),
 );

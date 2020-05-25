@@ -8,6 +8,7 @@ export default {
 };
 
 const defaultProps = {
+  activeEpisode: null,
   playbackEntry: {
     board: null,
     moveInfo: {
@@ -16,6 +17,7 @@ const defaultProps = {
     },
   },
   startTraining: action('start_training'),
-  trainingRun: null,
+  episodes: [],
+  watchedEpisodes: new Set<number>(),
 };
 export const DefaultLayout = () => <App {...defaultProps} />;

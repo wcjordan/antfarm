@@ -7,6 +7,11 @@ export default {
   component: ControlPanel,
 };
 
-export const DefaultView = () => (
-  <ControlPanel disabled={false} startTraining={action('start_training')} />
-);
+const defaultProps = {
+  activeEpisode: null,
+  episodes: [],
+  startTraining: action('start_training'),
+  watchedEpisodes: new Set<number>(),
+};
+
+export const DefaultView = () => <ControlPanel {...defaultProps} />;

@@ -35,6 +35,7 @@ export interface TrainingState {
 export interface PlaybackState {
   episode: number | null;
   logIdx: number | null;
+  watchedEpisodes: number[];
 }
 
 export interface ApiState<T> {
