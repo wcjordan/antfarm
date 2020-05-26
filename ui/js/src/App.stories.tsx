@@ -10,6 +10,7 @@ export default {
 
 const defaultProps = {
   activeEpisode: null,
+  paused: false,
   playbackEntry: {
     board: null,
     moveInfo: {
@@ -18,6 +19,7 @@ const defaultProps = {
     },
   },
   startTraining: action('start_training'),
+  togglePlayback: action('toggle_playback'),
   episodes: [],
   watchedEpisodes: new Set<number>(),
 };

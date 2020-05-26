@@ -33,6 +33,7 @@
 .episode-entry {
   border-bottom: 1px solid #e0fbfc;
   padding: 3px;
+  position: relative;
 }
 
 .episode-entry.active {
@@ -41,4 +42,35 @@
 
 .episode-entry.watched {
   color: #999;
+}
+
+.icon {
+  position: absolute;
+  bottom: 6px;
+  cursor: pointer;
+}
+
+.icon.pause {
+  width: 8px;
+  height: 14px;
+  border-color: #e0fbfc;
+  border-style: double;
+  border-width: 0px 0px 0px 10px;
+  right: 0px;
+}
+
+.icon.play {
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 6px 0px 6px 12px;
+  border-color: transparent transparent transparent #e0fbfc;
+  right: 6px;
+  display: none;
+}
+
+.episode-entry:hover .icon.play,
+.icon.paused {
+  display: block;
 }

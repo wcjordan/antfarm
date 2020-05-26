@@ -8,12 +8,17 @@ type ThunkResult<R> = ThunkAction<R, ReduxState, undefined, any>;
 const initialState: PlaybackState = {
   episode: null,
   logIdx: null,
+  paused: false,
   watchedEpisodes: [],
 };
 
 export function stepPlayback(): ThunkResult<void> {
   return (dispatch, getState) => {
     const state = getState();
+    if (state.playback.paused) {
+      return;
+    }
+
     const playbackLog = selectPlaybackLog(state);
     const episodeCount = selectEpisodes(state).length;
     const { nextIdx, nextEpisode } = takeStep(
@@ -36,6 +41,29 @@ export function stepPlayback(): ThunkResult<void> {
   };
 }
 
+export function togglePlayback(episodeIter: number): ThunkResult<void> {
+  return (dispatch, getState) => {
+    const state = getState();
+
+    const wasPaused = state.playback.paused;
+    let shouldPause = !wasPaused;
+    let episodeToPlay = undefined;
+    if (episodeIter !== state.playback.episode) {
+      episodeToPlay = episodeIter;
+      shouldPause = false;
+    }
+
+    dispatch({
+      type: playbackSlice.actions.togglePlayback.type,
+      payload: { episodeToPlay, shouldPause },
+    });
+
+    if (wasPaused && !shouldPause) {
+      setTimeout(() => dispatch(stepPlayback()), 0);
+    }
+  };
+}
+
 const playbackSlice = createSlice({
   name: 'playback',
   initialState,
@@ -46,6 +74,14 @@ const playbackSlice = createSlice({
       state.episode = nextEpisode;
       if (nextEpisode != null) {
         state.watchedEpisodes.push(nextEpisode);
+      }
+    },
+    togglePlayback(state, action) {
+      const { episodeToPlay, shouldPause } = action.payload;
+      state.paused = shouldPause;
+      if (episodeToPlay !== undefined) {
+        state.episode = episodeToPlay;
+        state.logIdx = 0;
       }
     },
   },

@@ -1,6 +1,6 @@
 import { Episode, Step } from './types';
 import createApiReducer from './reducers/createApiReducer';
-import playbackReducer, { stepPlayback } from './reducers/playbackReducer';
+import playbackReducer from './reducers/playbackReducer';
 import trainingReducer from './reducers/trainingReducer';
 
 const {
@@ -16,7 +16,7 @@ const { fetchThunk: fetchSteps, reducer: stepsReducer } = createApiReducer<
   Step
 >('stepsApi', 'api/training/steps/', state => state.stepsApi);
 
-export { fetchEpisodes, fetchSteps, stepPlayback };
+export { fetchEpisodes, fetchSteps };
 export default {
   episodesApi: episodesReducer,
   stepsApi: stepsReducer,

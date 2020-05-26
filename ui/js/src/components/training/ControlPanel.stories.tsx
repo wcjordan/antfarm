@@ -16,7 +16,9 @@ const defaultProps = {
     total_reward: Math.sin(idx),
     training_run: 1,
   })),
+  paused: false,
   startTraining: action('start_training'),
+  togglePlayback: action('toggle_playback'),
   watchedEpisodes: new Set<number>([12, 11, 13, 14]),
 };
 

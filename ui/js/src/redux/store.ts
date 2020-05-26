@@ -1,9 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer, {
-  fetchEpisodes,
-  fetchSteps,
-  stepPlayback,
-} from './reducers';
+import rootReducer, { fetchEpisodes, fetchSteps } from './reducers';
+import { stepPlayback } from './reducers/playbackReducer';
 
 const store = configureStore({
   reducer: rootReducer,

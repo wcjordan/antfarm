@@ -442,6 +442,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.99
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry watched"
@@ -456,6 +460,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.42
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry active"
@@ -470,6 +478,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: -0.54
       </div>
+      <div
+        className="icon pause"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry watched"
@@ -484,6 +496,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: -1.00
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -498,6 +514,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: -0.54
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -512,6 +532,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.41
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -526,6 +550,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.99
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -540,6 +568,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.66
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -554,6 +586,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: -0.28
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -568,6 +604,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: -0.96
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -582,6 +622,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: -0.76
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -596,6 +640,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.14
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -610,6 +658,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.91
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -624,6 +676,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.84
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
     <div
       className="episode-entry"
@@ -638,6 +694,10 @@ exports[`Storyshots Control Panel Default View 1`] = `
       >
         reward: 0.00
       </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
     </div>
   </div>
   <div
