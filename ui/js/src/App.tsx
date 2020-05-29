@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './App.css';
 import Board from './components/tictactoe/Board';
 import ControlPanel from './components/training/ControlPanel';
+import StatusBar from './components/training/StatusBar';
 import { Episode, PlaybackEntry, ReduxState } from './redux/types';
 import { startTraining } from './redux/reducers/trainingReducer';
 import { togglePlayback } from './redux/reducers/playbackReducer';
+import './App.css';
 
 import {
   selectEpisodes,
@@ -16,11 +17,14 @@ import {
 
 export function App(props: Props) {
   const { playbackEntry, ...controlPanelProps } = props;
-  const { board, moveInfo } = playbackEntry;
+  const { board, moveInfo, iteration, reward } = playbackEntry;
   return (
     <div className="App">
       <ControlPanel {...controlPanelProps} />
-      <Board size={3} board={board} moveInfo={moveInfo} />
+      <div className="viewer">
+        <StatusBar iteration={iteration} reward={reward} />
+        <Board size={3} board={board} moveInfo={moveInfo} />
+      </div>
     </div>
   );
 }

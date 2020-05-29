@@ -1,0 +1,12 @@
+.status-bar {
+  background-color: #3d5a80;
+  color: #e0fbfc;
+  font-family: monospace;
+  padding: 3px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.step-iteration {
+  padding-right: 10px;
+}

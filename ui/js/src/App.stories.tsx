@@ -13,10 +13,13 @@ const defaultProps = {
   paused: false,
   playbackEntry: {
     board: null,
+    isDone: false,
+    iteration: 2,
     moveInfo: {
       move: null,
       illegalMoves: _.times(40, () => [0, 0]),
     },
+    reward: -0.6,
   },
   startTraining: action('start_training'),
   togglePlayback: action('toggle_playback'),

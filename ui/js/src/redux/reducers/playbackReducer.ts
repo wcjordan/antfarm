@@ -137,6 +137,8 @@ function determineWaitPeriod(
   const entry = playbackLog[nextIdx];
   if (entry.moveInfo.illegalMoves.length > 0) {
     return 500;
+  } else if (entry.isDone) {
+    return 2500;
   }
   return 1000;
 }

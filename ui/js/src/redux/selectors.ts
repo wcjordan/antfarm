@@ -71,10 +71,13 @@ export const selectPlaybackLog = createSelector([selectSteps], steps => {
       if (!playerMove) {
         result.push({
           board: currBoard,
+          isDone: step.is_done,
+          iteration: step.iteration,
           moveInfo: {
             move: null,
             illegalMoves: [],
           },
+          reward: step.reward,
         });
         return result;
       }
@@ -84,17 +87,23 @@ export const selectPlaybackLog = createSelector([selectSteps], steps => {
         midStepBoard[opponentMove[0]][opponentMove[1]] = 0;
         result.push({
           board: midStepBoard,
+          isDone: false,
+          iteration: step.iteration,
           moveInfo: {
             move: playerMove,
             illegalMoves: [],
           },
+          reward: step.reward,
         });
         result.push({
           board: currBoard,
+          isDone: step.is_done,
+          iteration: step.iteration,
           moveInfo: {
             move: opponentMove,
             illegalMoves: [],
           },
+          reward: step.reward,
         });
         return result;
       }
@@ -106,10 +115,13 @@ export const selectPlaybackLog = createSelector([selectSteps], steps => {
         : [playerMove];
       result.push({
         board: currBoard,
+        isDone: step.is_done,
+        iteration: step.iteration,
         moveInfo: {
           move: playerMove,
           illegalMoves,
         },
+        reward: step.reward,
       });
       return result;
     },
@@ -124,10 +136,13 @@ export const selectPlaybackEntry = createSelector(
       ? log[logIdx]
       : {
           board: null,
+          isDone: false,
+          iteration: 0,
           moveInfo: {
             move: null,
             illegalMoves: [],
           },
+          reward: 0,
         },
 );
 

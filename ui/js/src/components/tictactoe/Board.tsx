@@ -43,7 +43,7 @@ function Board(props: BoardProps) {
   const warnings = _.map(moveInfo.illegalMoves, (move, key) => (
     <Warning
       key={key}
-      message={`Space alread occupied - row: ${move[0]}, col: ${move[1]}.`}
+      message={`Space alread occupied - row: ${move[0]}, col: ${move[1]}`}
     />
   ));
 
@@ -51,7 +51,6 @@ function Board(props: BoardProps) {
     <div className="tictactoe-game">
       <div className="tictactoe-board">{rows}</div>
       <div className="tictactoe-visor">
-        <div className="visor-space" />
         <div className="tictactoe-warning-list">{warnings}</div>
       </div>
     </div>

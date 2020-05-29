@@ -17,11 +17,14 @@ export interface Step {
 }
 
 export interface PlaybackEntry {
+  board: number[][] | null;
+  isDone: boolean;
+  iteration: number;
   moveInfo: {
     move: number[] | null;
     illegalMoves: number[][];
   };
-  board: number[][] | null;
+  reward: number;
 }
 
 export interface TrainingRun {
