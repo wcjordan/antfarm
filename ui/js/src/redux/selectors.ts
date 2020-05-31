@@ -1,15 +1,16 @@
 import _ from 'lodash';
 import { createSelector } from '@reduxjs/toolkit';
-import { PlaybackEntry, ReduxState } from './types';
+import { PlaybackEntry, ReduxState, SortMode } from './types';
 
 const selectAllSteps = (state: ReduxState) => state.stepsApi.entries;
 const selectAllEpisodes = (state: ReduxState) => state.episodesApi.entries;
 const selectTrainingRunId = (state: ReduxState) =>
   state.training.trainingRun ? state.training.trainingRun.id : undefined;
-const selectEpisodeIter = (state: ReduxState) => state.playback.episode;
+const selectEpisodeId = (state: ReduxState) => state.playback.episodeId;
 const selectPlaybackLogIdx = (state: ReduxState) => state.playback.logIdx;
 const selectWatchedEpisodes = (state: ReduxState) =>
   state.playback.watchedEpisodes;
+const selectSortMode = (state: ReduxState) => state.playback.sortMode;
 
 export const selectWatchedSet = createSelector(
   [selectWatchedEpisodes],
@@ -27,23 +28,36 @@ export const selectDoneEpisodeSet = createSelector(
     ),
 );
 
-export const selectEpisodes = createSelector(
+const selectEpisodesList = createSelector(
   [selectAllEpisodes, selectDoneEpisodeSet, selectTrainingRunId],
   (episodes, completeEpisodes, trainingRunId) =>
-    _.sortBy(
-      _.filter(
-        episodes,
-        episode =>
-          episode.training_run === trainingRunId &&
-          completeEpisodes.has(episode.id),
-      ),
-      'iteration',
+    _.filter(
+      episodes,
+      episode =>
+        episode.training_run === trainingRunId &&
+        completeEpisodes.has(episode.id),
     ),
 );
 
+const selectEpisodeMapById = createSelector([selectEpisodesList], episodes =>
+  _.keyBy(episodes, episode => episode.id),
+);
+
+export const selectSortedEpisodes = createSelector(
+  [selectEpisodesList, selectSortMode],
+  (episodes, sortMode) =>
+    _.sortBy(episodes, episode => {
+      if (sortMode === SortMode.Iteration) {
+        return -1 * episode.iteration;
+      }
+      return -1 * episode.total_reward;
+    }),
+);
+
 export const selectPlaybackEpisode = createSelector(
-  [selectEpisodes, selectEpisodeIter],
-  (episodes, iteration) => findEntry(episodes, iteration, 'episode'),
+  [selectEpisodeMapById, selectEpisodeId],
+  (episodeMap, episodeId) =>
+    episodeId !== null ? episodeMap[episodeId] : null,
 );
 
 export const selectSteps = createSelector(
@@ -159,25 +173,3 @@ function getOpponentMove(currBoard: number[][], prevBoard: number[][] | null) {
   }
   return null;
 }
-
-interface Entry {
-  iteration: number;
-}
-function findEntry<T extends Entry>(
-  entries: T[],
-  iteration: number | null,
-  entryName: string,
-) {
-  const matches = _.filter(entries, entry => entry.iteration === iteration);
-  if (matches.length > 1) {
-    console.log(
-      `WARNING found more than one ${entryName} in training run w/ iteration ${iteration}`,
-    );
-  }
-  return _.first(matches) || null;
-}
-
-// TODO
-// Keep a queue of episodes to play
-// On play, pick episode from start of queue
-// Schedule next step on timeout based from previous step

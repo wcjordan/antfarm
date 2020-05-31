@@ -19,7 +19,7 @@ const defaultProps = {
   paused: false,
   startTraining: action('start_training'),
   togglePlayback: action('toggle_playback'),
-  watchedEpisodes: new Set<number>([12, 11, 13, 14]),
+  watchedEpisodes: new Set<number>([112, 111, 113, 114]),
 };
 
 export const DefaultView = () => <ControlPanel {...defaultProps} />;

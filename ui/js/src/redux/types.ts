@@ -35,10 +35,16 @@ export interface TrainingState {
   trainingRun: TrainingRun | null;
 }
 
+export enum SortMode {
+  Iteration = 'iteration',
+  TotalReward = 'total_reward',
+}
+
 export interface PlaybackState {
-  episode: number | null;
-  paused: boolean;
+  episodeId: number | null;
   logIdx: number | null;
+  paused: boolean;
+  sortMode: string;
   watchedEpisodes: number[];
 }
 

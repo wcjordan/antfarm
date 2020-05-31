@@ -6,14 +6,13 @@ import StatusBar from './components/training/StatusBar';
 import { Episode, PlaybackEntry, ReduxState } from './redux/types';
 import { startTraining } from './redux/reducers/trainingReducer';
 import { togglePlayback } from './redux/reducers/playbackReducer';
-import './App.css';
-
 import {
-  selectEpisodes,
+  selectSortedEpisodes,
   selectPlaybackEntry,
   selectPlaybackEpisode,
   selectWatchedSet,
 } from './redux/selectors';
+import './App.css';
 
 export function App(props: Props) {
   const { playbackEntry, ...controlPanelProps } = props;
@@ -43,7 +42,7 @@ const mapStateToProps = (state: ReduxState) => {
   const activeEpisode = selectPlaybackEpisode(state);
   return {
     activeEpisode: activeEpisode ? activeEpisode.id : null,
-    episodes: selectEpisodes(state),
+    episodes: selectSortedEpisodes(state),
     paused: state.playback.paused,
     playbackEntry: selectPlaybackEntry(state),
     watchedEpisodes: selectWatchedSet(state),

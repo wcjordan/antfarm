@@ -447,233 +447,17 @@ exports[`Storyshots Control Panel Default View 1`] = `
     className="episode-control"
   >
     <div
-      className="episode-entry watched"
-    >
-      <div
-        className="iteration"
-      >
-        #014
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.99
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry watched"
-    >
-      <div
-        className="iteration"
-      >
-        #013
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.42
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry active"
-    >
-      <div
-        className="iteration"
-      >
-        #012
-      </div>
-      <div
-        className="reward"
-      >
-        reward: -0.54
-      </div>
-      <div
-        className="icon pause"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry watched"
-    >
-      <div
-        className="iteration"
-      >
-        #011
-      </div>
-      <div
-        className="reward"
-      >
-        reward: -1.00
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
       className="episode-entry"
     >
       <div
         className="iteration"
       >
-        #010
+        #000
       </div>
       <div
         className="reward"
       >
-        reward: -0.54
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #009
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.41
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #008
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.99
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #007
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.66
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #006
-      </div>
-      <div
-        className="reward"
-      >
-        reward: -0.28
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #005
-      </div>
-      <div
-        className="reward"
-      >
-        reward: -0.96
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #004
-      </div>
-      <div
-        className="reward"
-      >
-        reward: -0.76
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #003
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.14
-      </div>
-      <div
-        className="icon play"
-        onClick={[Function]}
-      />
-    </div>
-    <div
-      className="episode-entry"
-    >
-      <div
-        className="iteration"
-      >
-        #002
-      </div>
-      <div
-        className="reward"
-      >
-        reward: 0.91
+        reward: 0.00
       </div>
       <div
         className="icon play"
@@ -704,12 +488,228 @@ exports[`Storyshots Control Panel Default View 1`] = `
       <div
         className="iteration"
       >
-        #000
+        #002
       </div>
       <div
         className="reward"
       >
-        reward: 0.00
+        reward: 0.91
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #003
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.14
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #004
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.76
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #005
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.96
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #006
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.28
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #007
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.66
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #008
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.99
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #009
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.41
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry"
+    >
+      <div
+        className="iteration"
+      >
+        #010
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.54
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry watched"
+    >
+      <div
+        className="iteration"
+      >
+        #011
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -1.00
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry active"
+    >
+      <div
+        className="iteration"
+      >
+        #012
+      </div>
+      <div
+        className="reward"
+      >
+        reward: -0.54
+      </div>
+      <div
+        className="icon pause"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry watched"
+    >
+      <div
+        className="iteration"
+      >
+        #013
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.42
+      </div>
+      <div
+        className="icon play"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="episode-entry watched"
+    >
+      <div
+        className="iteration"
+      >
+        #014
+      </div>
+      <div
+        className="reward"
+      >
+        reward: 0.99
       </div>
       <div
         className="icon play"

@@ -1,14 +1,22 @@
+import _ from 'lodash';
 import { createSlice } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
-import { PlaybackEntry, PlaybackState, ReduxState } from '../types';
-import { selectEpisodes, selectPlaybackLog } from '../selectors';
+import {
+  Episode,
+  PlaybackEntry,
+  PlaybackState,
+  ReduxState,
+  SortMode,
+} from '../types';
+import { selectPlaybackLog, selectSortedEpisodes } from '../selectors';
 
 type ThunkResult<R> = ThunkAction<R, ReduxState, undefined, any>;
 
 const initialState: PlaybackState = {
-  episode: null,
+  episodeId: null,
   logIdx: null,
   paused: false,
+  sortMode: SortMode.TotalReward,
   watchedEpisodes: [],
 };
 
@@ -20,36 +28,36 @@ export function stepPlayback(): ThunkResult<void> {
     }
 
     const playbackLog = selectPlaybackLog(state);
-    const episodeCount = selectEpisodes(state).length;
-    const { nextIdx, nextEpisode } = takeStep(
+    const sortedEpisodes = selectSortedEpisodes(state);
+    const { nextIdx, nextEpisodeId } = takeStep(
+      sortedEpisodes,
       state.playback,
-      episodeCount,
       playbackLog.length,
     );
 
     dispatch({
       type: playbackSlice.actions.stepPlayback.type,
-      payload: { nextIdx, nextEpisode },
+      payload: { nextIdx, nextEpisodeId },
     });
 
     const wait = determineWaitPeriod(
       playbackLog,
-      state.playback.episode !== nextEpisode,
+      state.playback.episodeId !== nextEpisodeId,
       nextIdx,
     );
     setTimeout(() => dispatch(stepPlayback()), wait);
   };
 }
 
-export function togglePlayback(episodeIter: number): ThunkResult<void> {
+export function togglePlayback(episodeId: number): ThunkResult<void> {
   return (dispatch, getState) => {
     const state = getState();
 
     const wasPaused = state.playback.paused;
     let shouldPause = !wasPaused;
     let episodeToPlay = undefined;
-    if (episodeIter !== state.playback.episode) {
-      episodeToPlay = episodeIter;
+    if (episodeId !== state.playback.episodeId) {
+      episodeToPlay = episodeId;
       shouldPause = false;
     }
 
@@ -69,58 +77,70 @@ const playbackSlice = createSlice({
   initialState,
   reducers: {
     stepPlayback(state, action) {
-      const { nextIdx, nextEpisode } = action.payload;
+      const { nextIdx, nextEpisodeId } = action.payload;
       state.logIdx = nextIdx;
-      state.episode = nextEpisode;
-      if (nextEpisode != null) {
-        state.watchedEpisodes.push(nextEpisode);
+      state.episodeId = nextEpisodeId;
+      if (nextEpisodeId != null) {
+        state.watchedEpisodes.push(nextEpisodeId);
       }
     },
     togglePlayback(state, action) {
       const { episodeToPlay, shouldPause } = action.payload;
       state.paused = shouldPause;
       if (episodeToPlay !== undefined) {
-        state.episode = episodeToPlay;
+        state.episodeId = episodeToPlay;
         state.logIdx = 0;
+      }
+    },
+    toggleSortMode(state) {
+      if (state.sortMode === SortMode.Iteration) {
+        state.sortMode = SortMode.TotalReward;
+      } else {
+        state.sortMode = SortMode.Iteration;
       }
     },
   },
 });
 
 function takeStep(
+  sortedEpisodes: Array<Episode>,
   state: PlaybackState,
-  episodeCount: number,
   logCount: number,
 ) {
-  if (episodeCount === 0) {
-    return { nextIdx: null, nextEpisode: null };
+  if (sortedEpisodes.length === 0) {
+    return { nextIdx: null, nextEpisodeId: null };
   }
-  if (state.episode !== null) {
+  if (state.episodeId !== null) {
     let nextIdx = (state.logIdx as number) + 1;
     if (nextIdx < logCount) {
-      return { nextIdx, nextEpisode: state.episode };
+      return { nextIdx, nextEpisodeId: state.episodeId };
     }
   }
 
-  let nextEpisode = nextAvailableEpisode(
-    episodeCount,
+  let nextEpisodeId = nextAvailableEpisode(
+    sortedEpisodes,
     new Set(state.watchedEpisodes),
   );
-  if (nextEpisode !== null) {
-    return { nextIdx: 0, nextEpisode };
+  if (nextEpisodeId !== null) {
+    return { nextIdx: 0, nextEpisodeId };
   }
 
-  return { nextIdx: null, nextEpisode: null };
+  return { nextIdx: null, nextEpisodeId: null };
 }
 
 function nextAvailableEpisode(
-  episodeCount: number,
+  sortedEpisodes: Array<Episode>,
   watchedEpisodes: Set<number>,
 ) {
-  for (let idx = episodeCount - 1; idx >= 0; idx--) {
-    if (!watchedEpisodes.has(idx)) {
-      return idx;
+  const match = _.find(sortedEpisodes, episode => {
+    if (!watchedEpisodes.has(episode.id)) {
+      return true;
     }
+    return false;
+  });
+
+  if (match) {
+    return match.id;
   }
   return null;
 }
