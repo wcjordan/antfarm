@@ -8,8 +8,6 @@ import string
 from django.test import TestCase
 import responses
 
-TrainingRunStub = collections.namedtuple('TrainingRunStub', 'name id')
-
 
 class AnyArg():  # pylint: disable=R0903
     """
