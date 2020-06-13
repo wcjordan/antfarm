@@ -1,7 +1,6 @@
 """
 Tests for training module
 """
-import collections
 import random
 import string
 
@@ -13,6 +12,7 @@ class AnyArg():  # pylint: disable=R0903
     """
     Arg matcher which matches everything
     """
+
     def __eq__(self, other):
         return True
 
@@ -25,8 +25,9 @@ class ServiceTests(TestCase):
     """
     Tests for training run view
     """
+
     @responses.activate
-    def test_create_update_training_runs(self):
+    def test_training_runs_api(self):
         """
         Basic test which creates and updates training runs
         and then fetches them to ensure they're persisted.
@@ -90,8 +91,16 @@ class ServiceTests(TestCase):
         expected_data[0].update(patch)
         self.assertCountEqual(fetched_data, expected_data)
 
+        # Delete first training run
+        self._delete_training_run(run1_id)
+
+        # Fetch training runs and verify they match expectations
+        fetched_data = self._fetch_training_runs()
+        expected_data = [expected_data[1]]
+        self.assertCountEqual(fetched_data, expected_data)
+
     @responses.activate
-    def test_create_update_episodes(self):
+    def test_episodes_api(self):
         """
         Basic test which creates and updates episodes
         and then fetches them to ensure they're persisted.
@@ -145,8 +154,16 @@ class ServiceTests(TestCase):
         expected_data[0].update(patch)
         self.assertCountEqual(fetched_data, expected_data)
 
+        # Delete first episode
+        self._delete_episode(ep1)
+
+        # Fetch episodes and verify they match expectations
+        fetched_data = self._fetch_episodes()
+        expected_data = [expected_data[1]]
+        self.assertCountEqual(fetched_data, expected_data)
+
     @responses.activate
-    def test_create_update_steps(self):
+    def test_steps_api(self):
         """
         Basic test which creates and updates steps
         and then fetches them to ensure they're persisted.
@@ -222,6 +239,14 @@ class ServiceTests(TestCase):
         expected_data[0].update(patch)
         self.assertCountEqual(fetched_data, expected_data)
 
+        # Delete first step
+        self._delete_step(step1)
+
+        # Fetch steps and verify they match expectations
+        fetched_data = self._fetch_steps()
+        expected_data = [expected_data[1]]
+        self.assertCountEqual(fetched_data, expected_data)
+
     def _create_training_run(self, data):
         return self._create_entity(data, 'training_runs')
 
@@ -230,6 +255,9 @@ class ServiceTests(TestCase):
 
     def _update_training_run(self, entry_id, patch):
         return self._update_entity(entry_id, patch, 'training_runs')
+
+    def _delete_training_run(self, entry_id):
+        return self._delete_entity(entry_id, 'training_runs')
 
     def _create_episode(self, data):
         return self._create_entity(data, 'episodes')
@@ -240,6 +268,9 @@ class ServiceTests(TestCase):
     def _update_episode(self, entry_id, patch):
         return self._update_entity(entry_id, patch, 'episodes')
 
+    def _delete_episode(self, entry_id):
+        return self._delete_entity(entry_id, 'episodes')
+
     def _create_step(self, data):
         return self._create_entity(data, 'steps')
 
@@ -248,6 +279,9 @@ class ServiceTests(TestCase):
 
     def _update_step(self, entry_id, patch):
         return self._update_entity(entry_id, patch, 'steps')
+
+    def _delete_step(self, entry_id):
+        return self._delete_entity(entry_id, 'steps')
 
     def _create_entity(self, data, route):
         response = self.client.post('/api/training/{}/'.format(route),
@@ -268,6 +302,11 @@ class ServiceTests(TestCase):
                                      content_type='application/json')
         self._assert_status_code(200, response)
         return response.json()
+
+    def _delete_entity(self, entry_id, route):
+        response = self.client.delete('/api/training/{}/{}/'.format(
+            route, entry_id))
+        self._assert_status_code(204, response)
 
     def _assert_status_code(self, expected_code, response):
         self.assertEqual(
