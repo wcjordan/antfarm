@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        docker 'latest'
+    }
     stages {
         stage('Clone Repository') {
             steps {
