@@ -9,9 +9,28 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Unit Test') {
+            options {
+                timeout(time: 5, unit: 'MINUTES')
+            }
+            steps {
+                agent {
+                    kubernetes {
+                        yamlFile 'jenkins-worker-nodejs.yml'
+                    }
+                }
+                container('jenkins-worker-nodejs') {
+                    dir('ui/js') {
+                        sh 'yarn install --pure-lockfile'
+                        sh 'yarn run build'
+                        sh 'yarn jest'
+                    }
+                }
+            }
+        }
         stage('Build') {
             options {
-                timeout(time: 20, unit: 'MINUTES')
+                timeout(time: 5, unit: 'MINUTES')
             }
             steps {
                 echo 'Starting to build docker image'
@@ -33,8 +52,6 @@ spec:
   containers:
   - name: jenkins-antfarm-ui
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
-    command:
-    - cat
     tty: true
 """
                 }
@@ -44,20 +61,8 @@ spec:
             }
             steps {
                 container('jenkins-antfarm-ui') {
-                    sh 'ls'
-                    sh 'pwd'
-                    sh 'ls /www/client/'
-                    sh 'yarn run build'
-                    sh 'yarn jest'
+                    sh 'curl http://127.0.0.1:8000/static/index.html'
                 }
-                // TODO delete jenkins-busybox.yml
-                // script {
-                //     def uiImage = docker.image("gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}")
-                //     uiImage.inside {
-                //         sh 'yarn run build'
-                //         sh 'yarn jest'
-                //     }
-                // }
             }
         }
     }

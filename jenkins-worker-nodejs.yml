@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: jenkins-worker-nodejs
+    image: node:13-alpine
+    command:
+    - cat
+    tty: true
