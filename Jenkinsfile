@@ -28,16 +28,26 @@ pipeline {
         stage('Test') {
             agent {
                 kubernetes {
-                    yamlFile 'jenkins-busybox.yml'
+                    yaml """
+spec:
+  containers:
+  - name: jenkins-antfarm-ui
+    image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
+    command:
+    - cat
+    tty: true
+"""
                 }
             }
             options {
                 timeout(time: 5, unit: 'MINUTES')
             }
             steps {
-                container('busybox') {
-                    sh '/bin/busybox'
+                container('jenkins-antfarm-ui') {
+                    sh 'yarn run build'
+                    sh 'yarn jest'
                 }
+                // TODO delete jenkins-busybox.yml
                 // script {
                 //     def uiImage = docker.image("gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}")
                 //     uiImage.inside {
