@@ -7,4 +7,6 @@ test('stub test', () => {
   //   const { getByText } = render(<App />)
   //   const linkElement = getByText(/learn react/i)
   //   expect(linkElement).toBeInTheDocument()
-})
+});
+
+export {};
