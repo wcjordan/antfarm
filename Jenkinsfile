@@ -52,6 +52,8 @@ spec:
   containers:
   - name: jenkins-antfarm-ui
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
+    command:
+    - cat
     tty: true
 """
                 }
