@@ -53,7 +53,7 @@ spec:
   - name: jenkins-antfarm-ui
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
     command:
-    - nginx
+    - cat
     tty: true
 """
                 }
@@ -63,6 +63,7 @@ spec:
             }
             steps {
                 container('jenkins-antfarm-ui') {
+                    sh 'nginx -g daemon off;'
                     sh 'curl http://127.0.0.1:8000/static/index.html'
                 }
             }
