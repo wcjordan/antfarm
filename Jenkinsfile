@@ -20,7 +20,7 @@ pipeline {
                     source: local('ui'),
                     request: file('ui/cloudbuild.yaml'),
                     substitutions: [
-                        _BUILD_TAG: ${env.BUILD_TAG}
+                        _BUILD_TAG: "${env.BUILD_TAG}"
                     ]
                 echo 'Done building docker image'
             }
