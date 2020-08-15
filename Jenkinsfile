@@ -10,15 +10,15 @@ pipeline {
             }
         }
         stage('Unit Test') {
+            agent {
+                kubernetes {
+                    yamlFile 'jenkins-worker-nodejs.yml'
+                }
+            }
             options {
                 timeout(time: 5, unit: 'MINUTES')
             }
             steps {
-                agent {
-                    kubernetes {
-                        yamlFile 'jenkins-worker-nodejs.yml'
-                    }
-                }
                 container('jenkins-worker-nodejs') {
                     dir('ui/js') {
                         sh 'yarn install --pure-lockfile'
@@ -44,7 +44,7 @@ pipeline {
                 echo 'Done building docker image'
             }
         }
-        stage('Test') {
+        stage('System Test') {
             agent {
                 kubernetes {
                     yaml """
