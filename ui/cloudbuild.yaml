@@ -2,5 +2,5 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/antfarm-ui', '.' ]
 images:
-- 'gcr.io/$PROJECT_ID/antfarm-ui:$BUILD_TAG'
+- 'gcr.io/$PROJECT_ID/antfarm-ui:$_BUILD_TAG'
 - 'gcr.io/$PROJECT_ID/antfarm-ui:latest'
