@@ -29,11 +29,13 @@ pipeline {
             options {
                 timeout(time: 5, unit: 'MINUTES')
             }
-            script {
-                def uiImage = docker.image("gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}")
-                uiImage.inside {
-                    sh 'yarn run build'
-                    sh 'yarn jest'
+            steps {
+                script {
+                    def uiImage = docker.image("gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}")
+                    uiImage.inside {
+                        sh 'yarn run build'
+                        sh 'yarn jest'
+                    }
                 }
             }
         }
