@@ -22,8 +22,8 @@ pipeline {
                     substitutions: [
                         _BUILD_TAG: ${env.BUILD_TAG}
                     ]
+                echo 'Done building docker image'
             }
-            echo 'Done building docker image'
         }
         stage('Test') {
             options {
