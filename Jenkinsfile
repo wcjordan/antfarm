@@ -18,7 +18,7 @@ pipeline {
                 googleCloudBuild \
                     credentialsId: 'flipperkid-default',
                     source: local('ui'),
-                    request: file('ui/cloudbuild.yaml'),
+                    request: file('ui/cloudbuild.yml'),
                     substitutions: [
                         _BUILD_TAG: "${env.BUILD_TAG}"
                     ]
@@ -26,17 +26,25 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                kubernetes {
+                    yamlFile 'jenkins-busybox.yml'
+                }
+            }
             options {
                 timeout(time: 5, unit: 'MINUTES')
             }
             steps {
-                script {
-                    def uiImage = docker.image("gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}")
-                    uiImage.inside {
-                        sh 'yarn run build'
-                        sh 'yarn jest'
-                    }
+                container('busybox') {
+                    sh '/bin/busybox'
                 }
+                // script {
+                //     def uiImage = docker.image("gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}")
+                //     uiImage.inside {
+                //         sh 'yarn run build'
+                //         sh 'yarn jest'
+                //     }
+                // }
             }
         }
     }
