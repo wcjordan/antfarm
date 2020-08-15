@@ -53,7 +53,7 @@ spec:
   - name: jenkins-antfarm-ui
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
     command:
-    - nginx -g daemon off
+    - nginx
     tty: true
 """
                 }
