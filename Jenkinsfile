@@ -44,6 +44,9 @@ spec:
             }
             steps {
                 container('jenkins-antfarm-ui') {
+                    sh 'ls'
+                    sh 'pwd'
+                    sh 'ls /www/client/'
                     sh 'yarn run build'
                     sh 'yarn jest'
                 }
