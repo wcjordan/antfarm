@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        dockerTool 'latest'
-    }
     stages {
         stage('Clone Repository') {
             steps {
@@ -33,7 +30,6 @@ pipeline {
                 timeout(time: 5, unit: 'MINUTES')
             }
             steps {
-                echo 'Starting to build docker image'
                 googleCloudBuild \
                     credentialsId: 'flipperkid-default',
                     source: local('ui'),
@@ -41,7 +37,6 @@ pipeline {
                     substitutions: [
                         _BUILD_TAG: "${env.BUILD_TAG}"
                     ]
-                echo 'Done building docker image'
             }
         }
         stage('System Test') {
@@ -52,12 +47,11 @@ spec:
   containers:
   - name: jenkins-antfarm-ui
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
-    tty: true
 """
                 }
             }
             options {
-                timeout(time: 5, unit: 'MINUTES')
+                timeout(time: 3, unit: 'MINUTES')
             }
             steps {
                 container('jenkins-antfarm-ui') {
