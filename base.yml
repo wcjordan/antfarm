@@ -12,7 +12,7 @@ services:
       - "8000"
     command: ["gunicorn", "webservice.main:app", "-w", "4", "-b", ":8000", "--timeout", "60"]
 
-  # Django server, shares codebase with worker & task_monitor
+  # Django server
   server:
     restart: always
     build: ./server
