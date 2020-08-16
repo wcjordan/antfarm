@@ -63,7 +63,7 @@ spec:
             }
             steps {
                 container('jenkins-antfarm-ui') {
-                    sh 'nginx -g daemon off;'
+                    sh 'nginx -g "daemon off;"'
                     sh 'curl http://127.0.0.1:8000/static/index.html'
                 }
             }
