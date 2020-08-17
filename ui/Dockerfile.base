@@ -1,0 +1,10 @@
+# Base container for building UI
+# We run this weekly and use the result to speed up builds
+# Performs yarn install to cache JS dependencies
+FROM node:13-alpine
+WORKDIR /js_app
+
+# Install React dependencies
+COPY js/yarn.lock .
+COPY js/package.json .
+RUN yarn install --pure-lockfile

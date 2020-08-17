@@ -1,5 +1,5 @@
 # Multistage build for JS artifacts
-FROM node:13-alpine as js_app
+FROM gcr.io/flipperkid-default/antfarm-ui-base:latest as js_app
 WORKDIR /js_app
 
 # Install React dependencies

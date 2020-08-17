@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone Repository') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build Base') {
+            agent {
+                kubernetes {
+                    yamlFile 'jenkins-worker-dind.yml'
+                }
+            }
+            options {
+                timeout(time: 6, unit: 'MINUTES')
+            }
+            steps {
+                container('dind') {
+                    withDockerRegistry(credentialsId: 'gcr:flipperkid-default', url: 'https://gcr.io/flipperkid-default') {
+                        sh "docker build -f ui/Dockerfile.base -t gcr.io/flipperkid-default/antfarm-ui-base:latest ui"
+                        sh "docker push gcr.io/flipperkid-default/antfarm-ui-base:latest"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,42 +1,40 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repository') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Unit Test') {
             agent {
                 kubernetes {
-                    yamlFile 'jenkins-worker-nodejs.yml'
+                    yamlFile 'jenkins-worker-ui.yml'
                 }
             }
             options {
-                timeout(time: 5, unit: 'MINUTES')
+                timeout(time: 4, unit: 'MINUTES')
             }
             steps {
-                container('jenkins-worker-nodejs') {
+                container('jenkins-worker-ui') {
                     dir('ui/js') {
                         sh 'yarn install --pure-lockfile'
-                        sh 'yarn run build'
                         sh 'yarn jest'
                     }
                 }
             }
         }
         stage('Build') {
+            agent {
+                kubernetes {
+                    yamlFile 'jenkins-worker-dind.yml'
+                }
+            }
             options {
-                timeout(time: 5, unit: 'MINUTES')
+                timeout(time: 4, unit: 'MINUTES')
             }
             steps {
-                googleCloudBuild \
-                    credentialsId: 'flipperkid-default',
-                    source: local('ui'),
-                    request: file('ui/cloudbuild.yml'),
-                    substitutions: [
-                        _BUILD_TAG: "${env.BUILD_TAG}"
-                    ]
+                container('dind') {
+                    withDockerRegistry(credentialsId: 'gcr:flipperkid-default', url: 'https://gcr.io/flipperkid-default') {
+                        sh "docker build -f ui/Dockerfile -t gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG} ui"
+                        sh "docker push gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}"
+                    }
+                }
             }
         }
         stage('System Test') {
