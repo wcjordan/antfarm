@@ -37,7 +37,7 @@ pipeline {
                                 sh "docker push gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}"
                             }
                         }
-                    } 
+                    }
                 }
                 stage('Build Server') {
                     agent {
@@ -55,7 +55,7 @@ pipeline {
                                 sh "docker push gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}"
                             }
                         }
-                    } 
+                    }
                 }
                 stage('Build Learning') {
                     agent {
@@ -73,10 +73,9 @@ pipeline {
                                 sh "docker push gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}"
                             }
                         }
-                    } 
+                    }
                 }
             }
-
         }
         stage('System Test') {
             agent {
