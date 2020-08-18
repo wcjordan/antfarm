@@ -93,6 +93,16 @@ pipeline {
         env:
         - name: SECRET_KEY
           value: i76Qzd0s/A9Psn2hjqVRV15usy2iIvWXbLrQXNyXBRk=
+        - name: POSTGRES_DB
+          value: antfarm
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: DB_HOSTNAME
+          value: db
+        - name: DB_PORT
+          value: 5432
     """
                         }
                     }
