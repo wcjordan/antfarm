@@ -55,75 +55,71 @@ pipeline {
                 }
             }
         }
-        stage('Unit Test') {
-            parallel {
-                stage('Test UI') {
-                    agent {
-                        kubernetes {
-                            yamlFile 'jenkins-worker-ui.yml'
-                        }
-                    }
-                    options {
-                        timeout(time: 4, unit: 'MINUTES')
-                    }
-                    steps {
-                        container('jenkins-worker-ui') {
-                            dir('ui/js') {
-                                sh 'yarn install --pure-lockfile'
-                                sh 'yarn jest'
-                            }
-                        }
+        stage('Test UI') {
+            agent {
+                kubernetes {
+                    yamlFile 'jenkins-worker-ui.yml'
+                }
+            }
+            options {
+                timeout(time: 4, unit: 'MINUTES')
+            }
+            steps {
+                container('jenkins-worker-ui') {
+                    dir('ui/js') {
+                        sh 'yarn install --pure-lockfile'
+                        sh 'yarn jest'
                     }
                 }
-                stage('Test Server') {
-                    agent {
-                        kubernetes {
-                            yaml """
+            }
+        }
+        stage('Test Server') {
+            agent {
+                kubernetes {
+                    yaml """
 spec:
-  containers:
-  - name: jenkins-antfarm-server
-    image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
-    command:
-    - cat
+containers:
+- name: jenkins-antfarm-server
+image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
+command:
+- cat
 """
-                        }
-                    }
-                    options {
-                        timeout(time: 10, unit: 'MINUTES')
-                        skipDefaultCheckout()
-                    }
-                    steps {
-                        container('jenkins-worker-server') {
-                            sh 'flake8 antfarm/training'
-                            sh 'pylint -j 0 --load-plugins pylint_django antfarm'
-                            sh 'python manage.py test antfarm.training'
-                        }
-                    }
                 }
-                stage('Test Learning') {
-                    agent {
-                        kubernetes {
-                            yaml """
+            }
+            options {
+                timeout(time: 10, unit: 'MINUTES')
+                skipDefaultCheckout()
+            }
+            steps {
+                container('jenkins-worker-server') {
+                    sh 'flake8 antfarm/training'
+                    sh 'pylint -j 0 --load-plugins pylint_django antfarm'
+                    sh 'python manage.py test antfarm.training'
+                }
+            }
+        }
+        stage('Test Learning') {
+            agent {
+                kubernetes {
+                    yaml """
 spec:
-  containers:
-  - name: jenkins-antfarm-learning
-    image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
-    command:
-    - cat
+containers:
+- name: jenkins-antfarm-learning
+image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
+command:
+- cat
 """
-                        }
-                    }
-                    options {
-                        timeout(time: 10, unit: 'MINUTES')
-                        skipDefaultCheckout()
-                    }
-                    steps {
-                        container('jenkins-worker-learning') {
-                            sh 'flake8 environments runners examples'
-                            sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
-                            sh 'pytest --durations=0 runners'
-                        }
-                    }
+                }
+            }
+            options {
+                timeout(time: 10, unit: 'MINUTES')
+                skipDefaultCheckout()
+            }
+            steps {
+                container('jenkins-worker-learning') {
+                    sh 'flake8 environments runners examples'
+                    sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
+                    sh 'pytest --durations=0 runners'
                 }
             }
         }
