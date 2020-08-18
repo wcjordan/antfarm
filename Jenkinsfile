@@ -79,7 +79,7 @@ pipeline {
                     yaml """
 spec:
 containers:
-- name: jenkins-antfarm-server
+- name: jenkins-worker-server
 image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
 command:
 - cat
@@ -104,7 +104,7 @@ command:
                     yaml """
 spec:
 containers:
-- name: jenkins-antfarm-learning
+- name: jenkins-worker-learning
 image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
 command:
 - cat
@@ -116,7 +116,7 @@ command:
                 skipDefaultCheckout()
             }
             steps {
-                container('jenkins-worker-learning') {
+                container('jenkins-antfarm-learning') {
                     sh 'flake8 environments runners examples'
                     sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
                     sh 'pytest --durations=0 runners'
@@ -129,7 +129,7 @@ command:
                     yaml """
 spec:
   containers:
-  - name: jenkins-antfarm-ui
+  - name: jenkins-worker-antfarm
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
 """
                 }
@@ -139,7 +139,7 @@ spec:
                 skipDefaultCheckout()
             }
             steps {
-                container('jenkins-antfarm-ui') {
+                container('jenkins-worker-antfarm') {
                     sh 'curl http://127.0.0.1/static/index.html'
                 }
             }
