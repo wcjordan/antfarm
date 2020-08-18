@@ -96,6 +96,10 @@ spec:
                 }
                 steps {
                     container('jenkins-worker-server') {
+                        sh 'ls /usr/src'
+                        sh 'ls -la /usr/src'
+                        sh 'ls /usr/src/app'
+                        sh 'ls -la /usr/src/app'
                         dir('/usr/src/app') {
                             sh 'ls'
                             sh 'pwd'
