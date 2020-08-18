@@ -62,7 +62,7 @@ pipeline {
                 }
             }
             options {
-                timeout(time: 4, unit: 'MINUTES')
+                timeout(time: 2, unit: 'MINUTES')
             }
             steps {
                 container('jenkins-worker-ui') {
@@ -83,6 +83,7 @@ spec:
     image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
     command:
     - cat
+    tty: true
 """
                 }
             }
@@ -108,6 +109,7 @@ spec:
     image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
     command:
     - cat
+    tty: true
 """
                 }
             }
