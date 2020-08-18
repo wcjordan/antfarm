@@ -44,7 +44,7 @@ pipeline {
                 }
             }
             options {
-                timeout(time: 6, unit: 'MINUTES')
+                timeout(time: 4, unit: 'MINUTES')
             }
             steps {
                 container('dind') {
@@ -62,7 +62,7 @@ pipeline {
                 }
             }
             options {
-                timeout(time: 2, unit: 'MINUTES')
+                timeout(time: 3, unit: 'MINUTES')
             }
             steps {
                 container('jenkins-worker-ui') {
@@ -93,6 +93,8 @@ spec:
             }
             steps {
                 container('jenkins-worker-server') {
+                    sh 'ls'
+                    sh 'pwd'
                     sh 'flake8 antfarm/training'
                     sh 'pylint -j 0 --load-plugins pylint_django antfarm'
                     sh 'python manage.py test antfarm.training'
