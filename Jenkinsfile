@@ -114,7 +114,7 @@ pipeline {
                         container('jenkins-worker-server') {
                             sh 'cd /usr/src/app; flake8 antfarm/training'
                             sh 'cd /usr/src/app; pylint -j 0 --load-plugins pylint_django antfarm'
-                            sh 'cd /usr/src/app; python manage.py test antfarm.training'
+                            // sh 'cd /usr/src/app; python manage.py test antfarm.training'
                         }
                     }
                 }
