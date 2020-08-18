@@ -1,13 +1,6 @@
 pipeline {
     agent none
     stages {
-        stage('sample') {
-            agent any
-            steps {
-                sh 'id -u jenkins'
-                sh 'id -g jenkins'
-            }
-        }
         stage('Build') {
             stages {
                 stage('Build UI') {
