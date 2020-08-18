@@ -65,7 +65,6 @@ pipeline {
                     }
                     options {
                         timeout(time: 4, unit: 'MINUTES')
-                        skipDefaultCheckout()
                     }
                     steps {
                         container('jenkins-worker-ui') {
@@ -141,6 +140,7 @@ spec:
             }
             options {
                 timeout(time: 3, unit: 'MINUTES')
+                skipDefaultCheckout()
             }
             steps {
                 container('jenkins-antfarm-ui') {
