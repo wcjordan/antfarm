@@ -17,6 +17,6 @@ COPY requirements.txt /usr
 RUN pip install --no-cache-dir -r /usr/requirements.txt
 
 # Install Django app by copying files to container
-COPY . /usr/src/app
+COPY --chmod=755 . /usr/src/app
 
 CMD ["/usr/src/app/launch_server.sh", "--reload"]

@@ -99,7 +99,6 @@ pipeline {
                     }
                     steps {
                         container('jenkins-worker-server') {
-                            sh 'whoami'
                             sh 'ls -la /usr/src/app'
                             sh 'cd /usr/src/app; ls -la'
                             dir('/usr/src/app') {
