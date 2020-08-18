@@ -44,7 +44,7 @@ pipeline {
                 }
             }
             options {
-                timeout(time: 20, unit: 'MINUTES')
+                timeout(time: 6, unit: 'MINUTES')
             }
             steps {
                 container('dind') {
@@ -65,6 +65,7 @@ pipeline {
                     }
                     options {
                         timeout(time: 4, unit: 'MINUTES')
+                        skipDefaultCheckout()
                     }
                     steps {
                         container('jenkins-worker-ui') {
@@ -83,11 +84,14 @@ spec:
   containers:
   - name: jenkins-antfarm-server
     image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
+    command:
+    - cat
 """
                         }
                     }
                     options {
                         timeout(time: 10, unit: 'MINUTES')
+                        skipDefaultCheckout()
                     }
                     steps {
                         container('jenkins-worker-server') {
@@ -105,11 +109,14 @@ spec:
   containers:
   - name: jenkins-antfarm-learning
     image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
+    command:
+    - cat
 """
                         }
                     }
                     options {
                         timeout(time: 10, unit: 'MINUTES')
+                        skipDefaultCheckout()
                     }
                     steps {
                         container('jenkins-worker-learning') {
@@ -134,6 +141,7 @@ spec:
             }
             options {
                 timeout(time: 3, unit: 'MINUTES')
+                skipDefaultCheckout()
             }
             steps {
                 container('jenkins-antfarm-ui') {
