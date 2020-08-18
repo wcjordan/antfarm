@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('sample') {
-            agent none
+            agent any
             steps {
                 sh 'id -u jenkins'
                 sh 'id -g jenkins'
@@ -110,8 +110,7 @@ pipeline {
                             sh 'id -u jenkins'
                             sh 'id -g jenkins'
                             sh 'ls -la /usr/src/app'
-                            sh 'cd /usr/src/app'
-                            sh 'cd /usr/src/app; flake8 antfarm/training'
+                            sh 'cd /usr/src/app; ls -la'
                             dir('/usr/src/app') {
                                 sh 'flake8 antfarm/training'
                                 sh 'pylint -j 0 --load-plugins pylint_django antfarm'
