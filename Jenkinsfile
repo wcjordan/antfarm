@@ -96,13 +96,9 @@ spec:
                 }
                 steps {
                     container('jenkins-worker-server') {
-                        sh 'ls /usr/src'
-                        sh 'ls -la /usr/src'
-                        sh 'ls /usr/src/app'
+                        sh 'whoami'
                         sh 'ls -la /usr/src/app'
                         dir('/usr/src/app') {
-                            sh 'ls'
-                            sh 'pwd'
                             sh 'flake8 antfarm/training'
                             sh 'pylint -j 0 --load-plugins pylint_django antfarm'
                             sh 'python manage.py test antfarm.training'
