@@ -141,7 +141,6 @@ spec:
             }
             options {
                 timeout(time: 3, unit: 'MINUTES')
-                skipDefaultCheckout()
             }
             steps {
                 container('jenkins-antfarm-ui') {
