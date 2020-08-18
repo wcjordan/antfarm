@@ -1,6 +1,13 @@
 pipeline {
     agent none
     stages {
+        stage('sample') {
+            agent none
+            steps {
+                sh 'id -u jenkins'
+                sh 'id -g jenkins'
+            }
+        }
         stage('Build') {
             stages {
                 stage('Build UI') {
@@ -100,6 +107,8 @@ pipeline {
                     steps {
                         container('jenkins-worker-server') {
                             sh 'whoami'
+                            sh 'id -u jenkins'
+                            sh 'id -g jenkins'
                             sh 'ls -la /usr/src/app'
                             sh 'cd /usr/src/app'
                             sh 'cd /usr/src/app; flake8 antfarm/training'
