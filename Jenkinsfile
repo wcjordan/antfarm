@@ -99,14 +99,9 @@ pipeline {
                     }
                     steps {
                         container('jenkins-worker-server') {
-                            sh 'ls -la /usr/src'
-                            sh 'ls -la /usr/src/app'
-                            sh 'cd /usr/src/app; ls -la'
-                            dir('/usr/src/app') {
-                                sh 'flake8 antfarm/training'
-                                sh 'pylint -j 0 --load-plugins pylint_django antfarm'
-                                sh 'python manage.py test antfarm.training'
-                            }
+                            sh 'cd /usr/src/app; flake8 antfarm/training'
+                            sh 'cd /usr/src/app; pylint -j 0 --load-plugins pylint_django antfarm'
+                            sh 'cd /usr/src/app; python manage.py test antfarm.training'
                         }
                     }
                 }
@@ -130,11 +125,9 @@ pipeline {
                     }
                     steps {
                         container('jenkins-worker-learning') {
-                            dir('/usr/src') {
-                                sh 'flake8 environments runners examples'
-                                sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
-                                sh 'pytest --durations=0 runners'                            
-                            }
+                            sh 'cd /usr/src; flake8 environments runners examples'
+                            sh 'cd /usr/src; pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
+                            sh 'cd /usr/src; pytest --durations=0 runners'                            
                         }
                     }
                 }
