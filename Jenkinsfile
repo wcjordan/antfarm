@@ -78,11 +78,11 @@ pipeline {
                 kubernetes {
                     yaml """
 spec:
-containers:
-- name: jenkins-worker-server
-image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
-command:
-- cat
+  containers:
+  - name: jenkins-worker-server
+    image: gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}
+    command:
+    - cat
 """
                 }
             }
@@ -103,11 +103,11 @@ command:
                 kubernetes {
                     yaml """
 spec:
-containers:
-- name: jenkins-worker-learning
-image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
-command:
-- cat
+  containers:
+  - name: jenkins-worker-learning
+    image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
+    command:
+    - cat
 """
                 }
             }
@@ -116,7 +116,7 @@ command:
                 skipDefaultCheckout()
             }
             steps {
-                container('jenkins-antfarm-learning') {
+                container('jenkins-worker-learning') {
                     sh 'flake8 environments runners examples'
                     sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
                     sh 'pytest --durations=0 runners'
