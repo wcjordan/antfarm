@@ -90,6 +90,9 @@ pipeline {
         command:
         - cat
         tty: true
+        env:
+        - name: SECRET_KEY
+          value: i76Qzd0s/A9Psn2hjqVRV15usy2iIvWXbLrQXNyXBRk=
     """
                         }
                     }
