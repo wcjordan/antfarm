@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        // stage('Build') {
             stage('Build UI') {
                 agent {
                     kubernetes {
@@ -56,8 +56,8 @@ pipeline {
                     }
                 }
             }
-        }
-        stage('Unit Tests') {
+        // }
+        // stage('Unit Tests') {
             stage('Test UI') {
                 agent {
                     kubernetes {
@@ -134,7 +134,7 @@ spec:
                     }
                 }
             }
-        }
+        // }
         stage('System Test') {
             agent {
                 kubernetes {
