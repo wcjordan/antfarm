@@ -1,29 +1,6 @@
 pipeline {
     agent none
-    stages { 
-        stage('Test Server') {
-            agent {
-                kubernetes {
-                    yamlFile 'jenkins-worker-python.yml'
-                }
-            }
-            options {
-                timeout(time: 10, unit: 'MINUTES')
-            }
-            steps {
-                container('jenkins-worker-python') {
-                    sh 'apt-get update'
-                    sh 'apt-get install time'
-                    dir('server') {
-                        sh 'time pip install --no-cache-dir -r requirements.txt'
-                        sh 'flake8 antfarm/training'
-                        sh 'pylint -j 0 --load-plugins pylint_django antfarm'
-                        // TODO (jordan)
-                        // sh 'python manage.py test antfarm.training'
-                    }
-                }
-            }
-        }
+    stages {
         stage('Build') {
             stages {
                 stage('Build UI') {
@@ -33,7 +10,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 4, unit: 'MINUTES')
+                        timeout(time: 5, unit: 'MINUTES')
                     }
                     steps {
                         container('dind') {
@@ -51,7 +28,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 4, unit: 'MINUTES')
+                        timeout(time: 5, unit: 'MINUTES')
                     }
                     steps {
                         container('dind') {
@@ -69,7 +46,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 4, unit: 'MINUTES')
+                        timeout(time: 5, unit: 'MINUTES')
                     }
                     steps {
                         container('dind') {
@@ -91,13 +68,36 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 3, unit: 'MINUTES')
+                        timeout(time: 5, unit: 'MINUTES')
                     }
                     steps {
                         container('jenkins-worker-ui') {
                             dir('ui/js') {
                                 sh 'yarn install --pure-lockfile'
                                 sh 'yarn jest'
+                            }
+                        }
+                    }
+                }
+                stage('Test Server') {
+                    agent {
+                        kubernetes {
+                            yamlFile 'jenkins-worker-python.yml'
+                        }
+                    }
+                    options {
+                        timeout(time: 5, unit: 'MINUTES')
+                    }
+                    steps {
+                        container('jenkins-worker-python') {
+                            sh 'apt-get update'
+                            sh 'apt-get install time'
+                            dir('server') {
+                                sh 'time pip install --no-cache-dir -r requirements.txt'
+                                sh 'flake8 antfarm/training'
+                                sh 'pylint -j 0 --load-plugins pylint_django antfarm'
+                                // TODO (jordan)
+                                // sh 'python manage.py test antfarm.training'
                             }
                         }
                     }
