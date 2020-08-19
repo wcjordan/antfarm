@@ -31,12 +31,14 @@ pipeline {
                         timeout(time: 2, unit: 'MINUTES')
                     }
                     steps {
-                        dir('server') {
-                            sh 'pip install --no-cache-dir -r /usr/requirements.txt'
-                            sh 'flake8 antfarm/training'
-                            sh 'pylint -j 0 --load-plugins pylint_django antfarm'
-                            // TODO (jordan)
-                            // sh 'python manage.py test antfarm.training'
+                        container('jenkins-worker-python') {
+                            dir('server') {
+                                sh 'pip install --no-cache-dir -r /usr/requirements.txt'
+                                sh 'flake8 antfarm/training'
+                                sh 'pylint -j 0 --load-plugins pylint_django antfarm'
+                                // TODO (jordan)
+                                // sh 'python manage.py test antfarm.training'
+                            }
                         }
                     }
                 }
@@ -50,11 +52,13 @@ pipeline {
                         timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
-                        dir('learning') {
-                            sh 'pip install --no-cache-dir -r /usr/requirements.txt'
-                            sh 'flake8 environments examples' // TODO (jordan) include "runners"
-                            sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments' // TODO (jordan) include "runners"
-                            sh 'pytest --durations=0 runners'
+                        container('jenkins-worker-python') {
+                            dir('learning') {
+                                sh 'pip install --no-cache-dir -r /usr/requirements.txt'
+                                sh 'flake8 environments examples' // TODO (jordan) include "runners"
+                                sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments' // TODO (jordan) include "runners"
+                                sh 'pytest --durations=0 runners'
+                            }
                         }
                     }
                 }
