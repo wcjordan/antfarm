@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-            stages {
+            parllel {
                 stage('Build UI') {
                     agent {
                         kubernetes {
@@ -60,7 +60,7 @@ pipeline {
             }
         }
         stage('Unit Tests') {
-            stages {
+            parllel {
                 stage('Test UI') {
                     agent {
                         kubernetes {
@@ -96,7 +96,7 @@ pipeline {
                                 sh 'time pip install --no-cache-dir -r requirements.txt'
                                 sh 'flake8 antfarm/training'
                                 sh 'pylint -j 0 --load-plugins pylint_django antfarm'
-                                // TODO (jordan)
+                                // TODO (jordan) requires a running DB
                                 // sh 'python manage.py test antfarm.training'
                             }
                         }
@@ -117,7 +117,7 @@ spec:
                         }
                     }
                     options {
-                        timeout(time: 10, unit: 'MINUTES')
+                        timeout(time: 5, unit: 'MINUTES')
                     }
                     steps {
                         container('jenkins-worker-learning') {
