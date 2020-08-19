@@ -110,6 +110,9 @@ spec:
   containers:
   - name: jenkins-worker-learning
     image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
+    command:
+    - cat
+    tty: true
 """
                         }
                     }
