@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             parallel {
                 stage('UI') {
-                    parallel {
+                    stages {
                         stage('Build UI') {
                             agent {
                                 kubernetes {
@@ -44,7 +44,7 @@ pipeline {
                     }
                 }
                 stage('Server') {
-                    parallel {
+                    stages {
                         stage('Build Server') {
                             agent {
                                 kubernetes {
