@@ -12,8 +12,10 @@ pipeline {
             }
             steps {
                 container('jenkins-worker-python') {
+                    sh 'apt-get update'
+                    sh 'apt-get install time'
                     dir('server') {
-                        sh 'pip install --no-cache-dir -r requirements.txt'
+                        sh 'time pip install --no-cache-dir -r requirements.txt'
                         sh 'flake8 antfarm/training'
                         sh 'pylint -j 0 --load-plugins pylint_django antfarm'
                         // TODO (jordan)
