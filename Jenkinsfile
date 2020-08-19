@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('UI') {
             parallel {
                 stage('Build UI') {
                     agent {
@@ -21,46 +21,6 @@ pipeline {
                         }
                     }
                 }
-                stage('Build Server') {
-                    agent {
-                        kubernetes {
-                            yamlFile 'jenkins-worker-dind.yml'
-                        }
-                    }
-                    options {
-                        timeout(time: 10, unit: 'MINUTES')
-                    }
-                    steps {
-                        container('dind') {
-                            withDockerRegistry(credentialsId: 'gcr:flipperkid-default', url: 'https://gcr.io/flipperkid-default') {
-                                sh "docker build -f server/Dockerfile -t gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG} server"
-                                sh "docker push gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}"
-                            }
-                        }
-                    }
-                }
-                stage('Build Learning') {
-                    agent {
-                        kubernetes {
-                            yamlFile 'jenkins-worker-dind.yml'
-                        }
-                    }
-                    options {
-                        timeout(time: 10, unit: 'MINUTES')
-                    }
-                    steps {
-                        container('dind') {
-                            withDockerRegistry(credentialsId: 'gcr:flipperkid-default', url: 'https://gcr.io/flipperkid-default') {
-                                sh "docker build -f learning/Dockerfile -t gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG} learning"
-                                sh "docker push gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        stage('Unit Tests') {
-            parallel {
                 stage('Test UI') {
                     agent {
                         kubernetes {
@@ -75,6 +35,28 @@ pipeline {
                             dir('ui/js') {
                                 sh 'yarn install --pure-lockfile'
                                 sh 'yarn jest'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Server') {
+            parallel {
+                stage('Build Server') {
+                    agent {
+                        kubernetes {
+                            yamlFile 'jenkins-worker-dind.yml'
+                        }
+                    }
+                    options {
+                        timeout(time: 10, unit: 'MINUTES')
+                    }
+                    steps {
+                        container('dind') {
+                            withDockerRegistry(credentialsId: 'gcr:flipperkid-default', url: 'https://gcr.io/flipperkid-default') {
+                                sh "docker build -f server/Dockerfile -t gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG} server"
+                                sh "docker push gcr.io/flipperkid-default/antfarm-server:${env.BUILD_TAG}"
                             }
                         }
                     }
@@ -98,6 +80,28 @@ pipeline {
                                 sh 'pylint -j 0 --load-plugins pylint_django antfarm'
                                 // TODO (jordan) requires a running DB
                                 // sh 'python manage.py test antfarm.training'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Learning') {
+            stages {
+                stage('Build Learning') {
+                    agent {
+                        kubernetes {
+                            yamlFile 'jenkins-worker-dind.yml'
+                        }
+                    }
+                    options {
+                        timeout(time: 10, unit: 'MINUTES')
+                    }
+                    steps {
+                        container('dind') {
+                            withDockerRegistry(credentialsId: 'gcr:flipperkid-default', url: 'https://gcr.io/flipperkid-default') {
+                                sh "docker build -f learning/Dockerfile -t gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG} learning"
+                                sh "docker push gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}"
                             }
                         }
                     }
