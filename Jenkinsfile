@@ -22,7 +22,11 @@ pipeline {
                     }
                 }
                 stage('Test Server') {
-                    agent any
+                    agent {
+                        kubernetes {
+                            yamlFile 'jenkins-worker-python.yml'
+                        }
+                    }
                     options {
                         timeout(time: 2, unit: 'MINUTES')
                     }
@@ -37,7 +41,11 @@ pipeline {
                     }
                 }
                 stage('Test Learning') {
-                    agent any
+                    agent {
+                        kubernetes {
+                            yamlFile 'jenkins-worker-python.yml'
+                        }
+                    }
                     options {
                         timeout(time: 10, unit: 'MINUTES')
                     }
