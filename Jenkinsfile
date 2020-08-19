@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-            parllel {
+            parallel {
                 stage('Build UI') {
                     agent {
                         kubernetes {
@@ -60,7 +60,7 @@ pipeline {
             }
         }
         stage('Unit Tests') {
-            parllel {
+            parallel {
                 stage('Test UI') {
                     agent {
                         kubernetes {
