@@ -1,6 +1,28 @@
 pipeline {
     agent none
-    stages {
+    stages { 
+        stage('Test Server') {
+            agent {
+                kubernetes {
+                    yamlFile 'jenkins-worker-python.yml'
+                }
+            }
+            options {
+                timeout(time: 10, unit: 'MINUTES')
+            }
+            steps {
+                container('jenkins-worker-python') {
+                    sh 'apt-get install time'
+                    dir('server') {
+                        sh 'time pip install --no-cache-dir -r requirements.txt'
+                        sh 'flake8 antfarm/training'
+                        sh 'pylint -j 0 --load-plugins pylint_django antfarm'
+                        // TODO (jordan)
+                        // sh 'python manage.py test antfarm.training'
+                    }
+                }
+            }
+        }
         stage('Build') {
             stages {
                 stage('Build UI') {
@@ -75,27 +97,6 @@ pipeline {
                             dir('ui/js') {
                                 sh 'yarn install --pure-lockfile'
                                 sh 'yarn jest'
-                            }
-                        }
-                    }
-                }
-                stage('Test Server') {
-                    agent {
-                        kubernetes {
-                            yamlFile 'jenkins-worker-python.yml'
-                        }
-                    }
-                    options {
-                        timeout(time: 10, unit: 'MINUTES')
-                    }
-                    steps {
-                        container('jenkins-worker-python') {
-                            dir('server') {
-                                sh '/usr/bin/time pip install --no-cache-dir -r requirements.txt'
-                                sh 'flake8 antfarm/training'
-                                sh 'pylint -j 0 --load-plugins pylint_django antfarm'
-                                // TODO (jordan)
-                                // sh 'python manage.py test antfarm.training'
                             }
                         }
                     }
