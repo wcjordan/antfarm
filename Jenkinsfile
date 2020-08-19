@@ -28,10 +28,10 @@ pipeline {
                     }
                     steps {
                         dir('server') {
-                            sh 'cd /usr/src/app; flake8 antfarm/training'
-                            sh 'cd /usr/src/app; pylint -j 0 --load-plugins pylint_django antfarm'
+                            sh 'flake8 antfarm/training'
+                            sh 'pylint -j 0 --load-plugins pylint_django antfarm'
                             // TODO (jordan)
-                            // sh 'cd /usr/src/app; python manage.py test antfarm.training'
+                            // sh 'python manage.py test antfarm.training'
                         }
                     }
                 }
