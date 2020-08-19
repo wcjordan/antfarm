@@ -109,9 +109,11 @@ spec:
   - name: jenkins-worker-learning
     image: gcr.io/flipperkid-default/antfarm-learning:${env.BUILD_TAG}
 """
+                        }
                     }
                     options {
                         timeout(time: 10, unit: 'MINUTES')
+                        // skipDefaultCheckout()
                     }
                     steps {
                         container('jenkins-worker-learning') {
