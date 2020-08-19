@@ -9,4 +9,4 @@ spec:
     tty: true
     resources:
       requests:
-        cpu: "200m"
+        cpu: "150m"

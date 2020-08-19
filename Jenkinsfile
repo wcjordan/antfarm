@@ -121,7 +121,7 @@ pipeline {
             tty: true
             resources:
               requests:
-                cpu: "200m"
+                cpu: "150m"
         """
                                 }
                             }
@@ -152,7 +152,7 @@ spec:
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
     resources:
       requests:
-        cpu: "200m"
+        cpu: "150m"
 """
                 }
             }
