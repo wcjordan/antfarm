@@ -28,6 +28,7 @@ pipeline {
                     }
                     steps {
                         dir('server') {
+                            sh 'pip install --no-cache-dir -r /usr/requirements.txt'
                             sh 'flake8 antfarm/training'
                             sh 'pylint -j 0 --load-plugins pylint_django antfarm'
                             // TODO (jordan)
@@ -42,6 +43,7 @@ pipeline {
                     }
                     steps {
                         dir('learning') {
+                            sh 'pip install --no-cache-dir -r /usr/requirements.txt'
                             sh 'flake8 environments examples' // TODO (jordan) include "runners"
                             sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments' // TODO (jordan) include "runners"
                             sh 'pytest --durations=0 runners'
