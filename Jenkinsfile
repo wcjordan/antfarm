@@ -140,7 +140,7 @@ pipeline {
                     steps {
                         container('jenkins-worker-learning') {
                             sh 'cd /usr/src; flake8 environments examples' // TODO (jordan) include "runners"
-                            sh 'cd /usr/src; pylint -j 0 --extension-pkg-whitelist=numpy environments runners'
+                            sh 'cd /usr/src; pylint -j 0 --extension-pkg-whitelist=numpy environments' // TODO (jordan) include "runners"
                             sh 'cd /usr/src; pytest --durations=0 runners'                            
                         }
                     }
