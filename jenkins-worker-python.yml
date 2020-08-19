@@ -7,3 +7,6 @@ spec:
     command:
     - cat
     tty: true
+    resources:
+      requests:
+        cpu: "300m"

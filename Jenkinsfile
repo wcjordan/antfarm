@@ -117,6 +117,9 @@ spec:
     command:
     - cat
     tty: true
+    resources:
+      requests:
+        cpu: "300m"
 """
                         }
                     }
@@ -143,6 +146,9 @@ spec:
   containers:
   - name: jenkins-worker-antfarm
     image: gcr.io/flipperkid-default/antfarm-ui:${env.BUILD_TAG}
+    resources:
+      requests:
+        cpu: "300m"
 """
                 }
             }
