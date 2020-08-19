@@ -10,7 +10,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 5, unit: 'MINUTES')
+                        timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
                         container('dind') {
@@ -28,7 +28,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 5, unit: 'MINUTES')
+                        timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
                         container('dind') {
@@ -46,7 +46,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 5, unit: 'MINUTES')
+                        timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
                         container('dind') {
@@ -68,7 +68,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 5, unit: 'MINUTES')
+                        timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
                         container('jenkins-worker-ui') {
@@ -86,7 +86,7 @@ pipeline {
                         }
                     }
                     options {
-                        timeout(time: 5, unit: 'MINUTES')
+                        timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
                         container('jenkins-worker-python') {
@@ -117,7 +117,7 @@ spec:
                         }
                     }
                     options {
-                        timeout(time: 5, unit: 'MINUTES')
+                        timeout(time: 10, unit: 'MINUTES')
                     }
                     steps {
                         container('jenkins-worker-learning') {
