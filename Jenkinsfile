@@ -118,13 +118,13 @@ spec:
                     }
                     options {
                         timeout(time: 10, unit: 'MINUTES')
-                        // skipDefaultCheckout()
+                        skipDefaultCheckout()
                     }
                     steps {
                         container('jenkins-worker-learning') {
-                            sh 'cd /usr/src; flake8 environments examples' // TODO (jordan) include "runners"
-                            sh 'cd /usr/src; pylint -j 0 --extension-pkg-whitelist=numpy environments' // TODO (jordan) include "runners"
-                            sh 'cd /usr/src; pytest --durations=0 runners'
+                            sh 'flake8 environments examples' // TODO (jordan) include "runners"
+                            sh 'pylint -j 0 --extension-pkg-whitelist=numpy environments' // TODO (jordan) include "runners"
+                            sh 'pytest --durations=0 runners'
                         }
                     }
                 }
