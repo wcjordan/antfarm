@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: jenkins-worker-ui
-    image: gcr.io/flipperkid-default/antfarm-ui-base:latest
+  - name: jenkins-worker-python
+    image: python:3
     command:
     - cat
     tty: true
