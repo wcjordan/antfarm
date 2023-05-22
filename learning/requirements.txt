@@ -1,6 +1,6 @@
 Flask==2.3.2
 gunicorn==20.0.4
-requests==2.23.0
+requests==2.31.0
 
 # These are used for development or linting
 argh==0.26.2  # used by watchdog
