@@ -1,6 +1,6 @@
 Django==3.2.24
 djangorestframework==3.11.2
-gunicorn==20.0.4
+gunicorn==22.0.0
 psycopg2==2.8.4
 raven==6.10.0
 requests==2.31.0
